@@ -1,0 +1,49 @@
+course: {
+  catalog_number: 1101,
+  subject: {
+    name: "APEC,"
+    description: "Applied Economics"
+  },
+  title: "Principles of Microeconomics",
+  description: "Economic behavior of consumers/firms in domestic/international markets. Demand, supply, competition. Efficiency, Invisible Hand. Monopoly, imperfect competition. Externalities, property rights. Economics of public policy in environment/health/safety. Public goods, tax policy.",
+  grading_basis: "Student Option",
+  college: {
+    name: "College of Food, Agricultural and Natural Resource Sciences",
+    abbreviation: //see below
+  },
+  minimum_credits: 4,
+  maximum_credits: 4,
+}
+//College abbreviation would be nice. We need to get them to add it to ECAS_COURSE. Or we can pull it from ps_acad_group_tbl.descrshort
+//
+//sources
+//
+//catalog_number:
+//  B.CATALOG_NBR in course 
+//  A.CATALOG_NBR in class
+//subject.name: 
+//  B.SUBJECT it course
+//  A.SUBJECT in class
+//subject.description
+//  H.DESCR in course
+//  A.DESCR in class
+//title:
+//  A.COURSE_TITLE_LONG in course
+//  A.DESCR1 in class
+//description:
+//  A.DESCRLONG in course
+//  n/a in class
+//grading_basis:
+//  L.XLATLONGNAME in course
+//  A.XLATLONGNAME in class
+//college.name:
+//  I.DESCR100 in course
+//  n/a in class
+//college.abbreviation
+//  We need to get them to add it to ECAS_COURSE. Or we can pull it from ps_acad_group_tbl.descrshort
+//minimum_credits:
+//  A.UNITS_MINIMUM in course
+//  A.UNITS_MINIMUM in class
+//maximum_credits:
+//  A.UNITS_MAXIMUM in course
+//  A.UNITS_MAXIMUM in class
