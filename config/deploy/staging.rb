@@ -6,6 +6,7 @@ set :user, 'swadm'
 set :server, 'asr-course-staging.oit.umn.edu'
 set :roles, %w{web app}
 set :web_root, '/swadm/www/courses-staging.umn.edu'
+set :deploy_to, "#{fetch(:web_root)}"
 
 server 'asr-course-staging.oit.umn.edu',
   roles: fetch(:roles),
