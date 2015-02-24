@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :campuses, only: [] do
+    resources :terms, only: [] do
+      resources :courses, only: [:index]
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
