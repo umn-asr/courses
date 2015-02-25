@@ -1,6 +1,6 @@
 require "rails_helper"
 require "json"
-require_relative "../../lib/reference_test"
+require_relative "../../lib/course_contract_tests/lib/reference_test"
 
 RSpec.describe "create course" do
   describe "when passed valid syntax" do

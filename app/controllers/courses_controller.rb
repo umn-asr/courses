@@ -1,4 +1,4 @@
-require_relative "../../lib/reference_test"
+require_relative "../../lib/course_contract_tests/lib/reference_test"
 
 class CoursesController < ApplicationController
   def index
