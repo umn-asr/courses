@@ -12,6 +12,10 @@ module Storage
       def id
         abbreviation
       end
+
+      def valid?(repository)
+        repository.where(abbreviation: abbreviation).empty?
+      end
     end
   end
 end

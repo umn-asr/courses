@@ -18,18 +18,31 @@ module Storage
       end
 
       def save(entity)
-        map_record_in(entity)
+        if valid?(entity)
+          map_record_in(entity)
+        end
       end
 
       def update(entity)
-        map_record_in(entity)
+        if valid?(entity)
+          map_record_in(entity)
+        end
       end
 
       def exists?(id)
         orm_adapter.exists?(id)
       end
 
+      def valid?(entity)
+        entity.valid?(self)
+      end
+
+      def where(options)
+        orm_adapter.where(options)
+      end
+
       private
+
       attr_accessor :orm_adapter
     end
   end
