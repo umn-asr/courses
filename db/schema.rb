@@ -17,4 +17,6 @@ ActiveRecord::Schema.define(version: 20150225190220) do
     t.string "abbreviation"
   end
 
+  add_index "campuses", ["abbreviation"], name: "index_campuses_on_abbreviation", unique: true
+
 end
