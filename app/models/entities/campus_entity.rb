@@ -13,7 +13,7 @@ module Entities
     end
 
     def valid?(repository)
-      repository.where(abbreviation: abbreviation).empty?
+      repository.unique?(abbreviation: abbreviation)
     end
 
     def attributes
