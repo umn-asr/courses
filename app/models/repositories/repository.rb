@@ -37,6 +37,10 @@ module Repositories
       orm_adapter.where(options, persistence_class)
     end
 
+    def unique?(attributes_to_check)
+      attributes_to_check.all? { |k, v| where({k: v}).empty? }
+    end
+
     private
 
     attr_accessor :orm_adapter, :persistence_class
