@@ -5,7 +5,7 @@ module Storage
     class CampusRepository
       include Repository
 
-      def initialize(orm_adapter = ::Storage::Models::ActiveRecord::Campus)
+      def initialize(orm_adapter = ::Storage::Adapters::ActiveRecord, persistence_class = ::Storage::Models::ActiveRecord::Campus)
         super
       end
 
@@ -15,12 +15,41 @@ module Storage
           campus.abbreviation = record.abbreviation
         end
       end
+    end
+  end
+end
 
-      def map_record_in(entity)
-        if exists?(entity.id)
-          orm_adapter.find(entity.id).update_attributes(abbreviation: entity.abbreviation)
+module Storage
+  module Adapters; end
+end
+
+module Storage
+  module Adapters
+    module ActiveRecord
+      def self.find(id, persistence_class)
+        persistence_class.find(id)
+      end
+
+      def self.each(persistence_class)
+      end
+
+      def self.build(persistence_class)
+        persistence_class.new
+      end
+
+      def self.exists?(id, persistence_class)
+        persistence_class.exists?(id)
+      end
+
+      def self.where(options, persistence_class)
+        persistence_class.where(options)
+      end
+
+      def self.save(entity, persistence_class)
+        if exists?(entity.id, persistence_class)
+          persistence_class.find(entity.id).update_attributes(entity.attributes)
         else
-          orm_adapter.new(abbreviation: entity.abbreviation).save
+          persistence_class.create(entity.attributes)
         end
       end
     end

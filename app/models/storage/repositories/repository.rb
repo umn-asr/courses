@@ -1,36 +1,33 @@
 module Storage
   module Repositories
     module Repository
-      def initialize(orm_adapter)
+      def initialize(orm_adapter, persistence_class)
         self.orm_adapter = orm_adapter
+        self.persistence_class = persistence_class
       end
 
       def find(id)
-        map_record_out(orm_adapter.find(id))
+        map_record_out(orm_adapter.find(id, persistence_class))
       end
 
-      def find_all
-        orm_adapter.find_each.lazy.map &method(:map_record_out)
-      end
-
-      def create
-        map_record_out(orm_adapter.new)
+      def build
+        map_record_out(orm_adapter.build(persistence_class))
       end
 
       def save(entity)
         if valid?(entity)
-          map_record_in(entity)
+          orm_adapter.save(entity, persistence_class)
         end
       end
 
       def update(entity)
         if valid?(entity)
-          map_record_in(entity)
+          orm_adapter.save(entity, persistence_class)
         end
       end
 
       def exists?(id)
-        orm_adapter.exists?(id)
+        orm_adapter.exists?(id, persistence_class)
       end
 
       def valid?(entity)
@@ -38,12 +35,12 @@ module Storage
       end
 
       def where(options)
-        orm_adapter.where(options)
+        orm_adapter.where(options, persistence_class)
       end
 
       private
 
-      attr_accessor :orm_adapter
+      attr_accessor :orm_adapter, :persistence_class
     end
   end
 end

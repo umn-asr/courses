@@ -16,6 +16,10 @@ module Storage
       def valid?(repository)
         repository.where(abbreviation: abbreviation).empty?
       end
+
+      def attributes
+        {abbreviation: abbreviation}
+      end
     end
   end
 end
