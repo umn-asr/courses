@@ -1,7 +1,7 @@
 module Storage
   module Repositories
     module Repository
-      def initialize(orm_adapter, persistence_class)
+      def initialize(persistence_class, orm_adapter = persistence_class.orm_adapter)
         self.orm_adapter = orm_adapter
         self.persistence_class = persistence_class
       end

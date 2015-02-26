@@ -5,7 +5,7 @@ module Storage
     class CampusRepository
       include Repository
 
-      def initialize(orm_adapter = ::Storage::Adapters::ActiveRecord, persistence_class = ::Storage::Models::ActiveRecord::Campus)
+      def initialize(persistence_class = ::Storage::Models::ActiveRecord::Campus)
         super
       end
 
