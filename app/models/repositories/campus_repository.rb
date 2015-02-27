@@ -11,7 +11,9 @@ module Repositories
     private
     def map_record_out(record)
       Entities::CampusEntity.new.tap do |campus|
-        campus.abbreviation = record.abbreviation
+        campus.attributes.keys.each do |attr|
+          campus.public_send("#{attr}=".to_sym, record.public_send(attr))
+        end
       end
     end
   end
