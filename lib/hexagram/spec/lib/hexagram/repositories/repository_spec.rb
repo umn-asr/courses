@@ -1,11 +1,11 @@
-require "rails_helper"
-require_relative "../../../app/models/repositories/campus_repository"
+require_relative "../../../../lib/hexagram/repositories/repository"
+require_relative "../../../doubles/test_repository"
 
-RSpec.describe Repositories::CampusRepository do
+RSpec.describe TestRepository do
   let(:persistence_class) { Object.new }
-  let(:orm_adapter) { Adapters::ActiveRecord }
+  let(:orm_adapter) { Hexagram::Adapters::ActiveRecord }
   let(:campus_repository) { described_class.new(persistence_class, orm_adapter) }
-  let(:entity) { instance_double(Entities::CampusEntity) }
+  let(:entity) { instance_double(TestEntity) }
 
   describe "save" do
     describe "when the entity is valid" do
@@ -84,36 +84,6 @@ RSpec.describe Repositories::CampusRepository do
         expect(orm_adapter).to receive(:where).with(attributes, persistence_class).and_return([])
         expect(campus_repository.unique?(attributes)).to be_truthy
       end
-    end
-  end
-
-  describe "build" do
-    it "returns an empty instance of a CampusEntity" do
-      orm_adapter = Adapters::ActiveRecord
-      persistence_class = OpenStruct
-
-      campus_repository = described_class.new(persistence_class, orm_adapter)
-
-      ret = campus_repository.build
-      expect(ret).to be_a(Entities::CampusEntity)
-      expect(ret.abbreviation).to be_nil
-    end
-  end
-
-  describe "find" do
-    it "returns an empty instance of a CampusEntity" do
-      orm_adapter = Adapters::ActiveRecord
-      persistence_class = Models::ActiveRecord::Campus
-      persistence_instance = OpenStruct.new
-      persistence_instance.abbreviation = "UMNTC"
-
-      allow(persistence_class).to receive(:find).with("UMNTC").and_return(persistence_instance)
-
-      campus_repository = described_class.new(persistence_class, orm_adapter)
-
-      ret = campus_repository.find("UMNTC")
-      expect(ret).to be_a(Entities::CampusEntity)
-      expect(ret.abbreviation).to eq("UMNTC")
     end
   end
 end
