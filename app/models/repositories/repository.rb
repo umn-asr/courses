@@ -25,8 +25,8 @@ module Repositories
       end
     end
 
-    def exists?(id)
-      orm_adapter.exists?(id, persistence_class)
+    def exists?(entity)
+      orm_adapter.exists?(entity, persistence_class)
     end
 
     def valid?(entity)
