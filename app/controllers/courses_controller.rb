@@ -31,6 +31,11 @@ class CoursesController < ApplicationController
     rescue
       render nothing: true, status: 400
     else
+      parsed = JSON.parse(params[:course].to_json)
+      campus_repo = Repositories::CampusRepository.new
+      campus = campus_repo.build
+      campus.abbreviation = parsed["campus"]["abbreviation"]
+      campus_repo.save(campus)
       render nothing: true
     end
   end
