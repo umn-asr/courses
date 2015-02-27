@@ -2,10 +2,10 @@ require_relative "../../../../lib/hexagram/repositories/repository"
 require_relative "../../../doubles/test_repository"
 
 RSpec.describe TestRepository do
-  let(:persistence_class) { Object.new }
+  let(:persistence_class) { Persisters::Test }
   let(:orm_adapter) { Hexagram::Adapters::ActiveRecord }
   let(:campus_repository) { described_class.new(persistence_class, orm_adapter) }
-  let(:entity) { instance_double(TestEntity) }
+  let(:entity) { instance_double(Entities::Test) }
 
   describe "save" do
     describe "when the entity is valid" do
@@ -84,6 +84,37 @@ RSpec.describe TestRepository do
         expect(orm_adapter).to receive(:where).with(attributes, persistence_class).and_return([])
         expect(campus_repository.unique?(attributes)).to be_truthy
       end
+    end
+  end
+
+  describe "build" do
+    it "returns an empty instance of an entity" do
+      persistence_class = Persisters::Test
+      repository = described_class.new(persistence_class, orm_adapter)
+
+      ret = repository.build
+      expect(ret).to be_a(Entities::Test)
+      expect(ret.value).to be_nil
+    end
+  end
+
+  describe "find" do
+    it "returns an empty instance of a CampusEntity" do
+      rand_value = rand
+      rand_id = rand(5)
+      persistence_class = Persisters::Test
+      persistence_instance = Persisters::Test.new
+      persistence_instance.id = rand_id
+      persistence_instance.value = rand_value
+
+      allow(persistence_class).to receive(:find).with(rand_id).and_return(persistence_instance)
+
+      repository = described_class.new(persistence_class, orm_adapter)
+
+      ret = repository.find(rand_id)
+      expect(ret).to be_a(Entities::Test)
+      expect(ret.value).to eq(rand_value)
+      expect(ret.id).to eq(rand_id)
     end
   end
 end

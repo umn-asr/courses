@@ -3,6 +3,7 @@ module Hexagram
     module Repository
       def initialize(persistence_class, orm_adapter)
         self.persistence_class = persistence_class
+        @class = persistence_class.name.match(/\w+$/)[0]
         self.orm_adapter = orm_adapter
       end
 
@@ -45,6 +46,14 @@ module Hexagram
       private
 
       attr_accessor :orm_adapter, :persistence_class
+
+      def map_record_out(record)
+        eval("Entities::#{@class}").new.tap do |entity|
+          entity.attributes.keys.each do |attr|
+            entity.public_send("#{attr}=".to_sym, record.public_send(attr))
+          end
+        end
+      end
     end
   end
 end

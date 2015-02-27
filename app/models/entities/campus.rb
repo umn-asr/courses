@@ -1,5 +1,5 @@
 module Entities
-  class CampusEntity
+  class Campus
     include ActiveModel::Model
 
     attr_accessor :abbreviation
