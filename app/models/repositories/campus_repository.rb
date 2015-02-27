@@ -4,8 +4,9 @@ module Repositories
   class CampusRepository
     include Repository
 
-    def initialize(persistence_class = ::Models::ActiveRecord::Campus)
-      super
+    def initialize(persistence_class = ::Models::ActiveRecord::Campus, orm_adapter = nil)
+      orm_adapter ||= persistence_class.orm_adapter
+      super(persistence_class, orm_adapter)
     end
 
     private
