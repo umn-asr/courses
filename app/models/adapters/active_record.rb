@@ -11,8 +11,8 @@ module Adapters
       persistence_class.new
     end
 
-    def self.exists?(id, persistence_class)
-      persistence_class.exists?(id)
+    def self.exists?(entity, persistence_class)
+      persistence_class.exists?(entity.id)
     end
 
     def self.where(options, persistence_class)
@@ -20,7 +20,7 @@ module Adapters
     end
 
     def self.save(entity, persistence_class)
-      if exists?(entity.id, persistence_class)
+      if exists?(entity, persistence_class)
         persistence_class.find(entity.id).update_attributes(entity.attributes)
       else
         persistence_class.create(entity.attributes)
