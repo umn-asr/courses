@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'rails-api', '0.4.0'
 
+gem 'ruby-oci8', '2.1.7'
+gem 'activerecord-oracle_enhanced-adapter', :git => 'https://github.com/rsim/oracle-enhanced.git', :branch => 'rails42'
+
 #gem 'sqlite3'
 
 group :development, :test do
