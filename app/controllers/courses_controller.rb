@@ -1,6 +1,8 @@
 require_relative "../../lib/course_contract_tests/lib/reference_test"
 
 class CoursesController < ApplicationController
+  before_action :init_campus
+
   def index
     data = {
       campus: {
@@ -32,11 +34,15 @@ class CoursesController < ApplicationController
       render nothing: true, status: 400
     else
       parsed = JSON.parse(params[:course].to_json)
-      campus_repo = Repositories::CampusRepository.new
-      campus = campus_repo.build
-      campus.abbreviation = parsed["campus"]["abbreviation"]
-      campus_repo.save(campus)
+      @campus.abbreviation = parsed["campus"]["abbreviation"]
+      @campus_repo.save(@campus)
       render nothing: true
     end
+  end
+
+  private
+  def init_campus
+    @campus_repo = Repositories::CampusRepository.new
+    @campus = @campus_repo.build
   end
 end
