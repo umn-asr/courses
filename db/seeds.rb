@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+Persisters::ActiveRecord::Campus.delete_all
+@campus_repo = Repositories::CampusRepository.new
+
+%w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
+  campus = @campus_repo.build
+  campus.abbreviation = abbreviation
+  @campus_repo.save(campus)
+end
