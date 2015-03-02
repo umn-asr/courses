@@ -3,6 +3,7 @@ module Entities
     include ActiveModel::Model
 
     attr_accessor :abbreviation
+    validates_presence_of :abbreviation
 
     def type
       "campus"
@@ -13,6 +14,7 @@ module Entities
     end
 
     def valid?(repository)
+      super &&
       repository.unique?(abbreviation: abbreviation)
     end
 

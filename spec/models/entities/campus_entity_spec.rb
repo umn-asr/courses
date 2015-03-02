@@ -52,5 +52,11 @@ RSpec.describe Entities::Campus do
       campus_instance.abbreviation = "UMNTC"
       expect(campus_instance.valid?(repository_double)).to be_falsey
     end
+    it "is not valid if the abbreviation is blank" do
+      repository_double = instance_double(Repositories::CampusRepository)
+
+      campus_instance.abbreviation = ""
+      expect(campus_instance.valid?(repository_double)).to be_falsey
+    end
   end
 end
