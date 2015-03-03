@@ -1,6 +1,12 @@
 GIT
+  remote: git://github.com/umn-asr/hexagram.git
+  revision: 33d9fcee7095737cb1e9d54c0573ef82a9c3f047
+  specs:
+    hexagram (0.0.1)
+
+GIT
   remote: https://github.com/rsim/oracle-enhanced.git
-  revision: b3f25d8e8c55bd7d121a89b00de54ec53cb8bf23
+  revision: 2e739cf446a675802856da7fccd5e0edb11921c5
   branch: rails42
   specs:
     activerecord-oracle_enhanced-adapter (1.5.5)
@@ -45,8 +51,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0)
     builder (3.2.2)
-    capistrano (3.3.5)
-      capistrano-stats (~> 1.1.0)
+    capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
@@ -56,7 +61,6 @@ GEM
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-stats (1.1.1)
     colorize (0.7.5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -78,6 +82,9 @@ GEM
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    oj (2.11.5)
+    rabl (0.11.6)
+      activesupport (>= 2.3.14)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -113,25 +120,25 @@ GEM
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
       rspec-mocks (~> 3.2.0)
-    rspec-core (3.2.0)
+    rspec-core (3.2.1)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
-    rspec-mocks (3.2.0)
+    rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
-    rspec-rails (3.2.0)
-      actionpack (>= 3.0, <= 4.2)
-      activesupport (>= 3.0, <= 4.2)
-      railties (>= 3.0, <= 4.2)
+    rspec-rails (3.2.1)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
-    rspec-support (3.2.1)
+    rspec-support (3.2.2)
     ruby-oci8 (2.1.7)
-    spring (1.3.1)
+    spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -141,7 +148,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sshkit (1.6.1)
+    sqlite3 (1.3.10)
+    sshkit (1.7.1)
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -159,9 +167,13 @@ DEPENDENCIES
   capistrano (~> 3.3)
   capistrano-bundler (~> 1.1)
   capistrano-rails (~> 1.1)
+  hexagram!
+  oj
+  rabl
   rails (= 4.2.0)
   rails-api (= 0.4.0)
   rspec (~> 3.2)
   rspec-rails (~> 3.2)
   ruby-oci8 (= 2.1.7)
   spring
+  sqlite3
