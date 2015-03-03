@@ -1,0 +1,34 @@
+<Campus xmlns="http://course.webservice.umn.edu" CampusCode="UMNTC" TermCode="Spring 2015">
+<CourseInfo>
+<Catalog>3993</Catalog>
+<Subject>AAS</Subject>
+<SubjectDescription>Asian American Studies</SubjectDescription>
+<Description>prereq instr consent</Description>
+<Title>Directed Studies in Asian American Studies</Title>
+<ClassInformation ClassNumber="54524" SectionNumber="001">
+<ClassStatus>Active</ClassStatus>
+<Component>IND</Component>
+<MeetingSchedule>
+<StartAndEndTimes/>
+<MeetingDays/>
+<StartAndEndDates>01/20/2015 - 05/08/2015</StartAndEndDates>
+<Room/>
+<Facility/>
+<Location>TCEASTBANK</Location>
+<Instructor/>
+</MeetingSchedule>
+<DisplayGradingBasis/>
+<CreditRange>1 - 9 credits</CreditRange>
+<ClassNotes/>
+<InstructionModeDescr>Classroom/Onsite</InstructionModeDescr>
+<TopicTitle/>
+<FullYearEnrollment/>
+<ReserveCapacity/>
+<SectionStatus>
+<OpenSeats>4</OpenSeats>
+<TotalSeats>5</TotalSeats>
+</SectionStatus>
+<MeetsWith/>
+</ClassInformation>
+</CourseInfo>
+</Campus>
