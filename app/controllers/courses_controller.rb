@@ -4,27 +4,13 @@ class CoursesController < ApplicationController
   before_action :init_campus
 
   def index
-    data = {
-      campus: {
-        type: "",
-        id: "",
-        abbreviation: ""
-      },
-      term: {
-        type: "",
-        id: "",
-        strm: ""
-      },
-      courses: [
-        {
-          "type" => "",
-          "id" => "",
-          "catalog_number" => "",
-        }
-      ]
-    }
 
-    render json: data
+    @campus = @campus_repo.find(params[:campus_id])
+
+    @term = OpenStruct.new(type: "term", id: "2", strm: "1149")
+    @courses = [OpenStruct.new(type: "course", id: "1", catalog_number: "12345")]
+
+    render
   end
 
   def create
