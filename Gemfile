@@ -5,6 +5,8 @@ gem 'rails-api', '0.4.0'
 gem 'hexagram', :github => 'umn-asr/hexagram'
 
 gem 'sqlite3'
+gem 'ruby-oci8', '2.1.7'
+gem 'activerecord-oracle_enhanced-adapter', :git => 'https://github.com/rsim/oracle-enhanced.git', :branch => 'rails42'
 
 gem 'rabl'
 gem 'oj'
