@@ -4,10 +4,12 @@ class CoursesController < ApplicationController
   before_action :init_campus
 
   def index
+    campus_repo = Repositories::CampusRepository.new
+    term_repo = Repositories::TermRepository.new
 
-    @campus = @campus_repo.find(params[:campus_id])
+    @campus = campus_repo.find(params[:campus_id])
+    @term = term_repo.find(params[:term_id])
 
-    @term = OpenStruct.new(type: "term", id: "2", strm: "1149")
     @courses = [OpenStruct.new(type: "course", id: "1", catalog_number: "12345")]
 
     render
