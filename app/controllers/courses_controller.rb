@@ -1,8 +1,6 @@
 require_relative "../../lib/course_contract_tests/lib/reference_test"
 
 class CoursesController < ApplicationController
-  before_action :init_campus
-
   def index
     campus_repo = Repositories::CampusRepository.new
     term_repo = Repositories::TermRepository.new
@@ -31,11 +29,5 @@ class CoursesController < ApplicationController
 
       render nothing: true
     end
-  end
-
-  private
-  def init_campus
-    @campus_repo = Repositories::CampusRepository.new
-    @campus = @campus_repo.build
   end
 end
