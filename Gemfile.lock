@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/umn-asr/hexagram.git
-  revision: 33d9fcee7095737cb1e9d54c0573ef82a9c3f047
+  revision: 2083fb534426cedbb7a79b29fd87113e78138173
   specs:
     hexagram (0.0.1)
 
