@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/umn-asr/hexagram.git
-  revision: 2083fb534426cedbb7a79b29fd87113e78138173
+  revision: 4ea8ad0d3173ae3fa5d4058ab94127f8a65afcc5
   specs:
     hexagram (0.0.1)
 
@@ -76,13 +76,13 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    oj (2.11.5)
+    oj (2.12.0)
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.6.0)
