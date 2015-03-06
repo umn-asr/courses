@@ -8,7 +8,13 @@ class CoursesController < ApplicationController
     @campus = campus_repo.find(params[:campus_id])
     @term = term_repo.find(params[:term_id])
 
-    @courses = [OpenStruct.new(type: "course", id: "1", catalog_number: "12345")]
+    @courses = [OpenStruct.new(type: "course", id: "2066",
+      catalog_number: "1101W",
+      subject: {type: "subject", id: "PHYS", description: "Physics"},
+      description: "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
+      title: "Intro College Phys I",
+      attributes: [{type: "attribute", id: "CLE", values: ["WI", "PHYS"]}],
+      sections: [""])]
 
     render
   end
