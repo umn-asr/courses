@@ -1,12 +1,46 @@
 require "rails_helper"
-require_relative "../../../../app/models/persisters/active_record/campus"
 
 RSpec.describe Persisters::ActiveRecord::Campus do
-  it "uses abbreviation as its primary key" do
-    expect(described_class.primary_key).to eq("abbreviation")
+  let(:campus_instance) { described_class.new }
+
+  describe "type" do
+    it "is 'campus'" do
+      expect(campus_instance.type).to eq("campus")
+    end
   end
 
-  it "uses the ActiveRecord adapter" do
-    expect(described_class.orm_adapter).to eq(Hexagram::Adapters::ActiveRecord)
+  describe "abbreviation" do
+    it "can be set" do
+      campus_instance.abbreviation = "UMNTC"
+      expect(campus_instance.abbreviation).to eq("UMNTC")
+    end
+
+    it "can be set at instantiation" do
+      expect(described_class.new(abbreviation: "UMNRO").abbreviation).to eq("UMNRO")
+    end
+  end
+
+  describe "id" do
+    it "is the abbreviation" do
+      campus_instance.abbreviation = "UMNTC"
+      expect(campus_instance.id).to eq("UMNTC")
+    end
+  end
+
+  describe "valid?" do
+    it "is valid if the abbrevation is unique" do
+      expect(described_class.new(abbreviation: "UMNRO").valid?).to be_truthy
+    end
+
+    it "is not valid if the abbrevation is not unique" do
+      described_class.new(abbreviation: "UMNRO").save
+
+      duplicate = described_class.new(abbreviation: "UMNRO")
+      expect(duplicate.valid?).to be_falsey
+    end
+
+    it "is not valid if the abbreviation is blank" do
+      expect(described_class.new(abbreviation: "").valid?).to be_falsey
+    end
   end
 end
