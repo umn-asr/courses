@@ -14,13 +14,13 @@
       "type": "course",
       "id": "2066",
       "catalog_number": "1101W",
+      "description": "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
+      "title": "Intro College Phys I",
       "subject": {
         "type": "subject",
         "id": "PHYS",
         "description": "Physics"
       },
-      "description": "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
-      "title": "Intro College Phys I",
       "attributes": [
         {
           "type": "attribute",
@@ -56,14 +56,14 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 3464263,
+              "id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -78,7 +78,7 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": "PHYS00150"
+                "id": "PHYS00150",
                 "description": "Phys 150"
               }
             },
@@ -90,7 +90,7 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": "PHYS00150"
+                "id": "PHYS00150",
                 "description": "Phys 150"
               }
             },
@@ -102,10 +102,10 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": "PHYS00150"
+                "id": "PHYS00150",
                 "description": "Phys 150"
               }
-            },
+            }
           ]
         },
         {
@@ -130,14 +130,14 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": 5087686,
+              "id": "brow4278",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -180,21 +180,21 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 3464263,
+              "id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": 5087686,
+              "id": "brow4278",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -237,14 +237,14 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": "3839874",
+              "id": "roger700",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -287,21 +287,21 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 3464263,
+              "id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": "3839874",
+              "id": "roger700",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -344,7 +344,7 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -394,14 +394,14 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 3464263,
+              "id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -451,14 +451,14 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": "4980093",
+              "id": "kresh003",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
@@ -501,21 +501,21 @@
           "instructors": [
             {
               "type": "instructor",
-              "id": 3464263,
+              "id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
               "type": "instructor",
-              "id": 4808133,
+              "id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
               "type": "instructor",
-              "id": "4980093",
+              "id": "kresh003",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
