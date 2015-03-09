@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'rails-api', '0.4.0'
 
-gem 'sqlite3'
 
 group :production, :staging do
   gem 'ruby-oci8', '2.1.7'
@@ -19,6 +18,7 @@ group :development, :test do
 
   gem 'rspec', '~> 3.2'
   gem 'rspec-rails', '~> 3.2'
+  gem 'sqlite3'
 end
 
 group :development do
