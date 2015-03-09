@@ -6,13 +6,11 @@ class CoursesController < ApplicationController
     @campus = Campus.find(params[:campus_id])
     @term = Term.find(params[:term_id])
 
-    @courses = [OpenStruct.new(type: "course", id: "2066",
-      catalog_number: "1101W",
-      subject: {type: "subject", id: "PHYS", description: "Physics"},
-      description: "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
-      title: "Intro College Phys I",
-      attributes: [{type: "attribute", id: "CLE", values: ["WI", "PHYS"]}],
-      sections: [""])]
+    f = File.open('test/fixtures/courses_example.json')
+
+    j = JSON.parse(f.read)
+
+    @courses = j["courses"].map { |x| OpenStruct.new(x) }
 
     render
   end
