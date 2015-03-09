@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225190220) do
+ActiveRecord::Schema.define(version: 20150303205821) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
   end
 
   add_index "campuses", ["abbreviation"], name: "index_campuses_on_abbreviation", unique: true
+
+  create_table "terms", force: :cascade do |t|
+    t.string "strm"
+  end
+
+  add_index "terms", ["strm"], name: "index_terms_on_strm", unique: true
 
 end
