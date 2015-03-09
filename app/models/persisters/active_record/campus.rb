@@ -1,6 +1,9 @@
 module Persisters
   module ActiveRecord
     class Campus < ::ActiveRecord::Base
+      validates_presence_of :abbreviation
+      validates_uniqueness_of :abbreviation
+
       attr_accessor :type
 
       def self.orm_adapter
