@@ -3,7 +3,15 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'rails-api', '0.4.0'
 
-#gem 'sqlite3'
+gem 'sqlite3'
+
+group :production, :staging do
+  gem 'ruby-oci8', '2.1.7'
+  gem 'activerecord-oracle_enhanced-adapter', :git => 'https://github.com/rsim/oracle-enhanced.git', :branch => 'rails42'
+end
+
+gem 'rabl'
+gem 'oj'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
