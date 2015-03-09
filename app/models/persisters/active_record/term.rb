@@ -8,6 +8,10 @@ module Persisters
       end
 
       self.primary_key = "strm"
+
+      def type
+        "term"
+      end
     end
   end
 end

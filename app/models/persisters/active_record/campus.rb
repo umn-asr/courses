@@ -8,6 +8,10 @@ module Persisters
       end
 
       self.primary_key = "abbreviation"
+
+      def type
+        "campus"
+      end
     end
   end
 end
