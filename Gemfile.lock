@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/umn-asr/hexagram.git
-  revision: 4ea8ad0d3173ae3fa5d4058ab94127f8a65afcc5
-  specs:
-    hexagram (0.0.1)
-
-GIT
   remote: https://github.com/rsim/oracle-enhanced.git
   revision: 2e739cf446a675802856da7fccd5e0edb11921c5
   branch: rails42
@@ -167,7 +161,6 @@ DEPENDENCIES
   capistrano (~> 3.3)
   capistrano-bundler (~> 1.1)
   capistrano-rails (~> 1.1)
-  hexagram!
   oj
   rabl
   rails (= 4.2.0)

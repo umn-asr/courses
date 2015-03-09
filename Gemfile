@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'rails-api', '0.4.0'
-gem 'hexagram', :github => 'umn-asr/hexagram'
 
 gem 'sqlite3'
 
