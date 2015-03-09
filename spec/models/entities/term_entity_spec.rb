@@ -1,10 +1,7 @@
 require "rails_helper"
-require_relative "../../../app/models/entities/term"
-require_relative "../../../app/models/repositories/term_repository"
 
-RSpec.describe Entities::Term do
+RSpec.describe Persisters::ActiveRecord::Term do
   let(:term_instance) { described_class.new }
-  let(:repository_double) { instance_double(Repositories::TermRepository) }
 
   describe "type" do
     it "is 'term'" do
@@ -30,32 +27,20 @@ RSpec.describe Entities::Term do
     end
   end
 
-  describe "attributes" do
-    it "contains the strm" do
-      term_instance.strm = "1149"
-      expect(term_instance.attributes.keys).to include(:strm)
-      expect(term_instance.attributes[:strm]).to eq("1149")
-    end
-  end
-
   describe "valid?" do
-    it "is valid if the repository says the strm is unique" do
-      expect(repository_double).to receive(:unique?).with(strm: "1149").and_return(true)
-
-      term_instance.strm = "1149"
-      expect(term_instance.valid?(repository_double)).to be_truthy
+    it "is valid if the abbrevation is unique" do
+      expect(described_class.new(strm: "1149").valid?).to be_truthy
     end
 
-    it "is not valid if the repository says the abbrevation is not unique" do
-      expect(repository_double).to receive(:unique?).with(strm: "1149").and_return(false)
+    it "is not valid if the abbrevation is not unique" do
+      described_class.new(strm: "1149").save
 
-      term_instance.strm = "1149"
-      expect(term_instance.valid?(repository_double)).to be_falsey
+      duplicate = described_class.new(strm: "1149")
+      expect(duplicate.valid?).to be_falsey
     end
 
     it "is not valid if the strm is blank" do
-      term_instance.strm = ""
-      expect(term_instance.valid?(repository_double)).to be_falsey
+      expect(described_class.new(strm: "").valid?).to be_falsey
     end
   end
 end
