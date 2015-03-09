@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-Persisters::ActiveRecord::Campus.delete_all
-Persisters::ActiveRecord::Term.delete_all
+Campus.delete_all
+Term.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
-  Persisters::ActiveRecord::Campus.create({abbreviation: abbreviation})
+  Campus.create({abbreviation: abbreviation})
 end
 
 %w(1149 1155 1159 1163).each do |strm|
-  Persisters::ActiveRecord::Term.create({strm: strm})
+  Term.create({strm: strm})
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Persisters::ActiveRecord::Term do
+RSpec.describe Term do
   let(:term_instance) { described_class.new }
 
   describe "type" do

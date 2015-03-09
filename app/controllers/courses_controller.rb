@@ -3,8 +3,8 @@ require_relative "../../lib/course_contract_tests/lib/reference_test"
 class CoursesController < ApplicationController
   def index
 
-    @campus = Persisters::ActiveRecord::Campus.find(params[:campus_id])
-    @term = Persisters::ActiveRecord::Term.find(params[:term_id])
+    @campus = Campus.find(params[:campus_id])
+    @term = Term.find(params[:term_id])
 
     @courses = [OpenStruct.new(type: "course", id: "2066",
       catalog_number: "1101W",
@@ -24,10 +24,10 @@ class CoursesController < ApplicationController
       render nothing: true, status: 400
     else
       campus_attr = params[:course]["campus"].permit(:abbreviation, :type, :id)
-      Persisters::ActiveRecord::Campus.new(campus_attr).save
+      Campus.new(campus_attr).save
 
       term_attr = params[:course]["term"].permit(:strm, :type, :id)
-      Persisters::ActiveRecord::Term.new(term_attr).save
+      Term.new(term_attr).save
 
       render nothing: true
     end

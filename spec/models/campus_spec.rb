@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Persisters::ActiveRecord::Campus do
+RSpec.describe Campus do
   let(:campus_instance) { described_class.new }
 
   describe "type" do

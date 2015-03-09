@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
   def index
-    @terms = Persisters::ActiveRecord::Term.all
+    @terms = Term.all
 
     render
   end

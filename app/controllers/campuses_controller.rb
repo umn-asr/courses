@@ -1,6 +1,6 @@
 class CampusesController < ApplicationController
   def index
-    @campuses = Persisters::ActiveRecord::Campus.all
+    @campuses = Campus.all
 
     render
   end
