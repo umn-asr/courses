@@ -10,6 +10,22 @@ class CoursesController < ApplicationController
 
     @courses = j["courses"].map { |x| OpenStruct.new(x) }
 
+    @courses.each do |c|
+      c.subject = OpenStruct.new(c.subject)
+      c.attributes.map! { |x| OpenStruct.new(x) }
+      c.sections.map! { |x| OpenStruct.new(x) }
+
+      c.sections.each do |s|
+        s.instruction_mode = OpenStruct.new(s.instruction_mode)
+        s.grading_basis = OpenStruct.new(s.grading_basis)
+        s.instructors.map! { |i| OpenStruct.new(i) }
+        s.meeting_patterns.map! { |m| OpenStruct.new(m) }
+
+        s.meeting_patterns.each do |m|
+          m.location = OpenStruct.new(m.location)
+        end
+      end
+    end
 
     respond_to do |format|
       format.xml
