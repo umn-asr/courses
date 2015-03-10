@@ -1,16 +1,15 @@
 class CoursesController < ApplicationController
   def index
-
-    @campus = Campus.where(abbreviation: params[:campus_id].upcase).first
-    @term = Term.where(strm: params[:term_id]).first
+    campus = Campus.where(abbreviation: params[:campus_id].upcase).first
+    term = Term.where(strm: params[:term_id]).first
 
     f = File.open('test/fixtures/courses_example.json')
 
     j = JSON.parse(f.read)
 
-    @courses = j["courses"].map { |x| OpenStruct.new(x) }
+    courses = j["courses"].map { |x| OpenStruct.new(x) }
 
-    @courses.each do |c|
+    courses.each do |c|
       c.subject = OpenStruct.new(c.subject)
       c.attributes.map! { |x| OpenStruct.new(x) }
       c.sections.map! { |x| OpenStruct.new(x) }
@@ -26,6 +25,11 @@ class CoursesController < ApplicationController
         end
       end
     end
+
+    @courses = CoursesPresenter.new
+    @courses.campus = campus
+    @courses.term = term
+    @courses.courses = courses
 
     respond_to do |format|
       format.xml
