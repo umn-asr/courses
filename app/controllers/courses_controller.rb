@@ -22,6 +22,13 @@ class CoursesController < ApplicationController
       term_attr = params[:course]["term"].permit(:strm, :type, :id)
       resources << Term.new(term_attr)
 
+      params[:course]["courses"].each do |course|
+        course_attr = course.permit(:id, :course_id, :type, :catalog_number, :description, :title, :subject, :attributes, :sections)
+        course_attr[:campus_id] = params[:course]["campus"][:id]
+        course_attr[:term_id] = params[:course]["term"][:id]
+        resources << Course.new(course_attr)
+      end
+
       if resources.all? { |r| r.valid? && r.save }
         render nothing: true
       else
