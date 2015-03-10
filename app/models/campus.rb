@@ -7,4 +7,8 @@ class Campus < ::ActiveRecord::Base
   def type
     "campus"
   end
+
+  def campus_id
+    abbreviation
+  end
 end

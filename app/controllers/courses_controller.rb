@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     @campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     @term = Term.where(strm: params[:term_id]).first
 
-    f = File.open('test/fixtures/courses_example.json')
+    f = File.open('tmp/course.json')
 
     j = JSON.parse(f.read)
 

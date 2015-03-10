@@ -1,2 +1,2 @@
 collection @campuses
-attributes :type, :id, :abbreviation
+attributes :type, :id, :abbreviation, :campus_id
