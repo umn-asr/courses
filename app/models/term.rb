@@ -7,4 +7,8 @@ class Term < ::ActiveRecord::Base
   def type
     "term"
   end
+
+  def term_id
+    strm
+  end
 end

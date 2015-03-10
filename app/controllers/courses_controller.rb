@@ -1,35 +1,34 @@
-require_relative "../../lib/course_contract_tests/lib/reference_test"
-
 class CoursesController < ApplicationController
   def index
 
     @campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     @term = Term.where(strm: params[:term_id]).first
 
-    @courses = [OpenStruct.new(type: "course", id: "2066",
-      catalog_number: "1101W",
-      subject: {type: "subject", id: "PHYS", description: "Physics"},
-      description: "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
-      title: "Intro College Phys I",
-      attributes: [{type: "attribute", id: "CLE", values: ["WI", "PHYS"]}],
-      sections: [""])]
+    f = File.open('test/fixtures/courses_example.json')
+
+    j = JSON.parse(f.read)
+
+    @courses = j["courses"].map { |x| OpenStruct.new(x) }
 
     render
   end
 
   def create
     begin
-      ReferenceTest.test_structure(params[:course])
-    rescue
-      render nothing: true, status: 400
-    else
       campus_attr = params[:course]["campus"].permit(:abbreviation, :type, :id)
-      Campus.new(campus_attr).save
+      resources = []
+      resources << Campus.new(campus_attr)
 
       term_attr = params[:course]["term"].permit(:strm, :type, :id)
-      Term.new(term_attr).save
+      resources << Term.new(term_attr)
 
-      render nothing: true
+      if resources.all? { |r| r.valid? && r.save }
+        render nothing: true
+      else
+        render nothing: true, status: 400
+      end
+    rescue
+      render nothing: true, status: 400
     end
   end
 end
