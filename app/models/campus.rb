@@ -4,8 +4,6 @@ class Campus < ::ActiveRecord::Base
 
   attr_accessor :type
 
-  self.primary_key = "abbreviation"
-
   def type
     "campus"
   end
