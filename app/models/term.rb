@@ -4,8 +4,6 @@ class Term < ::ActiveRecord::Base
 
   attr_accessor :type
 
-  self.primary_key = "strm"
-
   def type
     "term"
   end
