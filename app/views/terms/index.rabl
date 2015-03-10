@@ -1,2 +1,2 @@
-collection @terms
-attributes :type, :id, :strm
+collection @terms, :root => false, :object_root => false
+extends("terms/show")

@@ -1,7 +1,13 @@
-object false
-child(@campus) {attributes :type, :campus_id, :id, :abbreviation}
-child(@term => :term) {attributes :type, :term_id, :id, :strm}
-child(@courses => :courses) do
-  collection @courses, :root => false, :object_root => false
-  attributes :type, :course_id, :id, :catalog_number, :description, :title, :subject, :attributes, :sections
+object @courses
+
+node :campus do
+  partial "campuses/show", object: @courses.campus
+end
+
+node :term do
+  partial "terms/show", object: @courses.term
+end
+
+child :courses => :courses do
+  extends "courses/show"
 end
