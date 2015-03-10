@@ -10,7 +10,11 @@ class CoursesController < ApplicationController
 
     @courses = j["courses"].map { |x| OpenStruct.new(x) }
 
-    render
+
+    respond_to do |format|
+      format.xml
+      format.json
+    end
   end
 
   def create
