@@ -3,8 +3,8 @@ require_relative "../../lib/course_contract_tests/lib/reference_test"
 class CoursesController < ApplicationController
   def index
 
-    @campus = Campus.find(params[:campus_id])
-    @term = Term.find(params[:term_id])
+    @campus = Campus.where(abbreviation: params[:campus_id].upcase).first
+    @term = Term.where(strm: params[:term_id]).first
 
     f = File.open('test/fixtures/courses_example.json')
 

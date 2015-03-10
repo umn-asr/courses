@@ -20,13 +20,6 @@ RSpec.describe Term do
     end
   end
 
-  describe "id" do
-    it "is the strm" do
-      term_instance.strm = "1149"
-      expect(term_instance.id).to eq("1149")
-    end
-  end
-
   describe "valid?" do
     it "is valid if the abbrevation is unique" do
       expect(described_class.new(strm: "1149").valid?).to be_truthy
