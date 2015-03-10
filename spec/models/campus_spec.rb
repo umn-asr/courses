@@ -20,13 +20,6 @@ RSpec.describe Campus do
     end
   end
 
-  describe "id" do
-    it "is the abbreviation" do
-      campus_instance.abbreviation = "UMNTC"
-      expect(campus_instance.id).to eq("UMNTC")
-    end
-  end
-
   describe "valid?" do
     it "is valid if the abbrevation is unique" do
       expect(described_class.new(abbreviation: "UMNRO").valid?).to be_truthy
