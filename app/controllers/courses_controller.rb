@@ -17,17 +17,20 @@ class CoursesController < ApplicationController
 
   def create
     begin
-      ReferenceTest.test_structure(params[:course])
-    rescue
-      render nothing: true, status: 400
-    else
       campus_attr = params[:course]["campus"].permit(:abbreviation, :type, :id)
-      Campus.new(campus_attr).save
+      resources = []
+      resources << Campus.new(campus_attr)
 
       term_attr = params[:course]["term"].permit(:strm, :type, :id)
-      Term.new(term_attr).save
+      resources << Term.new(term_attr)
 
-      render nothing: true
+      if resources.all? { |r| r.valid? && r.save }
+        render nothing: true
+      else
+        render nothing: true, status: 400
+      end
+    rescue
+      render nothing: true, status: 400
     end
   end
 end
