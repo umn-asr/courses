@@ -10,10 +10,6 @@ RSpec.describe Course do
   end
 
   describe "valid?" do
-    before(:each) do
-      load "#{Rails.root}/db/seeds.rb"
-    end
-
     it "is valid if the campus_id, term_id, and course_id are unique" do
       expect(described_class.new(campus_id: "UMNRC", term_id: "1159", course_id: "002066").valid?).to be_truthy
     end
