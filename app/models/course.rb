@@ -7,7 +7,6 @@ class Course < ::ActiveRecord::Base
 
   attr_accessor :type
 
-  self.primary_key = "id"
 
   def type
     "course"
