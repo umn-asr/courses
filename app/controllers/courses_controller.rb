@@ -11,6 +11,15 @@ class CoursesController < ApplicationController
 
     courses.each do |c|
       c.subject = OpenStruct.new(c.subject)
+
+      c.equivalency = OpenStruct.new(c.equivalency)
+
+      if c.equivalency.equivalency_id.blank?
+        c.has_equivalency = false
+      else
+        c.has_equivalency = true
+      end
+
       c.cle_attributes.map! { |x| OpenStruct.new(x) }
       c.sections.map! { |x| OpenStruct.new(x) }
 

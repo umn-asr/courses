@@ -5,6 +5,12 @@ child :subject => :subject do
   attributes :type, :subject_id, :id, :description
 end
 
+if @course.has_equivalency
+  child :equivalency => :equivalency do
+    attributes :type, :equivalency_id
+  end
+end
+
 child :cle_attributes => :cle_attributes do
   collection attributes, :root => false, :object_root => false
   attributes :type, :attribute_id, :id, :family
