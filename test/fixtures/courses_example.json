@@ -2,39 +2,33 @@
   "campus": {
     "type": "campus",
     "campus_id": "UMNTC",
-    "id": 10000,
     "abbreviation": "UMNTC"
   },
   "term": {
     "type": "term",
     "term_id": "1149",
-    "id": 10000,
     "strm": "1149"
   },
   "courses": [
     {
       "type": "course",
       "course_id": "002066",
-      "id": 10000,
       "catalog_number": "1101W",
       "description": "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
       "title": "Intro College Phys I",
       "subject": {
         "type": "subject",
         "subject_id": "PHYS",
-        "id": 10000,
         "description": "Physics"
       },
-      "attributes": [
+      "cle_attributes": [
         {
           "type": "attribute",
-          "id": 10000,
           "attribute_id": "WI",
           "family": "CLE"
         },
         {
           "type": "attribute",
-          "id": 10000,
           "attribute_id": "PHYS",
           "family": "CLE"
         }
@@ -42,7 +36,6 @@
       "sections": [
         {
           "type": "section",
-          "id": 10000,
           "class_number": "10786",
           "number": "100",
           "component": "LEC",
@@ -52,20 +45,17 @@
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
-            "id": 10000,
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
-            "id": 10000,
             "grading_basis_id": "OPT",
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
-              "id": 10000,
               "employee_id": "noireaux",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
@@ -73,7 +63,6 @@
             },
             {
               "type": "employee",
-              "id": 10000,
               "employee_id": "jkrosche",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
@@ -89,7 +78,6 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": 10000,
                 "location_id": "PHYS00150",
                 "description": "Phys 150"
               }
@@ -102,7 +90,6 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": 10000,
                 "location_id": "PHYS00150",
                 "description": "Phys 150"
               }
@@ -115,17 +102,16 @@
               "end_date": "2014-12-10",
               "location": {
                 "type": "location",
-                "id": 10000,
                 "location_id": "PHYS00150",
                 "description": "Phys 150"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10787",
-          "id": 10000,
           "number": "102",
           "component": "DIS",
           "location": "TCEASTBANK",
@@ -135,20 +121,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -156,7 +139,6 @@
             {
               "type": "employee",
               "employee_id": "brow4278",
-              "id": 10000,
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -172,16 +154,15 @@
               "location": {
                 "type": "location",
                 "location_id": "FORDH00170",
-                "id": 10000,
                 "description": "Ford Hall 170"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10788",
-          "id": 10000,
           "number": "103",
           "component": "LAB",
           "location": "TCEASTBANK",
@@ -191,20 +172,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "noireaux",
-              "id": 10000,
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
@@ -212,7 +190,6 @@
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -220,7 +197,6 @@
             {
               "type": "employee",
               "employee_id": "brow4278",
-              "id": 10000,
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -236,16 +212,15 @@
               "location": {
                 "type": "location",
                 "location_id": "PHYS000130",
-                "id": 10000,
                 "description": "Tate Laboratory 130"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10789",
-          "id": 10000,
           "number": "104",
           "component": "DIS",
           "location": "TCEASTBANK",
@@ -255,20 +230,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -276,7 +248,6 @@
             {
               "type": "employee",
               "employee_id": "roger700",
-              "id": 10000,
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -292,16 +263,15 @@
               "location": {
                 "type": "location",
                 "location_id": "STSS000117",
-                "id": 10000,
                 "description": "Science Tchg Student Svcs 117"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10790",
-          "id": 10000,
           "number": "105",
           "component": "LAB",
           "location": "TCEASTBANK",
@@ -311,20 +281,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "noireaux",
-              "id": 10000,
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
@@ -332,7 +299,6 @@
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -340,7 +306,6 @@
             {
               "type": "employee",
               "employee_id": "roger700",
-              "id": 10000,
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -356,16 +321,15 @@
               "location": {
                 "type": "location",
                 "location_id": "PHYS000130",
-                "id": 10000,
                 "description": "Tate Laboratory 130"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10791",
-          "id": 10000,
           "number": "106",
           "component": "DIS",
           "location": "TCEASTBANK",
@@ -375,20 +339,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -396,7 +357,6 @@
             {
               "type": "employee",
               "employee_id": "bodu0010",
-              "id": 10000,
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
               "role": "TA"
@@ -412,16 +372,15 @@
               "location": {
                 "type": "location",
                 "location_id": "PEIKH00335",
-                "id": 10000,
                 "description": "Peik Hall 335"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10792",
-          "id": 10000,
           "number": "107",
           "component": "LAB",
           "location": "TCEASTBANK",
@@ -431,20 +390,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "noireaux",
-              "id": 10000,
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
@@ -452,7 +408,6 @@
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -460,7 +415,6 @@
             {
               "type": "employee",
               "employee_id": "bodu0010",
-              "id": 10000,
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
               "role": "TA"
@@ -476,16 +430,15 @@
               "location": {
                 "type": "location",
                 "location_id": "PHYS000130",
-                "id": 10000,
                 "description": "Tate Laboratory 130"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10793",
-          "id": 10000,
           "number": "108",
           "component": "DIS",
           "location": "TCEASTBANK",
@@ -495,20 +448,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -516,7 +466,6 @@
             {
               "type": "employee",
               "employee_id": "kresh003",
-              "id": 10000,
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
@@ -532,16 +481,15 @@
               "location": {
                 "type": "location",
                 "location_id": "BUH0000120",
-                "id": 10000,
                 "description": "Burton Hall 120"
               }
             }
-          ]
+          ],
+          "combined_sections": []
         },
         {
           "type": "section",
           "class_number": "10794",
-          "id": 10000,
           "number": "109",
           "component": "LAB",
           "location": "TCEASTBANK",
@@ -551,20 +499,17 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "id": 10000,
             "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
             "grading_basis_id": "OPT",
-            "id": 10000,
             "description": "Student Option"
           },
           "instructors": [
             {
               "type": "employee",
               "employee_id": "noireaux",
-              "id": 10000,
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
@@ -572,7 +517,6 @@
             {
               "type": "employee",
               "employee_id": "jkrosche",
-              "id": 10000,
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -580,7 +524,6 @@
             {
               "type": "employee",
               "employee_id": "kresh003",
-              "id": 10000,
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
@@ -596,8 +539,118 @@
               "location": {
                 "type": "location",
                 "location_id": "PHYS000130",
-                "id": 10000,
                 "description": "Tate Laboratory 130"
+              }
+            }
+          ],
+          "combined_sections": []
+        }
+      ]
+    },
+    {
+      "type": "course",
+      "course_id": "795342",
+      "catalog_number": "3120",
+      "description": "Political, cultural, historical linkages between Africans, African-Americans, African-Caribbean. Black socio-political movements/radical intellectual trends in late 19th/20th centuries. Colonialism/racism. Protest organizations, radical movements in United States/Europe.",
+      "title": "Soc Mvts in African Diaspora",
+      "subject": {
+        "type": "subject",
+        "subject_id": "AFRO",
+        "description": "African Amer & African Studies"
+      },
+      "equivalency": {
+        "type": "equivalency",
+        "equivalency_id": "00788"
+      },
+      "cle_attributes": [
+        {
+          "type": "attribute",
+          "attribute_id": "HIS",
+          "family": "CLE"
+        },
+        {
+          "type": "attribute",
+          "attribute_id": "PHYS",
+          "family": "GP"
+        }
+      ],
+      "sections": [
+        {
+          "type": "section",
+          "class_number": "26191",
+          "number": "001",
+          "component": "LEC",
+          "location": "TCWESTBANK",
+          "credits_minimum": "3",
+          "credits_maximum": "3",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "Classroom/Onsite"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "AFV",
+            "description": "A-F or Audit"
+          },
+          "instructors": [
+            {
+              "type": "employee",
+              "employee_id": "ohni0001",
+              "name": "Yuichiro Onishi",
+              "email": "email@umn.edu",
+              "role": "PI"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "tuesday",
+              "start_time": "13:00",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "BLEGH00245",
+                "description": "Blegen Hall 245"
+              }
+            },
+            {
+              "type": "thursday",
+              "start_time": "13:00",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "BLEGH00245",
+                "description": "Blegen Hall 245"
+              }
+            }
+          ],
+          "combined_sections": [
+            {
+              "type": "course",
+              "catalog_number": "3456",
+              "subject": {
+                "type": "subject",
+                "subject_id": "HIST"
+              },
+              "section": {
+                "type": "section",
+                "number": "001"
+              }
+            },
+            {
+              "type": "course",
+              "catalog_number": "5120",
+              "subject": {
+                "type": "subject",
+                "subject_id": "AFRO"
+              },
+              "section": {
+                "type": "section",
+                "number": "001"
               }
             }
           ]
