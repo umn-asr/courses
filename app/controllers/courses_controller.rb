@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
 
     courses.each do |c|
       c.subject = OpenStruct.new(c.subject)
-      c.attributes.map! { |x| OpenStruct.new(x) }
+      c.cle_attributes.map! { |x| OpenStruct.new(x) }
       c.sections.map! { |x| OpenStruct.new(x) }
 
       c.sections.each do |s|
