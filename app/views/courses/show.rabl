@@ -5,7 +5,7 @@ child :subject => :subject do
   attributes :type, :subject_id, :id, :description
 end
 
-child :attributes => :attributes do
+child :cle_attributes => :cle_attributes do
   collection attributes, :root => false, :object_root => false
   attributes :type, :attribute_id, :id, :family
 end

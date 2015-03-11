@@ -25,7 +25,7 @@
         "id": 10000,
         "description": "Physics"
       },
-      "attributes": [
+      "cle_attributes": [
         {
           "type": "attribute",
           "id": 10000,
