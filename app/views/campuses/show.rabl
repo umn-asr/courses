@@ -1,2 +1,2 @@
 object @campus
-attributes :type, :id, :abbreviation, :campus_id
+attributes :type, :abbreviation, :campus_id

@@ -39,11 +39,11 @@ class CoursesController < ApplicationController
 
   def create
     begin
-      campus_attr = params[:course]["campus"].permit(:abbreviation, :type, :id)
+      campus_attr = params[:course]["campus"].permit(:abbreviation, :type)
       resources = []
       resources << Campus.new(campus_attr)
 
-      term_attr = params[:course]["term"].permit(:strm, :type, :id)
+      term_attr = params[:course]["term"].permit(:strm, :type)
       resources << Term.new(term_attr)
 
       if resources.all? { |r| r.valid? && r.save }

@@ -11,7 +11,7 @@ RSpec.describe "get terms" do
       get "/terms"
 
       JSON.parse(response.body).each do |row|
-        expect(row.keys).to include('type', 'term_id', 'strm', 'id')
+        expect(row.keys).to include('type', 'term_id', 'strm')
       end
     end
   end
