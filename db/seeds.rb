@@ -8,6 +8,7 @@
 #
 Campus.delete_all
 Term.delete_all
+Course.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -16,3 +17,21 @@ end
 %w(1149 1155 1159 1163).each do |strm|
   Term.create({strm: strm})
 end
+
+f = File.open('test/fixtures/courses_example.json')
+
+j = JSON.parse(f.read)
+
+j["courses"].each do |course|
+  course_attr = Hash.new
+  course_attr = course.slice("title", "description", "course_id", "catalog_number")
+
+  campus = Campus.where(abbreviation: j["campus"]["abbreviation"]).first
+  course_attr[:campus_id] = campus.id
+
+  term = Term.where(strm: j["term"]["strm"]).first
+  course_attr[:term_id] = term.id
+
+  Course.create(course_attr)
+end
+
