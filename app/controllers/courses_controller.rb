@@ -23,6 +23,12 @@ class CoursesController < ApplicationController
         s.meeting_patterns.each do |m|
           m.location = OpenStruct.new(m.location)
         end
+
+        s.combined_sections.map! { |x| OpenStruct.new(x) }
+        s.combined_sections.each do |cs|
+          cs.subject = OpenStruct.new(cs.subject)
+          cs.section = OpenStruct.new(cs.section)
+        end
       end
     end
 

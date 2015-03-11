@@ -35,4 +35,17 @@ child :sections => :sections do
       attributes :type, :location_id, :id, :description
     end
   end
+
+  child :combined_sections => :combined_sections do
+    collection attributes, :root => false, :object_root => false
+    attributes :type, :catalog_number 
+
+    child :subject => :subject do
+      attributes :type, :subject_id
+    end
+
+    child :section => :section do
+      attributes :type, :number
+    end
+  end
 end
