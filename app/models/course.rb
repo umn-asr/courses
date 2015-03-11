@@ -5,8 +5,7 @@ class Course < ::ActiveRecord::Base
   validates_presence_of :term_id, :campus_id, :course_id
   validates_uniqueness_of :course_id, scope: [:term_id, :campus_id]
 
-  attr_accessor :type
-
+  attr_writer :type
 
   def type
     "course"
