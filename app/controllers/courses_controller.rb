@@ -7,18 +7,28 @@ class CoursesController < ApplicationController
 
     j = JSON.parse(f.read)
 
-    courses = j["courses"].map { |x| OpenStruct.new(x) }
+    courses = Course.where(campus_id: campus.id, term_id: term.id)
 
     courses.each do |c|
-      c.subject = OpenStruct.new(c.subject)
-      c.attributes.map! { |x| OpenStruct.new(x) }
-      c.sections.map! { |x| OpenStruct.new(x) }
+
+      json_course = j["courses"].detect{ |x| x["course_id"] == c.course_id }
+
+      c.subject = OpenStruct.new(json_course["subject"])
+      c.cle_attributes = json_course["cle_attributes"].map { |x| OpenStruct.new(x) }
+
+      c.sections = json_course["sections"].map { |x| OpenStruct.new(x) }
 
       c.sections.each do |s|
-        s.instruction_mode = OpenStruct.new(s.instruction_mode)
-        s.grading_basis = OpenStruct.new(s.grading_basis)
-        s.instructors.map! { |i| OpenStruct.new(i) }
-        s.meeting_patterns.map! { |m| OpenStruct.new(m) }
+        s.instruction_mode = OpenStruct.new(Hash[s.instruction_mode.map { |key, value| [key, value] }])
+        s.grading_basis = OpenStruct.new(Hash[s.grading_basis.map { |key, value| [key, value] }])
+
+        s.instructors.each do
+          s.instructors = s.instructors.map { |x| OpenStruct.new(x) }
+        end
+
+        s.meeting_patterns.each do |m|
+          s.meeting_patterns = s.meeting_patterns.map { |x| OpenStruct.new(x) }
+        end
 
         s.meeting_patterns.each do |m|
           m.location = OpenStruct.new(m.location)
