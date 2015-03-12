@@ -42,3 +42,30 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def compare_element_to_documentation(element)
+  if !element.respond_to?(:keys) && element.respond_to?(:each)
+    element.each do |e|
+      compare_element_to_documentation(e)
+    end
+  elsif element.respond_to?(:keys) && element["type"]
+    type = element["type"]
+    documentation = get_documentation(type)
+    if documentation[type]
+      documentation[type]["attributes"]["required"].keys.each do |req|
+        expect(element.keys).to include(req), "Resource #{type} does not contain required attribute #{req}: #{element}"
+      end
+      element.each_value do |e|
+        compare_element_to_documentation(e)
+      end
+    else
+      raise ArgumentError, "Documentation for resource #{type} has no data. Has keys #{documentation.keys}"
+    end
+  else
+    #noop. This case is hit when values for the resource attributes are passed in
+  end
+end
+
+def get_documentation(type)
+  YAML.load(File.read("doc/resources/#{type}.yml"))
+end

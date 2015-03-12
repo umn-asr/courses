@@ -10,9 +10,7 @@ RSpec.describe "get terms" do
     it "returns a structure that contains term attributes" do
       get "/terms"
 
-      JSON.parse(response.body).each do |row|
-        expect(row.keys).to include('type', 'term_id', 'strm')
-      end
+      compare_element_to_documentation(JSON.parse(response.body))
     end
   end
 end

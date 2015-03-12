@@ -10,9 +10,10 @@ RSpec.describe "get campuses" do
     it "returns a structure that contains campus attributes" do
       get "/campuses"
 
-      JSON.parse(response.body).each do |row|
-        expect(row.keys).to include('type', 'abbreviation')
-      end
+      element = JSON.parse(response.body)
+
+      compare_element_to_documentation(element)
     end
   end
 end
+
