@@ -4,7 +4,7 @@ class Campus < ::ActiveRecord::Base
 
   has_many :courses, dependent: :destroy
 
-  attr_accessor :type
+  attr_writer :type
 
   def type
     "campus"
