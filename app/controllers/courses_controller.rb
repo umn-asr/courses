@@ -49,17 +49,17 @@ class CoursesController < ApplicationController
 
   def create
     begin
-      campus_attr = params[:course]["campus"].permit(:abbreviation, :type, :id)
+      campus_attr = params[:course]["campus"].permit(:abbreviation, :id)
       resources = []
       campus = Campus.new(campus_attr)
       resources << campus
 
-      term_attr = params[:course]["term"].permit(:strm, :type, :id)
+      term_attr = params[:course]["term"].permit(:strm, :id)
       term = Term.new(term_attr)
       resources << term
 
       params[:course]["courses"].each do |course|
-        course_attr = course.permit(:id, :course_id, :type, :catalog_number, :description, :title, :subject, :attributes, :sections)
+        course_attr = course.permit(:id, :course_id, :catalog_number, :description, :title, :subject, :cle_attributes, :sections)
 
         course_attr[:campus_id] = campus.id
 
