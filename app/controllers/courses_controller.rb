@@ -60,15 +60,15 @@ class CoursesController < ApplicationController
 
   def create
     begin
-      campus_attr = params[:course]["campus"].permit(:abbreviation, :type)
-      resources = []
-      campus = Campus.new(campus_attr)
-      resources << campus
 
-      term_attr = params[:course]["term"].permit(:strm, :type)
-      resources << Term.new(term_attr)
+      campus_attr = params[:course]["campus"].permit(:abbreviation)
+      campus = Campus.new(campus_attr)
+      campus.save
+
+      term_attr = params[:course]["term"].permit(:strm)
       term = Term.new(term_attr)
-      resources << term
+      term.save
+
 
       params[:course]["courses"].each do |course|
         course_attr = course.permit(:id, :course_id, :catalog_number, :description, :title, :subject, :cle_attributes, :sections)
@@ -77,14 +77,11 @@ class CoursesController < ApplicationController
 
         course_attr[:term_id] = term.id
 
-        resources << Course.new(course_attr)
+        course = Course.new(course_attr)
+        course.save
       end
 
-      if resources.all? { |r| r.valid? && r.save }
-        render nothing: true
-      else
-        render nothing: true, status: 400
-      end
+      render nothing: true
     rescue
       render nothing: true, status: 400
     end
