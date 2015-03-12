@@ -47,14 +47,6 @@ child :sections => :sections do
 
   child :combined_sections => :combined_sections do
     collection attributes, :root => false, :object_root => false
-    attributes :type, :catalog_number 
-
-    child :subject => :subject do
-      attributes :type, :subject_id
-    end
-
-    child :section => :section do
-      attributes :type, :number
-    end
+    attributes :type, :catalog_number, :subject_id, :section_number
   end
 end

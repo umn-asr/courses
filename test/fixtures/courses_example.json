@@ -679,28 +679,16 @@
           ],
           "combined_sections": [
             {
-              "type": "course",
+              "type": "combined_section",
               "catalog_number": "3456",
-              "subject": {
-                "type": "subject",
-                "subject_id": "HIST"
-              },
-              "section": {
-                "type": "section",
-                "number": "001"
-              }
+              "subject_id": "HIST",
+              "section_number": "001"
             },
             {
-              "type": "course",
+              "type": "combined_section",
               "catalog_number": "5120",
-              "subject": {
-                "type": "subject",
-                "subject_id": "AFRO"
-              },
-              "section": {
-                "type": "section",
-                "number": "001"
-              }
+              "subject_id": "AFRO",
+              "section_number": "001"
             }
           ]
         }
