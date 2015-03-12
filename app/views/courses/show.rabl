@@ -5,10 +5,8 @@ child :subject => :subject do
   attributes :type, :subject_id, :id, :description
 end
 
-if @course.has_equivalency
-  child :equivalency => :equivalency do
-    attributes :type, :equivalency_id
-  end
+child :equivalency => :equivalency do
+  attributes :type, :equivalency_id
 end
 
 child :cle_attributes => :cle_attributes do
