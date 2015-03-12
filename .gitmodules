@@ -1,3 +1,0 @@
-[submodule "lib/course_contract_tests"]
-	path = lib/course_contract_tests
-	url = https://github.com/umn-asr/course_contract_tests.git

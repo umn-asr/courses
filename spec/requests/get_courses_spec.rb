@@ -1,6 +1,5 @@
 require "rails_helper"
 require 'json'
-require_relative "../../lib/course_contract_tests/lib/reference_test"
 
 RSpec.describe "get courses" do
   before(:each) do
