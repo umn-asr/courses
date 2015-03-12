@@ -6,6 +6,7 @@ RSpec.describe "create course" do
   before(:each) do
     Term.delete_all
     Campus.delete_all
+    Course.delete_all
   end
 
   describe "when passed valid syntax" do
