@@ -1,0 +1,13 @@
+---
+term:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      term_id:
+        type: string
+        description: "the strm notation of the term"
+      strm:
+        type: string
+        description: "the strm notation of the term"

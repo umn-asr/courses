@@ -1,0 +1,23 @@
+---
+meeting_pattern:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      start_time:
+        type: string
+        description: "the resource type"
+      end_time:
+        type: string
+        description: "the resource type"
+      start_date:
+        type: string
+        description: "the resource type"
+      end_date:
+        type: string
+        description: "the resource type"
+      location:
+        type: resource
+      days:
+        type: collection

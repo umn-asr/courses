@@ -1,0 +1,13 @@
+---
+campus:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      campus_id:
+        type: string
+        description: "the abbreviation of the campus name"
+      abbreviation:
+        type: string
+        description: "the abbreviation of the campus name"
