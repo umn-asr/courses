@@ -2,7 +2,7 @@ class Campus < ::ActiveRecord::Base
   validates_presence_of :abbreviation
   validates_uniqueness_of :abbreviation
 
-  attr_accessor :type
+  has_many :courses, dependent: :destroy
 
   def type
     "campus"
