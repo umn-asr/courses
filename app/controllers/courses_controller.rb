@@ -14,12 +14,6 @@ class CoursesController < ApplicationController
 
       c.equivalency = OpenStruct.new(c.equivalency)
 
-      if c.equivalency.equivalency_id.blank?
-        c.has_equivalency = false
-      else
-        c.has_equivalency = true
-      end
-
       c.cle_attributes.map! { |x| OpenStruct.new(x) }
       c.sections.map! { |x| OpenStruct.new(x) }
 
