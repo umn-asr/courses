@@ -5,7 +5,11 @@ child :subject => :subject do
   attributes :type, :subject_id, :id, :description
 end
 
-child :attributes => :attributes do
+child :equivalency => :equivalency do
+  attributes :type, :equivalency_id
+end
+
+child :cle_attributes => :cle_attributes do
   collection attributes, :root => false, :object_root => false
   attributes :type, :attribute_id, :id, :family
 end
@@ -33,6 +37,19 @@ child :sections => :sections do
 
     child :location => :location do
       attributes :type, :location_id, :id, :description
+    end
+  end
+
+  child :combined_sections => :combined_sections do
+    collection attributes, :root => false, :object_root => false
+    attributes :type, :catalog_number 
+
+    child :subject => :subject do
+      attributes :type, :subject_id
+    end
+
+    child :section => :section do
+      attributes :type, :number
     end
   end
 end

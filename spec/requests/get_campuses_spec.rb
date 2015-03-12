@@ -11,7 +11,7 @@ RSpec.describe "get campuses" do
       get "/campuses"
 
       JSON.parse(response.body).each do |row|
-        expect(row.keys).to include('type', 'abbreviation', 'id')
+        expect(row.keys).to include('type', 'abbreviation')
       end
     end
   end

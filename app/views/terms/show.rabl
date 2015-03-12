@@ -1,2 +1,2 @@
 object @term
-attributes :type, :term_id, :id, :strm
+attributes :type, :term_id, :strm

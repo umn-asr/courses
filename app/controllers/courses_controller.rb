@@ -11,7 +11,10 @@ class CoursesController < ApplicationController
 
     courses.each do |c|
       c.subject = OpenStruct.new(c.subject)
-      c.attributes.map! { |x| OpenStruct.new(x) }
+
+      c.equivalency = OpenStruct.new(c.equivalency)
+
+      c.cle_attributes.map! { |x| OpenStruct.new(x) }
       c.sections.map! { |x| OpenStruct.new(x) }
 
       c.sections.each do |s|
@@ -22,6 +25,12 @@ class CoursesController < ApplicationController
 
         s.meeting_patterns.each do |m|
           m.location = OpenStruct.new(m.location)
+        end
+
+        s.combined_sections.map! { |x| OpenStruct.new(x) }
+        s.combined_sections.each do |cs|
+          cs.subject = OpenStruct.new(cs.subject)
+          cs.section = OpenStruct.new(cs.section)
         end
       end
     end
@@ -39,11 +48,11 @@ class CoursesController < ApplicationController
 
   def create
     begin
-      campus_attr = params[:course]["campus"].permit(:abbreviation, :id)
+      campus_attr = params[:course]["campus"].permit(:abbreviation, :type)
       resources = []
       resources << Campus.new(campus_attr)
 
-      term_attr = params[:course]["term"].permit(:strm, :id)
+      term_attr = params[:course]["term"].permit(:strm, :type)
       resources << Term.new(term_attr)
 
       params[:course]["courses"].each do |course|
