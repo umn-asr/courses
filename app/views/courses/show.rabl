@@ -28,7 +28,7 @@ child :sections => :sections do
 
   child :instructors => :instructors do
     collection attributes, :root => false, :object_root => false
-    attributes :type, :employee_id, :id, :name, :email, :role
+    attributes :type, :id, :name, :email, :role
   end
 
   child :meeting_patterns => :meeting_patterns do
