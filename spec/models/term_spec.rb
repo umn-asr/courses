@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Term do
+  before(:each) do
+    Term.delete_all
+  end
+
   let(:term_instance) { described_class.new }
 
   describe "type" do
