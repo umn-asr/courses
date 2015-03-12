@@ -1,0 +1,16 @@
+---
+combined_section:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      catalog_number:
+        type: string
+        description: "the resource type"
+      subject_id:
+        type: string
+        description: "the resource type"
+      section_number:
+        type: string
+        description: "the resource type"

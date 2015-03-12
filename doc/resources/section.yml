@@ -1,0 +1,39 @@
+---
+section:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      class_number:
+        type: string
+        description: "the resource type"
+      number:
+        type: string
+        description: "the resource type"
+      component:
+        type: string
+        description: "the resource type"
+      location:
+        type: string
+        description: "the resource type"
+      credits_minimum:
+        type: string
+        description: "the resource type"
+      credits_maximum:
+        type: string
+        description: "the resource type"
+      instruction_mode:
+        type: resource
+      grading_basis:
+        type: resource
+      instructors:
+        type: collection
+      meeting_patterns:
+        type: collection
+      combined_sections:
+        type: collection
+    optional:
+      notes:
+        type: string
+        description: "the resource type"

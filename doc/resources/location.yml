@@ -1,0 +1,13 @@
+---
+location:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      location_id:
+        type: string
+        description: "the resource type"
+      description:
+        type: string
+        description: "the resource type"

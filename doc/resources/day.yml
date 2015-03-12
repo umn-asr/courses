@@ -1,0 +1,13 @@
+---
+day:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      name:
+        type: string
+        description: "the resource type"
+      abbreviation:
+        type: string
+        description: "the resource type"

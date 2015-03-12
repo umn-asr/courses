@@ -1,0 +1,28 @@
+---
+course:
+  attributes:
+    required:
+      type: 
+        type: string
+        description: "the resource type"
+      course_id:
+        type: string
+        description: "the crse_id from Peoplesoft"
+      catalog_number:
+        type: string
+        description: "The course's catalog number"
+      description:
+        type: string
+        description: "A description of the course's topic"
+      title:
+        type: string
+        description: "The course's title"
+      subject:
+        type: resource
+      cle_attributes:
+        type: collection
+      sections:
+        type: collection
+    optional:
+      equivalency:
+        type: resource

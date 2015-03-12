@@ -38,18 +38,15 @@ child :sections => :sections do
     child :location => :location do
       attributes :type, :location_id, :id, :description
     end
+
+    child :days => :days do
+      collection attributes, :root => false, :object_root => false
+      attributes :type, :name, :abbreviation
+    end
   end
 
   child :combined_sections => :combined_sections do
     collection attributes, :root => false, :object_root => false
-    attributes :type, :catalog_number 
-
-    child :subject => :subject do
-      attributes :type, :subject_id
-    end
-
-    child :section => :section do
-      attributes :type, :number
-    end
+    attributes :type, :catalog_number, :subject_id, :section_number
   end
 end

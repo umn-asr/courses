@@ -1,0 +1,10 @@
+---
+equivalency:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      equivalency_id:
+        type: string
+        description: "the resource type"

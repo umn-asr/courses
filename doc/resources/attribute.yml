@@ -1,0 +1,13 @@
+---
+attribute:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      attribute_id:
+        type: string
+        description: "the crse_attr_value from Peoplesoft. For LE classes, this is the abbreviation of the Liberal Ed requirement"
+      family:
+        type: string
+        description: "the clse_attr from Peoplesoft. CLE family attributes identify Liberal Ed requirements"

@@ -1,0 +1,13 @@
+---
+subject:
+  attributes:
+    required:
+      type:
+        type: string
+        description: "the resource type"
+      subject_id:
+        type: string
+        description: "the abbreviation of the department offering the class"
+      description:
+        type: string
+        description: "the name of the department offering the class"
