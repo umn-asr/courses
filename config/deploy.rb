@@ -9,14 +9,3 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 set :linked_dirs, %w(bin log tmp/cache vendor/bundle)
 set :linked_files, %w{config/database.yml config/initializers/environment_variables.rb}
-
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  after :publishing, :restart
-end
