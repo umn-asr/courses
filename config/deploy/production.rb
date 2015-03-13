@@ -4,7 +4,7 @@ role :web, %w{asr-course-production.oit.umn.edu}
 # Configuration
 set :user, 'swadm'
 set :server, 'asr-course-production.oit.umn.edu'
-set :roles, %w{web app}
+set :roles, %w{web app db}
 set :web_root, '/swadm/www/courses.umn.edu'
 set :deploy_to, "#{fetch(:web_root)}"
 
