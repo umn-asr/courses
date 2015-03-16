@@ -1,7 +1,7 @@
 class Section < ::ActiveRecord::Base
   belongs_to :course
 
-  validates_presence_of :class_number, :number, :component
+  validates_presence_of :class_number, :number, :component, :course_id
 
   attr_accessor :instruction_mode, :grading_basis, :instructors, :meeting_patterns, :combined_sections
 
