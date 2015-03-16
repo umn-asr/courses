@@ -17,7 +17,6 @@ class CoursesController < ApplicationController
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.instruction_mode = OpenStruct.new(json_section["instruction_mode"])
         s.grading_basis = OpenStruct.new(json_section["grading_basis"])
         s.instructors = json_section["instructors"].map { |x| OpenStruct.new(x) }
         s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
