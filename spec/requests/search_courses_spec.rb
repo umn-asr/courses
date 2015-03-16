@@ -119,7 +119,7 @@ RSpec.describe "search courses" do
 
   describe "combining searches" do
     it "returns courses that match all criteria" do
-      get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO&catalog_number>3000&catalog_number<4000&cle_attribute_id=GP&instruction_mode_id=P"
+      get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO,catalog_number>3000,catalog_number<4000,cle_attribute_id=GP,instruction_mode_id=P"
       courses = JSON.parse(response.body)["courses"]
 
       expect(courses).not_to be_empty
