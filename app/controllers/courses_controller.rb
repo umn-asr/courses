@@ -13,7 +13,6 @@ class CoursesController < ApplicationController
       json_course = j["courses"].detect{ |x| x["course_id"] == c.course_id }
 
       c.subject = OpenStruct.new(json_course["subject"])
-      c.cle_attributes = json_course["cle_attributes"].map { |x| OpenStruct.new(x) }
 
       c.sections = json_course["sections"].map { |x| OpenStruct.new(x) }
 
@@ -55,7 +54,6 @@ class CoursesController < ApplicationController
 
   def create
     begin
-
       campus_attr = params[:course]["campus"].permit(:abbreviation)
       campus = Campus.new(campus_attr)
       campus.save
