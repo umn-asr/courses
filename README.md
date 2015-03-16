@@ -32,7 +32,7 @@ All of these searches can be combined, as we'll see in the examples.
 
 Finding courses under one subject:
 
-`courses.json?q=subject=HIST`
+`courses.json?q=subject_id=HIST`
 
 This will return all courses with the subject of HIST.
 
@@ -40,7 +40,7 @@ This will return all courses with the subject of HIST.
 
 Finding courses under many subjects:
 
-`courses.xml?q=subject=HIST|PHYS`
+`courses.xml?q=subject_id=HIST|PHYS`
 
 Returns all courses with a subject of HIST or PHYS. You can have as many subjects as you want, just separate them with a |.
 
@@ -84,13 +84,13 @@ Returns all courses with a catalog_number greater than or equal to 1000 and less
 
 Get courses that are Writing Intensive
 
-`courses.json?q=cle_attributes=WI`
+`courses.json?q=cle_attribute_id=WI`
 
 ---
 
 Get courses that meet Civic Life or Historical Perspectives
 
-`courses.xml?q=cle_attributes=HIS|CIV`
+`courses.xml?q=cle_attribute_id=HIS|CIV`
 
 ### Instruction Mode
 
@@ -106,23 +106,22 @@ You can search using any of these Instruction Mode abbreviations:
 
 Get courses that are Partially Online
 
-`courses.json?q=instruction_mode=PA`
+`courses.json?q=instruction_mode_id=PA`
 
 ----
 
 Get courses that are Partially Online or Primarily Online
 
-`courses.xml?q=instruction_mode=PA|PR`
+`courses.xml?q=instruction_mode_id=PA|PR`
 
 ### Combining Searches
 
-Any of the searches can be combined. For example:
+Any of the searches can be combined. For example
 
-`courses.json?q=cle_attributes=WI&instruction_mode=P&catalog_number>=2000&catalog_number<3000&subject=HIST`
+`courses.json?q=cle_attribute_id=WI&instruction_mode_id=P&catalog_number>=2000&catalog_number<3000&subject_id=HIST`
 
 Will return any courses that are:
 
 - Writing Intensive
 - Taught In Person
 - With a catalog number between 2000 and 2999
-- In the history department
