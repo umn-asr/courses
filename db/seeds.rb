@@ -11,6 +11,7 @@ Term.delete_all
 Course.delete_all
 CourseAttribute.delete_all
 Section.delete_all
+InstructionMode.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -44,7 +45,9 @@ j["courses"].each do |course_json|
   @course.course_attributes = attributes
 
   course_json["sections"].map do |section_json|
-    @course.sections.create(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
+    section = @course.sections.build(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
+    section.instruction_mode = InstructionMode.find_or_create_by(section_json["instruction_mode"].slice("instruction_mode_id","description"))
+    section.save
   end
 
   @course.save
