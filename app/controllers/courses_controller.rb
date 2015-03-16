@@ -75,6 +75,12 @@ class CoursesController < ApplicationController
         end
 
         course.save
+
+        course_data["sections"].each do |section_data|
+          section_data = section_data.permit(:class_number, :number, :component, :credits_minimum, :credits_maximum, :location, :notes)
+          s = course.sections.find_or_create_by(section_data.slice("class_number", "number"))
+          s.update_attributes(section_data.slice("component", "credits_minimum", "credits_maximum", "location", "notes"))
+        end
       end
 
       render nothing: true
