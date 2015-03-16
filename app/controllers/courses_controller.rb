@@ -18,16 +18,6 @@ class CoursesController < ApplicationController
       c.sections = json_course["sections"].map { |x| OpenStruct.new(x) }
 
       c.sections.each do |s|
-        #s.instruction_mode = OpenStruct.new(Hash[s.instruction_mode.map { |key, value| [key, value] }])
-        #s.grading_basis = OpenStruct.new(Hash[s.grading_basis.map { |key, value| [key, value] }])
-
-        #s.instructors.each do
-          #s.instructors = s.instructors.map { |x| OpenStruct.new(x) }
-        #end
-
-        #s.meeting_patterns.each do |m|
-          #s.meeting_patterns = s.meeting_patterns.map { |x| OpenStruct.new(x) }
-        #end
         s.instruction_mode = OpenStruct.new(s.instruction_mode)
         s.grading_basis = OpenStruct.new(s.grading_basis)
         s.instructors.map! { |i| OpenStruct.new(i) }
@@ -47,10 +37,15 @@ class CoursesController < ApplicationController
       end
     end
 
+    searchable_courses = SearchableCourses.new(courses)
+
+    query_string_search = params[:q]
+    returned_courses = QueryStringSearch.new(searchable_courses, query_string_search).results
+
     @courses = CoursesPresenter.new
     @courses.campus = campus
     @courses.term = term
-    @courses.courses = courses
+    @courses.courses = returned_courses
 
     respond_to do |format|
       format.xml
