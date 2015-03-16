@@ -597,8 +597,8 @@
         },
         {
           "type": "attribute",
-          "attribute_id": "PHYS",
-          "family": "GP"
+          "attribute_id": "GP",
+          "family": "CLE"
         }
       ],
       "sections": [
