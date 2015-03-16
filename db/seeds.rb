@@ -33,10 +33,9 @@ j["courses"].each do |course|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  Subject.create(course["subject"].slice("subject_id", "description"))
+  subject = Subject.create(course["subject"].slice("subject_id", "description"))
+  course_attr[:subject_id] = subject.id
 
-  c = Course.create(course_attr)
-  c.subjects = Subject.where(subject_id: course["subject"]["subject_id"])
-  c.save
+  Course.create(course_attr)
 end
 

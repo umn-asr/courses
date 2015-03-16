@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316191611) do
+ActiveRecord::Schema.define(version: 20150316194234) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -26,18 +26,12 @@ ActiveRecord::Schema.define(version: 20150316191611) do
     t.string  "title"
     t.string  "description"
     t.string  "catalog_number"
-  end
-
-  add_index "courses", ["campus_id"], name: "index_courses_on_campus_id"
-  add_index "courses", ["term_id"], name: "index_courses_on_term_id"
-
-  create_table "courses_subjects", id: false, force: :cascade do |t|
-    t.integer "course_id"
     t.integer "subject_id"
   end
 
-  add_index "courses_subjects", ["course_id"], name: "index_courses_subjects_on_course_id"
-  add_index "courses_subjects", ["subject_id"], name: "index_courses_subjects_on_subject_id"
+  add_index "courses", ["campus_id"], name: "index_courses_on_campus_id"
+  add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
+  add_index "courses", ["term_id"], name: "index_courses_on_term_id"
 
   create_table "subjects", force: :cascade do |t|
     t.string "subject_id"
