@@ -9,6 +9,7 @@
 Campus.delete_all
 Term.delete_all
 Course.delete_all
+CourseAttribute.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -16,6 +17,10 @@ end
 
 %w(1149 1155 1159 1163).each do |strm|
   Term.create({strm: strm})
+end
+
+%w(AH BIOL HIS LITR MATH PHYS SOCS GP TS CIV DSJ ENV WI).each do |attribute_id|
+  CourseAttribute.create({attribute_id: attribute_id, family: "CLE"})
 end
 
 f = File.open('test/fixtures/courses_example.json')
