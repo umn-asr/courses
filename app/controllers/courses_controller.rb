@@ -62,15 +62,19 @@ class CoursesController < ApplicationController
       term = Term.new(term_attr)
       term.save
 
-
-      params[:course]["courses"].each do |course|
-        course_attr = course.permit(:id, :course_id, :catalog_number, :description, :title, :subject, :cle_attributes, :sections)
+      params[:course]["courses"].each do |course_data|
+        course_attr = course_data.permit(:id, :course_id, :catalog_number, :description, :title, :subject, :sections)
 
         course_attr[:campus_id] = campus.id
 
         course_attr[:term_id] = term.id
 
         course = Course.new(course_attr)
+
+        course.course_attributes = course_data["cle_attributes"].each_with_object([]) do |attribute, ret|
+          ret << CourseAttribute.find_or_create_by(attribute_id: attribute["attribute_id"], family: attribute["family"])
+        end
+
         course.save
       end
 
