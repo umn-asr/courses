@@ -1,7 +1,7 @@
 require "rails_helper"
 require 'json'
 
-RSpec.describe "search courses", :focus do
+RSpec.describe "search courses" do
   before(:each) do
     load "#{Rails.root}/db/seeds.rb"
   end
