@@ -9,6 +9,7 @@
 Campus.delete_all
 Term.delete_all
 Course.delete_all
+Subject.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -32,6 +33,10 @@ j["courses"].each do |course|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  Course.create(course_attr)
+  Subject.create(course["subject"].slice("subject_id", "description"))
+
+  c = Course.create(course_attr)
+  c.subjects = Subject.where(subject_id: course["subject"]["subject_id"])
+  c.save
 end
 
