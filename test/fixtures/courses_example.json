@@ -613,7 +613,7 @@
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
-            "description": "Classroom/Onsite"
+            "description": "In Person Term Based"
           },
           "grading_basis": {
             "type": "grading_basis",
