@@ -37,6 +37,10 @@ j["courses"].each do |course|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  Course.create(course_attr)
+  attributes = course["cle_attributes"].map { |a| CourseAttribute.where(attribute_id: a["attribute_id"]).first }
+
+  c = Course.create(course_attr)
+  c.course_attributes = attributes
+  c.save
 end
 
