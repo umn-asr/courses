@@ -8,6 +8,7 @@ RSpec.describe "create course" do
     Term.delete_all
     Campus.delete_all
     Course.delete_all
+    CourseAttribute.delete_all
   end
 
   describe "when passed valid syntax" do

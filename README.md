@@ -76,7 +76,7 @@ You can also do `<=` to return courses with a catalog number less than or equal 
 
 Find courses with a catalog number in a range of values:
 
-`courses.xml?q=catalog_number>=1000&catalog_number<5000`
+`courses.xml?q=catalog_number>=1000,catalog_number<5000`
 
 Returns all courses with a catalog_number greater than or equal to 1000 and less than 5000
 
@@ -118,7 +118,7 @@ Get courses that are Partially Online or Primarily Online
 
 Any of the searches can be combined. For example
 
-`courses.json?q=cle_attribute_id=WI&instruction_mode_id=P&catalog_number>=2000&catalog_number<3000&subject_id=HIST`
+`courses.json?q=cle_attribute_id=WI,instruction_mode_id=P,catalog_number>=2000,catalog_number<3000,subject_id=HIST`
 
 Will return any courses that are:
 
