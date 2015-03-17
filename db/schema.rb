@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(version: 20150316194234) do
 
   add_index "campuses", ["abbreviation"], name: "index_campuses_on_abbreviation", unique: true
 
+  create_table "course_attributes", force: :cascade do |t|
+    t.string "attribute_id"
+    t.string "family"
+  end
+
+  create_table "course_attributes_courses", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "course_attribute_id"
+  end
+
+  add_index "course_attributes_courses", ["course_attribute_id"], name: "index_course_attributes_courses_on_course_attribute_id"
+  add_index "course_attributes_courses", ["course_id"], name: "index_course_attributes_courses_on_course_id"
+
   create_table "courses", force: :cascade do |t|
     t.integer "campus_id"
     t.integer "term_id"
