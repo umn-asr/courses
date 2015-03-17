@@ -82,6 +82,9 @@ class CoursesController < ApplicationController
           instruction_mode_attr = section_data[:instruction_mode].permit(:instruction_mode_id, :description)
           section.instruction_mode = InstructionMode.find_or_create_by(instruction_mode_attr)
 
+          grading_basis_attr = section_data[:grading_basis].permit(:grading_basis_id, :description)
+          section.grading_basis = GradingBasis.find_or_create_by(grading_basis_attr)
+
           section.save
         end
       end
