@@ -7,11 +7,7 @@ class Course < ::ActiveRecord::Base
   validates_presence_of :term_id, :campus_id, :course_id
   validates_uniqueness_of :course_id, scope: [:term_id, :campus_id]
 
-  attr_accessor :subject, :sections
-
-  # def subject
-    # subject.where(subject_id: self.subject_id)
-  # end
+  attr_accessor :sections
 
   def type
     "course"
