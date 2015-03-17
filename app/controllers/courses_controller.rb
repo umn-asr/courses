@@ -12,8 +12,6 @@ class CoursesController < ApplicationController
     courses.each do |c|
       json_course = j["courses"].detect{ |x| x["course_id"] == c.course_id }
 
-      c.subject = OpenStruct.new(json_course["subject"])
-
       c.sections = json_course["sections"].map { |x| OpenStruct.new(x) }
 
       c.sections.each do |s|
