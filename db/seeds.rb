@@ -9,6 +9,7 @@
 Campus.delete_all
 Term.delete_all
 Course.delete_all
+Subject.delete_all
 CourseAttribute.delete_all
 Section.delete_all
 
@@ -37,6 +38,9 @@ j["courses"].each do |course_json|
 
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
+
+  subject = Subject.create(course_json["subject"].slice("subject_id", "description"))
+  course_attr[:subject_id] = subject.id
 
   @course = Course.create(course_attr)
 

@@ -39,10 +39,17 @@ ActiveRecord::Schema.define(version: 20150316203631) do
     t.string  "title"
     t.string  "description"
     t.string  "catalog_number"
+    t.integer "subject_id"
   end
 
   add_index "courses", ["campus_id"], name: "index_courses_on_campus_id"
+  add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
   add_index "courses", ["term_id"], name: "index_courses_on_term_id"
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "subject_id"
+    t.string "description"
+  end
 
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
