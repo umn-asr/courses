@@ -55,13 +55,13 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
@@ -121,13 +121,13 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -177,19 +177,19 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
               "role": "TA"
@@ -239,13 +239,13 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -295,19 +295,19 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
               "role": "TA"
@@ -357,13 +357,13 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
               "role": "TA"
@@ -413,19 +413,19 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
               "role": "TA"
@@ -475,13 +475,13 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
@@ -531,19 +531,19 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
               "role": "PI"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
               "role": "PRXY"
             },
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
               "role": "TA"
@@ -622,7 +622,7 @@
           },
           "instructors": [
             {
-              "type": "employee",
+              "type": "instructor",
               "name": "Yuichiro Onishi",
               "email": "email@umn.edu",
               "role": "PI"
