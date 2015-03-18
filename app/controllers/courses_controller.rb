@@ -3,25 +3,7 @@ class CoursesController < ApplicationController
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     term = Term.where(strm: params[:term_id]).first
 
-    f = File.open('test/fixtures/courses_example.json')
-
-    j = JSON.parse(f.read)
-
     courses = Course.where(campus_id: campus.id, term_id: term.id)
-
-    courses.each do |c|
-      json_course = j["courses"].detect{ |x| x["course_id"] == c.course_id }
-
-      c.sections.each do |s|
-        json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
-
-        s.combined_sections = json_section["combined_sections"].map { |x| OpenStruct.new(x) }
-        s.combined_sections.each do |cs|
-          cs.subject = OpenStruct.new(cs.subject)
-          cs.section = OpenStruct.new(cs.section)
-        end
-      end
-    end
 
     searchable_courses = SearchableCourses.new(courses)
 
