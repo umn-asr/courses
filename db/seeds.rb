@@ -14,6 +14,9 @@ CourseAttribute.delete_all
 Section.delete_all
 InstructionMode.delete_all
 GradingBasis.delete_all
+InstructorContact.delete_all
+InstructorRole.delete_all
+Instructor.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -53,7 +56,15 @@ j["courses"].each do |course_json|
     section = @course.sections.build(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
     section.instruction_mode = InstructionMode.find_or_create_by(section_json["instruction_mode"].slice("instruction_mode_id","description"))
     section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
+
+    section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
     section.save
+
+    section_json["instructors"].each do |instructor_json|
+      role = InstructorRole.find_or_create_by(abbreviation: instructor_json["role"])
+      contact = InstructorContact.find_or_create_by(instructor_json.slice("name","email"))
+      section.instructors.create(instructor_role: role, instructor_contact: contact)
+    end
   end
 
   @course.save
