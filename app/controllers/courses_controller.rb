@@ -15,13 +15,6 @@ class CoursesController < ApplicationController
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
-
-        s.meeting_patterns.each do |m|
-          m.location = OpenStruct.new(m.location)
-          m.days.map! { |d| OpenStruct.new(d) }
-        end
-
         s.combined_sections = json_section["combined_sections"].map { |x| OpenStruct.new(x) }
         s.combined_sections.each do |cs|
           cs.subject = OpenStruct.new(cs.subject)
