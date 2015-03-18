@@ -2,11 +2,12 @@ class Course < ::ActiveRecord::Base
   belongs_to :term
   belongs_to :campus
   has_and_belongs_to_many :course_attributes
+  has_many :sections
 
   validates_presence_of :term_id, :campus_id, :course_id
   validates_uniqueness_of :course_id, scope: [:term_id, :campus_id]
 
-  attr_accessor :subject, :sections
+  attr_accessor :subject
 
   def type
     "course"

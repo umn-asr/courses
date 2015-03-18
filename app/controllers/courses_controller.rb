@@ -14,21 +14,20 @@ class CoursesController < ApplicationController
 
       c.subject = OpenStruct.new(json_course["subject"])
 
-      c.sections = json_course["sections"].map { |x| OpenStruct.new(x) }
-
       c.sections.each do |s|
-        s.instruction_mode = OpenStruct.new(s.instruction_mode)
-        s.grading_basis = OpenStruct.new(s.grading_basis)
-        s.instructors.map! { |i| OpenStruct.new(i) }
+        json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.meeting_patterns.map! { |m| OpenStruct.new(m) }
+        s.instruction_mode = OpenStruct.new(json_section["instruction_mode"])
+        s.grading_basis = OpenStruct.new(json_section["grading_basis"])
+        s.instructors = json_section["instructors"].map { |x| OpenStruct.new(x) }
+        s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
 
         s.meeting_patterns.each do |m|
           m.location = OpenStruct.new(m.location)
           m.days.map! { |d| OpenStruct.new(d) }
         end
 
-        s.combined_sections.map! { |x| OpenStruct.new(x) }
+        s.combined_sections = json_section["combined_sections"].map { |x| OpenStruct.new(x) }
         s.combined_sections.each do |cs|
           cs.subject = OpenStruct.new(cs.subject)
           cs.section = OpenStruct.new(cs.section)
@@ -76,6 +75,12 @@ class CoursesController < ApplicationController
         end
 
         course.save
+
+        course_data["sections"].each do |section_data|
+          section_data = section_data.permit(:class_number, :number, :component, :credits_minimum, :credits_maximum, :location, :notes)
+          s = course.sections.find_or_create_by(section_data.slice("class_number", "number"))
+          s.update_attributes(section_data.slice("component", "credits_minimum", "credits_maximum", "location", "notes"))
+        end
       end
 
       render nothing: true

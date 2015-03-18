@@ -10,6 +10,7 @@ Campus.delete_all
 Term.delete_all
 Course.delete_all
 CourseAttribute.delete_all
+Section.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -27,9 +28,9 @@ f = File.open('test/fixtures/courses_example.json')
 
 j = JSON.parse(f.read)
 
-j["courses"].each do |course|
+j["courses"].each do |course_json|
   course_attr = Hash.new
-  course_attr = course.slice("title", "description", "course_id", "catalog_number")
+  course_attr = course_json.slice("title", "description", "course_id", "catalog_number")
 
   campus = Campus.where(abbreviation: j["campus"]["abbreviation"]).first
   course_attr[:campus_id] = campus.id
@@ -37,10 +38,15 @@ j["courses"].each do |course|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  attributes = course["cle_attributes"].map { |a| CourseAttribute.where(attribute_id: a["attribute_id"]).first }
+  @course = Course.create(course_attr)
 
-  c = Course.create(course_attr)
-  c.course_attributes = attributes
-  c.save
+  attributes = course_json["cle_attributes"].map { |a| CourseAttribute.where(attribute_id: a["attribute_id"]).first }
+  @course.course_attributes = attributes
+
+  course_json["sections"].map do |section_json|
+    @course.sections.create(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
+  end
+
+  @course.save
 end
 
