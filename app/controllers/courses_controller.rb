@@ -85,6 +85,13 @@ class CoursesController < ApplicationController
           section.grading_basis = GradingBasis.find_or_create_by(grading_basis_attr)
 
           section.save
+
+          section_data[:instructors].each do |instructor_data|
+            role = InstructorRole.find_or_create_by(abbreviation: instructor_data[:role])
+            contact_attr = instructor_data.permit(:name, :email)
+            contact = InstructorContact.find_or_create_by(contact_attr)
+            section.instructors.create(instructor_role: role, instructor_contact: contact)
+          end
         end
       end
 
