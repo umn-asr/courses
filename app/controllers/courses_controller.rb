@@ -82,6 +82,11 @@ class CoursesController < ApplicationController
 
             mp.save
           end
+
+          Array(section_data[:combined_sections]).each do |cs_data|
+            cs_attr = cs_data.permit(:catalog_number, :subject_id, :section_number)
+            section.combined_sections.create(cs_attr)
+          end
         end
       end
 
