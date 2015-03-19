@@ -12,8 +12,6 @@ class CoursesController < ApplicationController
     courses.each do |c|
       json_course = j["courses"].detect{ |x| x["course_id"] == c.course_id }
 
-      c.subject = OpenStruct.new(json_course["subject"])
-
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
@@ -61,13 +59,15 @@ class CoursesController < ApplicationController
       term.save
 
       params[:course]["courses"].each do |course_data|
-        course_attr = course_data.permit(:id, :course_id, :catalog_number, :description, :title, :subject, :sections)
+        course_attr = course_data.permit(:id, :course_id, :catalog_number, :description, :title, :sections)
 
         course_attr[:campus_id] = campus.id
 
         course_attr[:term_id] = term.id
 
         course = Course.new(course_attr)
+
+        course.subject = Subject.find_or_create_by(subject_id: course_data["subject"]["subject_id"], description: course_data["subject"]["description"])
 
         course.course_attributes = course_data["cle_attributes"].each_with_object([]) do |attribute, ret|
           ret << CourseAttribute.find_or_create_by(attribute_id: attribute["attribute_id"], family: attribute["family"])
