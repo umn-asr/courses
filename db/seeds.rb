@@ -20,6 +20,7 @@ Instructor.delete_all
 Day.delete_all
 Location.delete_all
 MeetingPattern.delete_all
+CombinedSection.delete_all
 
 %w(UMNTC UMNDL UMNMO UMNRC UMNRO).each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
@@ -84,6 +85,10 @@ j["courses"].each do |course_json|
         mp.days << Day.find_by_abbreviation(day["abbreviation"])
       end
       mp.save
+    end
+
+    section_json["combined_sections"].each do |cs_json|
+      section.combined_sections.create(cs_json.slice("catalog_number", "subject_id", "section_number"))
     end
   end
 
