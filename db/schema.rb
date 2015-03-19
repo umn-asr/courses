@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318002652) do
+ActiveRecord::Schema.define(version: 20150318014312) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20150318002652) do
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
   add_index "courses", ["term_id"], name: "index_courses_on_term_id"
 
+  create_table "days", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+  end
+
+  create_table "days_meeting_patterns", id: false, force: :cascade do |t|
+    t.integer "day_id"
+    t.integer "meeting_pattern_id"
+  end
+
+  add_index "days_meeting_patterns", ["day_id"], name: "index_days_meeting_patterns_on_day_id"
+  add_index "days_meeting_patterns", ["meeting_pattern_id"], name: "index_days_meeting_patterns_on_meeting_pattern_id"
+
   create_table "grading_bases", force: :cascade do |t|
     t.string "grading_basis_id"
     t.string "description"
@@ -74,6 +87,20 @@ ActiveRecord::Schema.define(version: 20150318002652) do
   add_index "instructors", ["instructor_contact_id"], name: "index_instructors_on_instructor_contact_id"
   add_index "instructors", ["instructor_role_id"], name: "index_instructors_on_instructor_role_id"
   add_index "instructors", ["section_id"], name: "index_instructors_on_section_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string "location_id"
+    t.string "description"
+  end
+
+  create_table "meeting_patterns", force: :cascade do |t|
+    t.integer "section_id"
+    t.string  "start_time"
+    t.string  "end_time"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.integer "location_id"
+  end
 
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"

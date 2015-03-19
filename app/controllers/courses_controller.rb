@@ -15,13 +15,6 @@ class CoursesController < ApplicationController
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
-
-        s.meeting_patterns.each do |m|
-          m.location = OpenStruct.new(m.location)
-          m.days.map! { |d| OpenStruct.new(d) }
-        end
-
         s.combined_sections = json_section["combined_sections"].map { |x| OpenStruct.new(x) }
         s.combined_sections.each do |cs|
           cs.subject = OpenStruct.new(cs.subject)
@@ -91,6 +84,21 @@ class CoursesController < ApplicationController
             contact_attr = instructor_data.permit(:name, :email)
             contact = InstructorContact.find_or_create_by(contact_attr)
             section.instructors.create(instructor_role: role, instructor_contact: contact)
+          end
+
+          section_data[:meeting_patterns].each do |pattern_data|
+            mp_attr = pattern_data.permit(:start_time, :end_time, :start_date, :end_date)
+            mp = section.meeting_patterns.find_or_create_by(mp_attr)
+
+            location_attr = pattern_data[:location].permit(:location_id, :description)
+            mp.location = Location.find_or_create_by(location_attr)
+
+            pattern_data[:days].each do |day|
+              day_attr = day.permit(:abbreviation, :name)
+              mp.days << Day.find_or_create_by(day_attr)
+            end
+
+            mp.save
           end
         end
       end
