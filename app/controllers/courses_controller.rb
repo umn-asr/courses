@@ -15,7 +15,6 @@ class CoursesController < ApplicationController
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.instruction_mode = OpenStruct.new(json_section["instruction_mode"])
         s.grading_basis = OpenStruct.new(json_section["grading_basis"])
         s.instructors = json_section["instructors"].map { |x| OpenStruct.new(x) }
         s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
@@ -77,9 +76,14 @@ class CoursesController < ApplicationController
         course.save
 
         course_data["sections"].each do |section_data|
-          section_data = section_data.permit(:class_number, :number, :component, :credits_minimum, :credits_maximum, :location, :notes)
-          s = course.sections.find_or_create_by(section_data.slice("class_number", "number"))
-          s.update_attributes(section_data.slice("component", "credits_minimum", "credits_maximum", "location", "notes"))
+          section_attr = section_data.permit(:class_number, :number, :component, :credits_minimum, :credits_maximum, :location, :notes, :instruction_mode)
+          section = course.sections.find_or_create_by(section_attr.slice("class_number", "number"))
+          section.update_attributes(section_attr.slice("component", "credits_minimum", "credits_maximum", "location", "notes"))
+
+          instruction_mode_attr = section_data[:instruction_mode].permit(:instruction_mode_id, :description)
+          section.instruction_mode = InstructionMode.find_or_create_by(instruction_mode_attr)
+
+          section.save
         end
       end
 
