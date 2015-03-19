@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316235201) do
+ActiveRecord::Schema.define(version: 20150318002652) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -55,6 +55,25 @@ ActiveRecord::Schema.define(version: 20150316235201) do
     t.string "instruction_mode_id"
     t.string "description"
   end
+
+  create_table "instructor_contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+  end
+
+  create_table "instructor_roles", force: :cascade do |t|
+    t.string "abbreviation"
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.integer "instructor_contact_id"
+    t.integer "section_id"
+    t.integer "instructor_role_id"
+  end
+
+  add_index "instructors", ["instructor_contact_id"], name: "index_instructors_on_instructor_contact_id"
+  add_index "instructors", ["instructor_role_id"], name: "index_instructors_on_instructor_role_id"
+  add_index "instructors", ["section_id"], name: "index_instructors_on_section_id"
 
   create_table "sections", force: :cascade do |t|
     t.integer "course_id"
