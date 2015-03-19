@@ -15,7 +15,6 @@ class CoursesController < ApplicationController
       c.sections.each do |s|
         json_section = json_course["sections"].detect{ |x| x["number"] == s.number }
 
-        s.grading_basis = OpenStruct.new(json_section["grading_basis"])
         s.instructors = json_section["instructors"].map { |x| OpenStruct.new(x) }
         s.meeting_patterns = json_section["meeting_patterns"].map { |x| OpenStruct.new(x) }
 
@@ -82,6 +81,9 @@ class CoursesController < ApplicationController
 
           instruction_mode_attr = section_data[:instruction_mode].permit(:instruction_mode_id, :description)
           section.instruction_mode = InstructionMode.find_or_create_by(instruction_mode_attr)
+
+          grading_basis_attr = section_data[:grading_basis].permit(:grading_basis_id, :description)
+          section.grading_basis = GradingBasis.find_or_create_by(grading_basis_attr)
 
           section.save
         end
