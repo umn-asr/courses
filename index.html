@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>UMN Course/Class Data Service by umn-asr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">UMN Course/Class Data Service</h1>
+        <p class="header"></p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/umn-asr/courses/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/umn-asr/courses/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/umn-asr/courses">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/umn-asr">umn-asr</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="coursesumnedu" class="anchor" href="#coursesumnedu" aria-hidden="true"><span class="octicon octicon-link"></span></a>courses.umn.edu</h1>
+
+<p>A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.</p>
+
+<p><em>Note</em> this is still under active development. The links below will work, but our demo site only contains 2 courses' worth of data.</p>
+
+<h2>
+<a id="getting-courses" class="anchor" href="#getting-courses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Courses</h2>
+
+<p>You must include a Campus and Term. The format is:</p>
+
+<p><code>https://courses-staging.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json</code></p>
+
+<p>or, if you want XML:</p>
+
+<p><code>https://courses-staging.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml</code></p>
+
+<p>Some examples:</p>
+
+<ul>
+<li><a href="https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.json">https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.json</a></li>
+<li><a href="https://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml">https://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml</a></li>
+</ul>
+
+<h2>
+<a id="searching" class="anchor" href="#searching" aria-hidden="true"><span class="octicon octicon-link"></span></a>Searching</h2>
+
+<p>Search for courses by using the query string. You can search by:</p>
+
+<ul>
+<li>Subject</li>
+<li>Catalog Number</li>
+<li>Liberal Education </li>
+<li>Instruction Mode</li>
+<li>Location</li>
+</ul>
+
+<p>Searching works with both JSON and XML output.</p>
+
+<p>All of these searches can be combined, as we'll see in the examples.</p>
+
+<h3>
+<a id="subject" class="anchor" href="#subject" aria-hidden="true"><span class="octicon octicon-link"></span></a>Subject</h3>
+
+<p>Finding courses under one subject:</p>
+
+<p><code>courses.json?q=subject_id=HIST</code></p>
+
+<p>This will return all courses with the subject of HIST.</p>
+
+<hr>
+
+<p>Finding courses under many subjects:</p>
+
+<p><code>courses.xml?q=subject_id=HIST|PHYS</code></p>
+
+<p>Returns all courses with a subject of HIST or PHYS. You can have as many subjects as you want, just separate them with a |.</p>
+
+<h3>
+<a id="catalog-number" class="anchor" href="#catalog-number" aria-hidden="true"><span class="octicon octicon-link"></span></a>Catalog Number</h3>
+
+<p>Find a course with a specific catalog number</p>
+
+<p><code>courses.json?q=catalog_number=1101W</code></p>
+
+<p>Returns all courses with a catalog number of '1101W'.</p>
+
+<hr>
+
+<p>Find a course with a catalog number higher than a value:</p>
+
+<p><code>courses.xml?q=catalog_number&gt;1000</code></p>
+
+<p>Returns all courses with a catalog number higher than 1000. </p>
+
+<p>You can also do <code>&gt;=</code> to return courses with a catalog number higher than or equal to 1000</p>
+
+<hr>
+
+<p>Find a course with a catalog number less than a value:</p>
+
+<p><code>courses.xml?q=catalog_number&lt;5000</code></p>
+
+<p>Returns all courses with a catalog number less than 1000. </p>
+
+<p>You can also do <code>&lt;=</code> to return courses with a catalog number less than or equal to 1000</p>
+
+<hr>
+
+<p>Find courses with a catalog number in a range of values:</p>
+
+<p><code>courses.xml?q=catalog_number&gt;=1000,catalog_number&lt;5000</code></p>
+
+<p>Returns all courses with a catalog_number greater than or equal to 1000 and less than 5000</p>
+
+<h3>
+<a id="liberal-education" class="anchor" href="#liberal-education" aria-hidden="true"><span class="octicon octicon-link"></span></a>Liberal Education</h3>
+
+<p>Get courses that are Writing Intensive</p>
+
+<p><code>courses.json?q=cle_attribute_id=WI</code></p>
+
+<hr>
+
+<p>Get courses that meet Civic Life or Historical Perspectives</p>
+
+<p><code>courses.xml?q=cle_attribute_id=HIS|CIV</code></p>
+
+<h3>
+<a id="instruction-mode" class="anchor" href="#instruction-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instruction Mode</h3>
+
+<p>You can search using any of these Instruction Mode abbreviations:</p>
+
+<ul>
+<li>P: In Person, Term Based</li>
+<li>ID: Independent/Directed Study</li>
+<li>CE: Online Distance Learning</li>
+<li>PA: Partially Online</li>
+<li>CO: Completely Online</li>
+<li>PR: Primarily Online</li>
+</ul>
+
+<p>Get courses that are Partially Online</p>
+
+<p><code>courses.json?q=instruction_mode_id=PA</code></p>
+
+<hr>
+
+<p>Get courses that are Partially Online or Primarily Online</p>
+
+<p><code>courses.xml?q=instruction_mode_id=PA|PR</code></p>
+
+<h3>
+<a id="combining-searches" class="anchor" href="#combining-searches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Combining Searches</h3>
+
+<p>Any of the searches can be combined. For example</p>
+
+<p><code>courses.json?q=cle_attribute_id=WI,instruction_mode_id=P,catalog_number&gt;=2000,catalog_number&lt;3000,subject_id=HIST</code></p>
+
+<p>Will return any courses that are:</p>
+
+<ul>
+<li>Writing Intensive</li>
+<li>Taught In Person</li>
+<li>With a catalog number between 2000 and 2999</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
