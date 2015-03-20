@@ -24,6 +24,10 @@ class SearchableCourse < SimpleDelegator
     @instruction_modes ||= (course.sections.collect { |s| s.instruction_mode.instruction_mode_id}).to_set
   end
 
+  def locations
+    @locations ||= (course.sections.collect { |s| s.location}).to_set
+  end
+
   def course
     __getobj__
   end
