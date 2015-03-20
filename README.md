@@ -21,8 +21,9 @@ Search for courses by using the query string. You can search by:
 
 - Subject
 - Catalog Number
-- Liberal Education 
+- Liberal Education
 - Instruction Mode
+- Location
 
 Searching works with both JSON and XML output.
 
@@ -113,6 +114,16 @@ Get courses that are Partially Online
 Get courses that are Partially Online or Primarily Online
 
 `courses.xml?q=instruction_mode_id=PA|PR`
+
+### Location
+
+Search for courses with at least one section in the location you specifiy
+
+`courses.xml?q=locations=TCWESTBANK`
+
+or
+
+`courses.json?q=locations=OFFCMPROCH`
 
 ### Combining Searches
 

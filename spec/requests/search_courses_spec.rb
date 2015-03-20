@@ -117,6 +117,20 @@ RSpec.describe "search courses" do
     end
   end
 
+  describe "by locations" do
+    it "returns only courses whose locations contain the requested location" do
+      get "/campuses/UMNTC/terms/1149/courses.json?q=locations=TCEASTBANK"
+      courses = JSON.parse(response.body)["courses"]
+
+      expect(courses).not_to be_empty
+
+      courses.each do |course|
+        locations = course["sections"].collect { |s| s["location"] }
+        expect(locations).to include("TCEASTBANK")
+      end
+    end
+  end
+
   describe "combining searches" do
     it "returns courses that match all criteria" do
       get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO,catalog_number>3000,catalog_number<4000,cle_attribute_id=GP,instruction_mode_id=P"
