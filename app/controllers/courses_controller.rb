@@ -24,12 +24,10 @@ class CoursesController < ApplicationController
   def create
     begin
       campus_attr = params[:course]["campus"].permit(:abbreviation)
-      campus = Campus.new(campus_attr)
-      campus.save
+      campus = Campus.find_or_create_by(campus_attr)
 
       term_attr = params[:course]["term"].permit(:strm)
-      term = Term.new(term_attr)
-      term.save
+      term = Term.find_or_create_by(term_attr)
 
       params[:course]["courses"].each do |course_data|
         course_attr = course_data.permit(:id, :course_id, :catalog_number, :description, :title, :sections)
