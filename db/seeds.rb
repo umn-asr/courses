@@ -86,7 +86,12 @@ j["courses"].each do |course_json|
 
     section_json["meeting_patterns"].each do |pattern_json|
       mp = section.meeting_patterns.create(pattern_json.slice("start_time","end_time","start_date","end_date"))
-      mp.location = Location.find_or_create_by(pattern_json["location"].slice("location_id","description"))
+
+      location_json = pattern_json["location"]
+      if location_json
+        Location.find_or_create_by(location_json.slice("location_id","description"))
+      end
+
       pattern_json["days"].each do |day|
         mp.days << Day.find_by_abbreviation(day["abbreviation"])
       end
