@@ -2,6 +2,7 @@ class Course < ::ActiveRecord::Base
   belongs_to :term
   belongs_to :campus
   belongs_to :subject
+  belongs_to :equivalency
   has_and_belongs_to_many :course_attributes
   has_many :sections
 
