@@ -89,7 +89,7 @@ j["courses"].each do |course_json|
 
       location_json = pattern_json["location"]
       if location_json
-        Location.find_or_create_by(location_json.slice("location_id","description"))
+        mp.location = Location.find_or_create_by(location_json.slice("location_id","description"))
       end
 
       pattern_json["days"].each do |day|
