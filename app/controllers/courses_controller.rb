@@ -46,6 +46,11 @@ class CoursesController < ApplicationController
           ret << CourseAttribute.find_or_create_by(attribute_id: attribute["attribute_id"], family: attribute["family"])
         end
 
+        equivalency_data = course_data["equivalency"]
+        if equivalency_data
+          course.equivalency = Equivalency.find_or_create_by(equivalency_id: equivalency_data["equivalency_id"])
+        end
+
         course.save
 
         course_data["sections"].each do |section_data|
