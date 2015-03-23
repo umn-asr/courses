@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318020754) do
+ActiveRecord::Schema.define(version: 20150323143938) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 20150318020754) do
 
   add_index "days_meeting_patterns", ["day_id"], name: "index_days_meeting_patterns_on_day_id"
   add_index "days_meeting_patterns", ["meeting_pattern_id"], name: "index_days_meeting_patterns_on_meeting_pattern_id"
+
+  create_table "equivalencies", force: :cascade do |t|
+    t.string "equivalency_id"
+  end
 
   create_table "grading_bases", force: :cascade do |t|
     t.string "grading_basis_id"
