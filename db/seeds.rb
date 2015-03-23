@@ -56,7 +56,7 @@ j["courses"].each do |course_json|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  subject = Subject.create(course_json["subject"].slice("subject_id", "description"))
+  subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description"))
   course_attr[:subject_id] = subject.id
 
   equivalency_json = course_json["equivalency"]
