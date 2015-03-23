@@ -75,8 +75,10 @@ class CoursesController < ApplicationController
             mp_attr = pattern_data.permit(:start_time, :end_time, :start_date, :end_date)
             mp = section.meeting_patterns.find_or_create_by(mp_attr)
 
-            location_attr = pattern_data[:location].permit(:location_id, :description)
-            mp.location = Location.find_or_create_by(location_attr)
+            location_data = pattern_data[:location]
+            if location_data
+              mp.location = Location.find_or_create_by(location_data.permit(:location_id, :description))
+            end
 
             pattern_data[:days].each do |day|
               day_attr = day.permit(:abbreviation, :name)
