@@ -59,6 +59,12 @@ j["courses"].each do |course_json|
   subject = Subject.create(course_json["subject"].slice("subject_id", "description"))
   course_attr[:subject_id] = subject.id
 
+  equivalency_json = course_json["equivalency"]
+  if equivalency_json
+    equivalency = Equivalency.find_or_create_by(equivalency_json.slice("equivalency_id"))
+    course_attr[:equivalency_id] = equivalency.id
+  end
+
   @course = Course.create(course_attr)
 
   attributes = course_json["cle_attributes"].map { |a| CourseAttribute.where(attribute_id: a["attribute_id"]).first }
