@@ -5,7 +5,7 @@ child :subject => :subject do
   attributes :type, :subject_id, :id, :description
 end
 
-child :equivalency => :equivalency do
+child :equivalency, if: ->(course) { course.equivalency.present? } do
   attributes :type, :equivalency_id
 end
 
