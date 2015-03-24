@@ -56,8 +56,14 @@ j["courses"].each do |course_json|
   term = Term.where(strm: j["term"]["strm"]).first
   course_attr[:term_id] = term.id
 
-  subject = Subject.create(course_json["subject"].slice("subject_id", "description"))
+  subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description"))
   course_attr[:subject_id] = subject.id
+
+  equivalency_json = course_json["equivalency"]
+  if equivalency_json
+    equivalency = Equivalency.find_or_create_by(equivalency_json.slice("equivalency_id"))
+    course_attr[:equivalency_id] = equivalency.id
+  end
 
   @course = Course.create(course_attr)
 
@@ -80,7 +86,12 @@ j["courses"].each do |course_json|
 
     section_json["meeting_patterns"].each do |pattern_json|
       mp = section.meeting_patterns.create(pattern_json.slice("start_time","end_time","start_date","end_date"))
-      mp.location = Location.find_or_create_by(pattern_json["location"].slice("location_id","description"))
+
+      location_json = pattern_json["location"]
+      if location_json
+        mp.location = Location.find_or_create_by(location_json.slice("location_id","description"))
+      end
+
       pattern_json["days"].each do |day|
         mp.days << Day.find_by_abbreviation(day["abbreviation"])
       end
