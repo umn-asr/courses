@@ -12,15 +12,29 @@ RSpec.describe CourseAttribute do
   describe "valid?" do
     let(:valid_attributes) { {attribute_id: "PHYS", family: "CLE"} }
 
-    it "is valid if the attribute_id is unique" do
+    it "is valid if the attribute_id and family are unique" do
       expect(described_class.new(valid_attributes).valid?).to be_truthy
     end
 
-    it "is not valid if the attribute_id is not unique" do
+    it "is valid if the attribute_id is not unique but the family is" do
       described_class.new(valid_attributes).save
 
-      duplicate = described_class.new({attribute_id: valid_attributes[:attribute_id], family: "#{rand(3)}"})
-      expect(duplicate.valid?).to be_falsey
+      new_instance = described_class.new({attribute_id: valid_attributes[:attribute_id], family: "#{rand(3)}"})
+      expect(new_instance.valid?).to be_truthy
+    end
+
+    it "is valid if the attribute_id is unique but the family is not" do
+      described_class.new(valid_attributes).save
+
+      new_instance = described_class.new({attribute_id: "#{rand(3)}", family: valid_attributes[:family]})
+      expect(new_instance.valid?).to be_truthy
+    end
+
+    it "is not valid if the attribute_id and family are both duplicates" do
+      described_class.new(valid_attributes).save
+
+      new_instance = described_class.new(valid_attributes)
+      expect(new_instance.valid?).to be_falsey
     end
 
     it "is not valid if the attribute_id or family are blank" do
