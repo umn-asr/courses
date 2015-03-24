@@ -30,10 +30,6 @@ end
   Term.create({strm: strm})
 end
 
-%w(AH BIOL HIS LITR MATH PHYS SOCS GP TS CIV DSJ ENV WI).each do |attribute_id|
-  CourseAttribute.create({attribute_id: attribute_id, family: "CLE"})
-end
-
 {"m" => "Monday", "t" => "Tuesday", "w" => "Wednesday", "th" => "Thursday", "f" => "Friday", "sa" => "Saturday", "su" => "Sunday"}.each do |abbreviation, name|
   Day.create(abbreviation: abbreviation, name: name)
 end
@@ -67,7 +63,7 @@ j["courses"].each do |course_json|
 
   @course = Course.create(course_attr)
 
-  attributes = course_json["cle_attributes"].map { |a| CourseAttribute.where(attribute_id: a["attribute_id"]).first }
+  attributes = course_json["cle_attributes"].map { |a| CourseAttribute.find_or_create_by(attribute_id: a["attribute_id"], family: a["family"]) }
   @course.course_attributes = attributes
 
   course_json["sections"].map do |section_json|
