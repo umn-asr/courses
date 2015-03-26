@@ -1,9 +1,11 @@
 class CoursesController < ApplicationController
   def index
+    expires_in(8.hours, :public => true)
+
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     term = Term.where(strm: params[:term_id]).first
 
-    courses = Course.where(campus_id: campus.id, term_id: term.id)
+    courses = Course.for_campus_and_term(campus, term)
 
     searchable_courses = SearchableCourses.new(courses)
 
