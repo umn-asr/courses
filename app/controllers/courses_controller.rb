@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
   def index
+    expires_in(8.hours, :public => true)
+
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     term = Term.where(strm: params[:term_id]).first
 
