@@ -5,9 +5,7 @@ class CoursesController < ApplicationController
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     term = Term.where(strm: params[:term_id]).first
 
-    courses = Course.for_campus_and_term(campus, term)
-
-    searchable_courses = SearchableCourses.new(courses)
+    searchable_courses = SearchableCourses.find(campus, term)
 
     query_string_search = params[:q]
     returned_courses = QueryStringSearch.new(searchable_courses, query_string_search).results
