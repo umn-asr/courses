@@ -1,4 +1,5 @@
 object @course
+cache @course
 attributes :type, :course_id, :id, :catalog_number, :description, :title
 
 child :subject => :subject do
