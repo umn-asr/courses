@@ -18,8 +18,8 @@ class Course < ::ActiveRecord::Base
   end
 
   def self.for_campus_and_term(campus, term)
-    Rails.cache.fetch("#{campus.id}_#{term.id}", expires_in: 12.hours) do
+    #Rails.cache.fetch("#{campus.id}_#{term.id}", expires_in: 12.hours) do
       self.where(campus_id: campus.id, term_id: term.id)
-    end
+    #end
   end
 end

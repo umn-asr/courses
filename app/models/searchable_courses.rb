@@ -9,18 +9,18 @@ class SearchableCourses
   end
 
   def self.find(campus, term)
-    Rails.cache.fetch("#{campus.id}_#{term.id}/searchable_courses", expires_in: 12.hours) do
+    #Rails.cache.fetch("#{campus.id}_#{term.id}/searchable_courses", expires_in: 12.hours) do
       self.new(Course.for_campus_and_term(campus, term))
-    end
+    #end
   end
 end
 
 
 class SearchableCourse < SimpleDelegator
   def initialize(course)
-    Rails.cache.fetch("#{course.id}/course", expires_in: 12.hours) do
+    #Rails.cache.fetch("#{course.id}/course", expires_in: 12.hours) do
       super(course)
-    end
+    #end
   end
 
   def subject_id
