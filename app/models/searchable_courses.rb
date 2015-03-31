@@ -23,6 +23,10 @@ class SearchableCourse < SimpleDelegator
     #end
   end
 
+  def cache_key
+    course.id
+  end
+
   def subject_id
     @subject ||= course.subject.subject_id
   end
