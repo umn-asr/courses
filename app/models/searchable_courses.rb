@@ -26,9 +26,7 @@ end
 
 class SearchableCourse < SimpleDelegator
   def initialize(course)
-    #Rails.cache.fetch("#{course.id}/course", expires_in: 12.hours) do
-      super(course)
-    #end
+    super(course)
   end
 
   def subject_id

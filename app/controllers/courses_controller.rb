@@ -2,36 +2,23 @@ class CoursesController < ApplicationController
   def index
     expires_in(8.hours, :public => true)
 
-    Rails.logger.tagged("Ian") { Rails.logger.debug "######################New Request" }
-
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
     term = Term.where(strm: params[:term_id]).first
 
-    x = Time.now.to_i
-    Rails.logger.tagged("Ian") { Rails.logger.debug "Start course find" }
-    #courses = Course.for_campus_and_term(campus, term)
-    Rails.logger.tagged("Ian") { Rails.logger.debug "End course find: #{Time.now.to_i - x}" }
-
-    Rails.logger.tagged("Ian") { Rails.logger.debug "Start searchable course " }
     searchable_courses = SearchableCourses.find(campus, term)
-    Rails.logger.tagged("Ian") { Rails.logger.debug "End searchable course: #{Time.now.to_i - x} " }
 
-    Rails.logger.tagged("Ian") { Rails.logger.debug "Start filter course " }
     query_string_search = params[:q]
     returned_courses = QueryStringSearch.new(searchable_courses, query_string_search).results
-    Rails.logger.tagged("Ian") { Rails.logger.debug "End filter course: #{Time.now.to_i - x} " }
 
     @courses = CoursesPresenter.new
     @courses.campus = campus
     @courses.term = term
     @courses.courses = returned_courses
 
-    Rails.logger.tagged("Ian") { Rails.logger.debug "Start render course " }
     respond_to do |format|
       format.xml
       format.json
     end
-    Rails.logger.tagged("Ian") { Rails.logger.debug "Finish render course: #{Time.now.to_i - x} " }
   end
 
   def create
