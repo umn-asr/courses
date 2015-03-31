@@ -4,16 +4,16 @@ cache @sections
 attributes :type, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes
 
 child :instruction_mode => :instruction_mode do
-  attributes :type, :instruction_mode_id, :id, :description
+  extends "instruction_modes/show"
 end
 
 child :grading_basis => :grading_basis do
-  attributes :type, :grading_basis_id, :id, :description
+  extends "instruction_modes/show"
 end
 
 child :instructors => :instructors do
   collection attributes, :root => false, :object_root => false
-  attributes :type, :id, :name, :email, :role
+  extends "instructors/show"
 end
 
 child :meeting_patterns => :meeting_patterns do
