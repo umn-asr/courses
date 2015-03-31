@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
   def index
+    expires_in(8.hours, :public => true)
+
     Rails.logger.tagged("Ian") { Rails.logger.debug "######################New Request" }
 
     campus = Campus.where(abbreviation: params[:campus_id].upcase).first
