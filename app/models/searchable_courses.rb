@@ -9,9 +9,10 @@ class SearchableCourses
   end
 
   def self.find(campus, term)
-    #Rails.cache.fetch("#{campus.id}_#{term.id}/searchable_courses", expires_in: 12.hours) do
-      self.new(Course.for_campus_and_term(campus, term))
-    #end
+    courses = Rails.cache.fetch("#{campus.id}_#{term.id}/all_courses", expires_in: 12.hours) do
+      Course.for_campus_and_term(campus, term).all
+    end
+    self.new(courses)
   end
 end
 

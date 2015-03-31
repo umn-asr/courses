@@ -9,11 +9,11 @@ class CoursesController < ApplicationController
 
     x = Time.now.to_i
     Rails.logger.tagged("Ian") { Rails.logger.debug "Start course find" }
-    courses = Course.for_campus_and_term(campus, term)
+    #courses = Course.for_campus_and_term(campus, term)
     Rails.logger.tagged("Ian") { Rails.logger.debug "End course find: #{Time.now.to_i - x}" }
 
     Rails.logger.tagged("Ian") { Rails.logger.debug "Start searchable course " }
-    searchable_courses = SearchableCourses.new(courses)
+    searchable_courses = SearchableCourses.find(campus, term)
     Rails.logger.tagged("Ian") { Rails.logger.debug "End searchable course: #{Time.now.to_i - x} " }
 
     Rails.logger.tagged("Ian") { Rails.logger.debug "Start filter course " }
