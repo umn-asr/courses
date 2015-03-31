@@ -12,7 +12,7 @@ class SearchableCourses
     cached = Rails.cache.fetch("#{campus.id}_#{term.id}/all_courses")
 
     unless cached
-      cached = Course.where(campus_id: campus.id, term_id: term.id).all.load
+      cached = Course.includes(:subject, :course_attributes, :sections => [:instruction_mode]).where(campus_id: campus.id, term_id: term.id).all.load
       Rails.cache.write(
         "#{campus.id}_#{term.id}/all_courses",
         cached
