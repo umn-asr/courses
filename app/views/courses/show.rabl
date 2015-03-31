@@ -1,4 +1,5 @@
 object @course
+cache @course
 
 attributes :type, :course_id, :id, :catalog_number, :description, :title
 
@@ -7,12 +8,12 @@ child :subject => :subject do
 end
 
 child :equivalency, if: ->(course) { course.equivalency.present? } do
-  attributes :type, :equivalency_id
+  extends "equivalencies/show"
 end
 
 child :cle_attributes => :cle_attributes do
   collection attributes, :root => false, :object_root => false
-  attributes :type, :attribute_id, :id, :family
+  extends "attributes/show"
 end
 
 child :sections => :sections do
