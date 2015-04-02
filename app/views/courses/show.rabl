@@ -16,7 +16,7 @@ end
 
 child :sections => :sections do
   collection attributes, :root => false, :object_root => false
-  attributes :type, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes
+  attributes :type, :id, :class_number, :number, :component, :location, :credits_minimum, :credits_maximum, :notes
 
   child :instruction_mode => :instruction_mode do
     attributes :type, :instruction_mode_id, :id, :description
