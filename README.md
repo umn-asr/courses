@@ -1,19 +1,25 @@
 # courses.umn.edu
 
+A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.
+
+Note this is still under active development. The links below will work, but our demo site only contains data for the Fall, 2014 term. More terms are coming later.
+
 ## Getting Courses
+
+You probably want to retrieve courses using cURL/Wget/etc. The files can be quite large and browsers can get fussy about loading a 50 meg xml file.
 
 You must include a Campus and Term. The format is:
 
-`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
 
 or, if you want XML:
 
-`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
 
 Some examples:
 
-- https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.json
-- https://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
+- http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json
+- http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
 
 ## Searching
 
@@ -93,10 +99,23 @@ Get courses that meet Civic Life or Historical Perspectives
 
 `courses.xml?q=cle_attribute_id=HIS|CIV`
 
+---
+
+Get courses that have any CLE attribute
+
+`courses.xml?q=cle_attribute_id=all`
+
+Or that have no CLE attribute
+
+`courses.xml?q=cle_attribute_id=none`
+
+---
+
+**Note**: Liberal Education data is currently only correct for UMNTC. We know about this bug and will be fixing it soon.
+
 ### Instruction Mode
 
 You can search using any of these Instruction Mode abbreviations:
-
 
 - P: In Person, Term Based
 - ID: Independent/Directed Study
@@ -136,3 +155,4 @@ Will return any courses that are:
 - Writing Intensive
 - Taught In Person
 - With a catalog number between 2000 and 2999
+- Have the subject HIST
