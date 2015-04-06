@@ -35,24 +35,26 @@
 
 <p>A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.</p>
 
-<p><em>Note</em> this is still under active development. The links below will work, but our demo site only contains 2 courses' worth of data. More campuses, terms and courses coming by March 25th.</p>
+<p>Note this is still under active development. The links below will work, but our demo site only contains data for the Fall, 2014 term. More terms are coming later.</p>
 
 <h2>
 <a id="getting-courses" class="anchor" href="#getting-courses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Courses</h2>
 
+<p>You probably want to retrieve courses using cURL/Wget/etc. The files can be quite large and browsers can get fussy about loading a 50 meg xml file.</p>
+
 <p>You must include a Campus and Term. The format is:</p>
 
-<p><code>https://courses-staging.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json</code></p>
+<p><code>http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json</code></p>
 
 <p>or, if you want XML:</p>
 
-<p><code>https://courses-staging.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml</code></p>
+<p><code>http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml</code></p>
 
 <p>Some examples:</p>
 
 <ul>
-<li><a href="https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.json">https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.json</a></li>
-<li><a href="https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.xml">https://courses-staging.umn.edu/campuses/umntc/terms/1149/courses.xml</a></li>
+<li><a href="http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json">http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json</a></li>
+<li><a href="http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml">http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml</a></li>
 </ul>
 
 <h2>
@@ -63,7 +65,7 @@
 <ul>
 <li>Subject</li>
 <li>Catalog Number</li>
-<li>Liberal Education </li>
+<li>Liberal Education</li>
 <li>Instruction Mode</li>
 <li>Location</li>
 </ul>
@@ -139,6 +141,20 @@
 
 <p><code>courses.xml?q=cle_attribute_id=HIS|CIV</code></p>
 
+<hr>
+
+<p>Get courses that have any CLE attribute</p>
+
+<p><code>courses.xml?q=cle_attribute_id=all</code></p>
+
+<p>Or that have no CLE attribute</p>
+
+<p><code>courses.xml?q=cle_attribute_id=none</code></p>
+
+<hr>
+
+<p><strong>Note</strong>: Liberal Education data is currently only correct for UMNTC. We know about this bug and will be fixing it soon.</p>
+
 <h3>
 <a id="instruction-mode" class="anchor" href="#instruction-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instruction Mode</h3>
 
@@ -174,8 +190,6 @@
 
 <p><code>courses.json?q=locations=OFFCMPROCH</code></p>
 
-<hr>
-
 <h3>
 <a id="combining-searches" class="anchor" href="#combining-searches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Combining Searches</h3>
 
@@ -189,6 +203,7 @@
 <li>Writing Intensive</li>
 <li>Taught In Person</li>
 <li>With a catalog number between 2000 and 2999</li>
+<li>Have the subject HIST</li>
 </ul>
       </section>
       <footer>
