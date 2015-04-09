@@ -14,18 +14,29 @@ RSpec.describe Course do
 
                       subject.courses
                   }
+    let(:other_campus) { Campus.create(abbreviation: "UMNOTHER") }
+    let(:other_term)   { Term.create(strm: "3359" ) }
+
+    it "returns a collection" do
+      expect(Course.for_campus_and_term(campus, term)).to respond_to(:each)
+    end
 
     it "returns courses that match the supplied campus and term" do
+      other_subject = Subject.create(subject_id: "TEST", description: "different campus term", campus_id: other_campus.id, term_id: other_term.id)
+      other_course = other_subject.courses.create(course_id: rand(1000..9999).to_s)
       expect(Course.for_campus_and_term(campus, term)).to eq(courses)
+      expect(Course.for_campus_and_term(campus, term)).to_not include(other_course)
     end
-    context "when there are no matches"
+    it "returns an empty collection when there are no matches" do
+      expect(Course.for_campus_and_term(other_campus, other_term)).to be_empty
+    end
+    it "does not return the course when the campus matches but the term does not" do
+      expect(Course.for_campus_and_term(campus, other_term)).to be_empty
+    end
 
-      it "returns an empty collection"
-    context "when the campus matches but the term does not"
-      it "does not return the course"
-    context "when the term matches but the campus does not"
-      it "does not return the course"
-
+    it "does not return the course when the term matches but the campus does not" do
+      expect(Course.for_campus_and_term(other_campus, term)).to be_empty
+    end
   end
 
   describe "type" do
