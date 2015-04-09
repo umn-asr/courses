@@ -1,5 +1,7 @@
 class Subject < ::ActiveRecord::Base
-  has_many :courses
+  belongs_to :term
+  belongs_to :campus
+  has_many :courses, dependent: :destroy
 
   validates_presence_of :subject_id, :description
   validates_uniqueness_of :subject_id

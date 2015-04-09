@@ -1,13 +1,13 @@
 class Course < ::ActiveRecord::Base
-  belongs_to :term
-  belongs_to :campus
   belongs_to :subject
   belongs_to :equivalency
   has_and_belongs_to_many :course_attributes
   has_many :sections
 
-  validates_presence_of :term_id, :campus_id, :course_id
-  validates_uniqueness_of :course_id, scope: [:term_id, :campus_id]
+  delegate :term, :campus, to: :subject
+
+  validates_presence_of :subject_id, :course_id
+  validates_uniqueness_of :course_id, scope: [:subject_id]
 
   def type
     "course"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323151217) do
+ActiveRecord::Schema.define(version: 20150408205701) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 20150323151217) do
   add_index "course_attributes_courses", ["course_id"], name: "index_course_attributes_courses_on_course_id"
 
   create_table "courses", force: :cascade do |t|
-    t.integer "campus_id"
-    t.integer "term_id"
     t.string  "course_id"
     t.string  "title"
     t.string  "description"
@@ -50,10 +48,8 @@ ActiveRecord::Schema.define(version: 20150323151217) do
     t.integer "equivalency_id"
   end
 
-  add_index "courses", ["campus_id"], name: "index_courses_on_campus_id"
   add_index "courses", ["equivalency_id"], name: "index_courses_on_equivalency_id"
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
-  add_index "courses", ["term_id"], name: "index_courses_on_term_id"
 
   create_table "days", force: :cascade do |t|
     t.string "name"
@@ -131,9 +127,14 @@ ActiveRecord::Schema.define(version: 20150323151217) do
   add_index "sections", ["course_id"], name: "index_sections_on_course_id"
 
   create_table "subjects", force: :cascade do |t|
-    t.string "subject_id"
-    t.string "description"
+    t.string  "subject_id"
+    t.string  "description"
+    t.integer "campus_id"
+    t.integer "term_id"
   end
+
+  add_index "subjects", ["campus_id"], name: "index_subjects_on_campus_id"
+  add_index "subjects", ["term_id"], name: "index_subjects_on_term_id"
 
   create_table "terms", force: :cascade do |t|
     t.string "strm"
