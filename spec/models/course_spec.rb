@@ -6,11 +6,13 @@ RSpec.describe Course do
   describe ".for_campus_and_term" do
     let(:campus)  { Campus.create(abbreviation: "UMNTEST") }
     let(:term)    { Term.create(strm: "2259") }
-    let(:subject) { campus.subjects.where(term_id: term.id).create(subject_id: "TEST", description: "for testing") }
+    let(:subject) { Subject.create(subject_id: "TEST", description: "for testing", campus_id: campus.id, term_id: term.id) }
     let(:courses) {
                       3.times do
                         subject.courses.create(course_id: rand(1000..9999).to_s)
                       end
+
+                      subject.courses
                   }
 
     it "returns courses that match the supplied campus and term" do
