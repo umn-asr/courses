@@ -1,7 +1,7 @@
 class Term < ::ActiveRecord::Base
 
   has_many :subjects, dependent: :destroy
-  has_many :courses, through: :subject, dependent: :destroy
+  has_many :courses, through: :subjects, dependent: :destroy
 
   validates_presence_of :strm
   validates_uniqueness_of :strm
