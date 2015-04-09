@@ -10,21 +10,21 @@ RSpec.describe Course do
   end
 
   describe "valid?" do
-    it "is valid if the campus_id, term_id, and course_id are unique" do
-      expect(described_class.new(campus_id: "UMNRC", term_id: "1159", course_id: "002066").valid?).to be_truthy
+    it "is valid if the subject_id and course_id are unique" do
+      expect(described_class.new(subject_id: rand(1..999_999), course_id: "002066").valid?).to be_truthy
     end
 
-    it "is not valid if the combination of campus_id, term_id, and course_id are not unique" do
-      described_class.new(campus_id: "UMNRC", term_id: "1159", course_id: "002066").save
+    it "is not valid if the combination of subject_id and course_id are not unique" do
+      duplicate_subject_id = rand(1..999_999)
+      described_class.new(subject_id: duplicate_subject_id, course_id: "002066").save
 
-      duplicate = described_class.new(campus_id: "UMNRC", term_id: "1159", course_id: "002066")
+      duplicate = described_class.new(subject_id: duplicate_subject_id, course_id: "002066")
       expect(duplicate.valid?).to be_falsey
     end
 
-    it "is not valid if the campus_id, term_id, or course_id are blank" do
-      expect(described_class.new(campus_id: "", term_id: "1159", course_id: "002066").valid?).to be_falsey
-      expect(described_class.new(campus_id: "UMNRC", term_id: "", course_id: "002066").valid?).to be_falsey
-      expect(described_class.new(campus_id: "UMNRC", term_id: "1159", course_id: "").valid?).to be_falsey
+    it "is not valid if the subject_id or course_id is blank" do
+      expect(described_class.new(subject_id: "", course_id: "002066").valid?).to be_falsey
+      expect(described_class.new(subject_id: rand(1..999_999), course_id: "").valid?).to be_falsey
     end
   end
 end
