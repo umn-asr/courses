@@ -16,7 +16,7 @@ RSpec.describe Course do
                   }
 
     it "returns courses that match the supplied campus and term" do
-      # expect(Course.for_campus_and_term(campus, term)).to eq(courses)
+      expect(Course.for_campus_and_term(campus, term)).to eq(courses)
     end
     context "when there are no matches"
 

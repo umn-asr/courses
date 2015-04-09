@@ -9,6 +9,8 @@ class Course < ::ActiveRecord::Base
   validates_presence_of :subject_id, :course_id
   validates_uniqueness_of :course_id, scope: [:subject_id]
 
+  scope :for_campus_and_term, ->(campus, term) { joins(:subject).where(subjects: { campus_id: campus.id, term_id: term.id }) }
+
   def type
     "course"
   end
