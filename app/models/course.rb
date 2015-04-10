@@ -15,8 +15,7 @@ class Course < ::ActiveRecord::Base
     "course"
   end
 
-  def cle_attributes
-    course_attributes.where(family: "CLE")
+  def self.for_campus_and_term(campus, term)
+    self.where(campus_id: campus.id, term_id: term.id)
   end
-
 end
