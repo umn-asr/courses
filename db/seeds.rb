@@ -47,12 +47,10 @@ j["courses"].each do |course_json|
   course_attr = course_json.slice("title", "description", "course_id", "catalog_number")
 
   campus = Campus.where(abbreviation: j["campus"]["abbreviation"]).first
-  course_attr[:campus_id] = campus.id
 
   term = Term.where(strm: j["term"]["strm"]).first
-  course_attr[:term_id] = term.id
 
-  subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description"))
+  subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description").merge({campus_id: campus.id, term_id: term.id}))
   course_attr[:subject_id] = subject.id
 
   equivalency_json = course_json["equivalency"]
