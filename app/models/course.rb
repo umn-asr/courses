@@ -14,8 +14,4 @@ class Course < ::ActiveRecord::Base
   def type
     "course"
   end
-
-  def self.for_campus_and_term(campus, term)
-    self.where(campus_id: campus.id, term_id: term.id)
-  end
 end
