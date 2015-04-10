@@ -7,10 +7,28 @@ class SearchableCourses
   def initialize(all_courses)
     self.all_courses = all_courses.map {|c| SearchableCourse.new(c) }
   end
+
+  def self.find(campus, term)
+    cached = Rails.cache.fetch("#{campus.id}_#{term.id}/all_courses")
+
+    unless cached
+      cached = Course.includes(:subject, :course_attributes, :sections => [:instruction_mode]).where(campus_id: campus.id, term_id: term.id).all.load
+      Rails.cache.write(
+        "#{campus.id}_#{term.id}/all_courses",
+        cached
+      )
+    end
+
+    self.new(cached)
+  end
 end
 
 
 class SearchableCourse < SimpleDelegator
+  def initialize(course)
+    super(course)
+  end
+
   def subject_id
     @subject ||= course.subject.subject_id
   end
