@@ -18,4 +18,5 @@ class Course < ::ActiveRecord::Base
   def cle_attributes
     course_attributes.where(family: "CLE")
   end
+
 end

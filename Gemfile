@@ -10,6 +10,7 @@ end
 gem 'rabl'
 gem 'oj'
 gem 'query_string_search'
+gem 'rack-cache'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
