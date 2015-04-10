@@ -11,7 +11,7 @@ child :equivalency, if: ->(course) { course.equivalency.present? } do
   extends "equivalencies/show"
 end
 
-child :cle_attributes => :cle_attributes do
+child :course_attributes => :course_attributes do
   collection attributes, :root => false, :object_root => false
   extends "attributes/show"
 end
