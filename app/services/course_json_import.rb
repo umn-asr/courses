@@ -1,4 +1,4 @@
-class JsonImport
+class CourseJsonImport
   def initialize(json)
     self.json = json
   end

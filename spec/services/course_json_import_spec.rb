@@ -1,7 +1,7 @@
 require "rails_helper"
 require "json"
 
-RSpec.describe JsonImport, :type => :request do
+RSpec.describe CourseJsonImport, :type => :request do
   let (:course_json) { JSON.parse(File.read('test/fixtures/courses_example.json')) }
 
   subject { described_class.new(course_json) }
