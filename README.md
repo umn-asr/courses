@@ -87,31 +87,36 @@ Find courses with a catalog number in a range of values:
 
 Returns all courses with a catalog_number greater than or equal to 1000 and less than 5000
 
-### Liberal Education
+### Liberal Education / General Education
 
-Get courses that are Writing Intensive
+Different campuses have different ways of identifying courses that meet General Education or Liberal Education criteria. You can search for these by using the `course_attribute_family`:
 
-`courses.json?q=cle_attribute_id=WI`
+- UMNTC's Liberal Education: `courses.json?q=course_attribute_family=CLE`
+- UMNDL's Liberal Education: `courses.json?q=course_attribute_family=DLE`
+- UMNRO's Liberal Education: `courses.json?q=course_attribute_family=GE`
+- UMNMO's General Education: `courses.json?q=course_attribute_family=GER`
 
----
+And if you're looking for a courses with a specific attribute, you can search with `course_attribute_id`
 
-Get courses that meet Civic Life or Historical Perspectives
+Get courses that satisfy UMNTC's Writing Intensive
 
-`courses.xml?q=cle_attribute_id=HIS|CIV`
+`courses.json?q=course_attribute_id=WI`
 
----
+Get courses that satisfy UMNRO's Mathematical Thinking
 
-Get courses that have any CLE attribute
+`courses.json?q=course_attribute_id=MATH%20THINK`
 
-`courses.xml?q=cle_attribute_id=all`
+Get courses that meet either UMNDL's Fine Arts or Humanities
 
-Or that have no CLE attribute
+`courses.xml?q=course_attribute_id=FINE%20ARTS|HUMANITIES
 
-`courses.xml?q=cle_attribute_id=none`
+Get courses that have any attribute
 
----
+`courses.xml?q=course_attribute_id=all`
 
-**Note**: Liberal Education data is currently only correct for UMNTC. We know about this bug and will be fixing it soon.
+Or that have no attirbute
+
+`courses.xml?q=course_attribute_id=none`
 
 ### Instruction Mode
 
@@ -148,7 +153,7 @@ or
 
 Any of the searches can be combined. For example
 
-`courses.json?q=cle_attribute_id=WI,instruction_mode_id=P,catalog_number>=2000,catalog_number<3000,subject_id=HIST`
+`courses.json?q=course_attribute_id=WI,instruction_mode_id=P,catalog_number>=2000,catalog_number<3000,subject_id=HIST`
 
 Will return any courses that are:
 

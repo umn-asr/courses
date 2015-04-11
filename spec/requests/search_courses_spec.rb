@@ -77,27 +77,41 @@ RSpec.describe "search courses" do
     end
   end
 
-  describe "by cle attribute id" do
-    it "returns only courses that match the cle attribute" do
-      get "/campuses/UMNTC/terms/1149/courses.json?q=cle_attribute_id=WI"
+  describe "by course attribute family" do
+    it "returns only courses that match the course attribute" do
+      get "/campuses/UMNTC/terms/1149/courses.json?q=course_attribute_family=CLE"
       courses = JSON.parse(response.body)["courses"]
 
       expect(courses).not_to be_empty
 
       courses.each do |course|
-        matching_attributes = course["cle_attributes"].select { |a| a["attribute_id"] == "WI" }
+        matching_attributes = course["course_attributes"].select { |a| a["family"] == "CLE" }
+        expect(matching_attributes).not_to be_empty
+      end
+    end
+  end
+
+  describe "by course attribute id" do
+    it "returns only courses that match the course attribute" do
+      get "/campuses/UMNTC/terms/1149/courses.json?q=course_attribute_id=WI"
+      courses = JSON.parse(response.body)["courses"]
+
+      expect(courses).not_to be_empty
+
+      courses.each do |course|
+        matching_attributes = course["course_attributes"].select { |a| a["attribute_id"] == "WI" }
         expect(matching_attributes).not_to be_empty
       end
     end
 
-    it "returns only courses that match the cle attribute" do
-      get "/campuses/UMNTC/terms/1149/courses.json?q=cle_attribute_id=PHYS%7CHIS"
+    it "returns only courses that match the course attribute" do
+      get "/campuses/UMNTC/terms/1149/courses.json?q=course_attribute_id=PHYS%7CHIS"
       courses = JSON.parse(response.body)["courses"]
 
       expect(courses).not_to be_empty
 
       courses.each do |course|
-        matching_attributes = course["cle_attributes"].select { |a| %w(PHYS HIS).include?(a["attribute_id"]) }
+        matching_attributes = course["course_attributes"].select { |a| %w(PHYS HIS).include?(a["attribute_id"]) }
         expect(matching_attributes).not_to be_empty
       end
     end
@@ -133,19 +147,19 @@ RSpec.describe "search courses" do
 
   describe "combining searches" do
     it "returns courses that match all criteria" do
-      get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO,catalog_number>3000,catalog_number<4000,cle_attribute_id=GP,instruction_mode_id=P"
+      get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO,catalog_number>3000,catalog_number<4000,course_attribute_id=GP,instruction_mode_id=P"
       courses = JSON.parse(response.body)["courses"]
 
       expect(courses).not_to be_empty
 
       course = courses.sample
-      cle_attributes = course["cle_attributes"].collect { |a| a["attribute_id"] }
+      course_attributes = course["course_attributes"].collect { |a| a["attribute_id"] }
       instruction_modes = course["sections"].collect { |s| s["instruction_mode"]["instruction_mode_id"] }
 
       expect(course["subject"]["subject_id"]).to eq("AFRO")
       expect(course["catalog_number"].to_i).to be > 3000
       expect(course["catalog_number"].to_i).to be < 4000
-      expect(cle_attributes).to include("GP")
+      expect(course_attributes).to include("GP")
       expect(instruction_modes).to include("P")
     end
   end

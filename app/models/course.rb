@@ -14,9 +14,4 @@ class Course < ::ActiveRecord::Base
   def type
     "course"
   end
-
-  def cle_attributes
-    course_attributes.where(family: "CLE")
-  end
-
 end
