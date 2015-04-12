@@ -12,16 +12,12 @@ RSpec.describe CourseJsonImport, :type => :request do
         Campus.create({abbreviation: abbreviation})
       end
 
-      %w(1149 1155 1159 1163).each do |strm|
+      %w(1149 1153 1155 1159 1163).each do |strm|
         Term.create({strm: strm})
       end
 
       {"m" => "Monday", "t" => "Tuesday", "w" => "Wednesday", "th" => "Thursday", "f" => "Friday", "sa" => "Saturday", "su" => "Sunday"}.each do |abbreviation, name|
         Day.create(abbreviation: abbreviation, name: name)
-      end
-
-      %w(1149 1155 1159 1163).each do |strm|
-        Term.create({strm: strm})
       end
     end
 
