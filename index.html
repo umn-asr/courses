@@ -54,7 +54,7 @@
 
 <ul>
 <li><a href="http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json">http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json</a></li>
-<li><a href="http://courses-staging.umn.edu/campuses/umnro/terms/1149/courses.xml">http://courses-staging.umn.edu/campuses/umnro/terms/1149/courses.xml</a></li>
+<li><a href="http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml">http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml</a></li>
 </ul>
 
 <h2>
@@ -129,31 +129,42 @@
 <p>Returns all courses with a catalog_number greater than or equal to 1000 and less than 5000</p>
 
 <h3>
-<a id="liberal-education" class="anchor" href="#liberal-education" aria-hidden="true"><span class="octicon octicon-link"></span></a>Liberal Education</h3>
+<a id="liberal-education--general-education" class="anchor" href="#liberal-education--general-education" aria-hidden="true"><span class="octicon octicon-link"></span></a>Liberal Education / General Education</h3>
 
-<p>Get courses that are Writing Intensive</p>
+<p>Different campuses have different ways of identifying courses that meet General Education or Liberal Education criteria. You can search for these by using the <code>course_attribute_family</code>:</p>
 
-<p><code>courses.json?q=cle_attribute_id=WI</code></p>
+<ul>
+<li>UMNTC's Liberal Education: <code>courses.json?q=course_attribute_family=CLE</code>
+</li>
+<li>UMNDL's Liberal Education: <code>courses.json?q=course_attribute_family=DLE</code>
+</li>
+<li>UMNRO's Liberal Education: <code>courses.json?q=course_attribute_family=GE</code>
+</li>
+<li>UMNMO's General Education: <code>courses.json?q=course_attribute_family=GER</code>
+</li>
+</ul>
 
-<hr>
+<p>And if you're looking for a courses with a specific attribute, you can search with <code>course_attribute_id</code></p>
 
-<p>Get courses that meet Civic Life or Historical Perspectives</p>
+<p>Get courses that satisfy UMNTC's Writing Intensive</p>
 
-<p><code>courses.xml?q=cle_attribute_id=HIS|CIV</code></p>
+<p><code>courses.json?q=course_attribute_id=WI</code></p>
 
-<hr>
+<p>Get courses that satisfy UMNRO's Mathematical Thinking</p>
 
-<p>Get courses that have any CLE attribute</p>
+<p><code>courses.json?q=course_attribute_id=MATH%20THINK</code></p>
 
-<p><code>courses.xml?q=cle_attribute_id=all</code></p>
+<p>Get courses that meet either UMNDL's Fine Arts or Humanities</p>
 
-<p>Or that have no CLE attribute</p>
+<p>`courses.xml?q=course_attribute_id=FINE%20ARTS|HUMANITIES</p>
 
-<p><code>courses.xml?q=cle_attribute_id=none</code></p>
+<p>Get courses that have any attribute</p>
 
-<hr>
+<p><code>courses.xml?q=course_attribute_id=all</code></p>
 
-<p><strong>Note</strong>: Liberal Education data is currently only correct for UMNTC. We know about this bug and will be fixing it soon.</p>
+<p>Or that have no attirbute</p>
+
+<p><code>courses.xml?q=course_attribute_id=none</code></p>
 
 <h3>
 <a id="instruction-mode" class="anchor" href="#instruction-mode" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instruction Mode</h3>
@@ -195,7 +206,7 @@
 
 <p>Any of the searches can be combined. For example</p>
 
-<p><code>courses.json?q=cle_attribute_id=WI,instruction_mode_id=P,catalog_number&gt;=2000,catalog_number&lt;3000,subject_id=HIST</code></p>
+<p><code>courses.json?q=course_attribute_id=WI,instruction_mode_id=P,catalog_number&gt;=2000,catalog_number&lt;3000,subject_id=HIST</code></p>
 
 <p>Will return any courses that are:</p>
 
