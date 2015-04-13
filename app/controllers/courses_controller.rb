@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
     @courses = CoursesPresenter.fetch(params[:campus_id], params[:term_id])
 
     query_string_search = params[:q]
-    @courses.courses = QueryStringSearch.new(@courses.all_courses, query_string_search).results
+    @courses.courses = QueryStringSearch.new(@courses.unfiltered_courses, query_string_search).results
 
     respond_to do |format|
       format.xml
