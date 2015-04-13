@@ -7,6 +7,10 @@ class InstructorPresenter
     self.instructor_contact = ar_instructor.instructor_contact
   end
 
+  def cache_key
+    instructor.id
+  end
+
   def name
     instructor_contact.name
   end

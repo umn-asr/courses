@@ -11,6 +11,10 @@ class CoursePresenter
     self.sections = course.sections.map { |s| SectionPresenter.new(s) }
   end
 
+  def cache_key
+    course.id
+  end
+
   def course_attribute_family
     @course_attribute_families ||= (course_attributes.collect { |a| a.family }).to_set
   end

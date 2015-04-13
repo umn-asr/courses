@@ -9,4 +9,8 @@ class MeetingPatternPresenter
     self.location = meeting_pattern.location
     self.days = meeting_pattern.days.map { |d| DayPresenter.new(d) }
   end
+
+  def cache_key
+    meeting_pattern.id
+  end
 end

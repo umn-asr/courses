@@ -3,6 +3,10 @@ class DayPresenter
   def_delegators :day, :type, :name, :abbreviation
   attr_accessor :day
 
+  def cache_key
+    day.id
+  end
+
   def initialize(ar_day)
     self.day = ar_day
   end

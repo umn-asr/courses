@@ -12,4 +12,8 @@ class SectionPresenter
     self.meeting_patterns = ar_section.meeting_patterns.map { |i| MeetingPatternPresenter.new(i) }
     self.combined_sections = ar_section.combined_sections.map { |cs| CombinedSectionPresenter.new(cs) }
   end
+
+  def cache_key
+    section.id
+  end
 end
