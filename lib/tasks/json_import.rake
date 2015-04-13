@@ -48,8 +48,7 @@ namespace :json_import do
           end
         end
       end
+      Process.waitall
     end
-
-    Process.waitall
   end
 end
