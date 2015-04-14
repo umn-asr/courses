@@ -27,7 +27,7 @@ namespace :json_import do
     end
 
 
-    json_resources =  json_files.each_with_object([]) do |file, resources|
+    json_resources =  json_files.sort_by { |file| File.size(file) }.reverse.each_with_object([]) do |file, resources|
                         File.open(file) do |f|
                           resources << JSON.parse(f.read)
                         end
