@@ -610,6 +610,7 @@
           "location": "TCWESTBANK",
           "credits_minimum": "3",
           "credits_maximum": "3",
+          "notes": "",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
