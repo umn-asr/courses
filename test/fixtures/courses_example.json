@@ -21,7 +21,7 @@
         "subject_id": "PHYS",
         "description": "Physics"
       },
-      "cle_attributes": [
+      "course_attributes": [
         {
           "type": "attribute",
           "attribute_id": "WI",
@@ -589,7 +589,7 @@
         "type": "equivalency",
         "equivalency_id": "00788"
       },
-      "cle_attributes": [
+      "course_attributes": [
         {
           "type": "attribute",
           "attribute_id": "HIS",

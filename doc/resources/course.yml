@@ -19,7 +19,7 @@ course:
         description: "The course's title"
       subject:
         type: resource
-      cle_attributes:
+      course_attributes:
         type: collection
       sections:
         type: collection

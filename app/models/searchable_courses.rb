@@ -33,10 +33,13 @@ class SearchableCourse < SimpleDelegator
     @subject ||= course.subject.subject_id
   end
 
-  def cle_attribute_id
-    @cle_attributes ||= (course.cle_attributes.collect { |a| a.attribute_id }).to_set
+  def course_attribute_family
+    @course_attribute_families ||= (course.course_attributes.collect { |a| a.family }).to_set
   end
 
+  def course_attribute_id
+    @course_attribute_ids ||= (course.course_attributes.collect { |a| a.attribute_id }).to_set
+  end
 
   def instruction_mode_id
     @instruction_modes ||= (course.sections.collect { |s| s.instruction_mode.instruction_mode_id}).to_set
