@@ -15,6 +15,18 @@ class CoursePresenter
     course.id
   end
 
+  def queryable
+    x = OpenStruct.new
+    x.cache_key = cache_key
+    x.subject_id = subject_id
+    x.catalog_number = course.catalog_number
+    x.course_attribute_family = course_attribute_family
+    x.course_attribute_id  = course_attribute_id
+    x.instruction_mode_id  = instruction_mode_id
+    x.locations  = locations
+    x
+  end
+
   def course_attribute_family
     @course_attribute_families ||= (course_attributes.collect { |a| a.family }).to_set
   end
