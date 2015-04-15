@@ -5,8 +5,6 @@ namespace :json_import do
     json_files = Rake::FileList[File.join(args[:directory], args[:file_pattern])]
 
     # ActiveRecord::Base.subclasses.each(&:delete_all)
-    Campus.delete_all
-    Term.delete_all
     Course.delete_all
     Subject.delete_all
     CourseAttribute.delete_all
@@ -21,11 +19,12 @@ namespace :json_import do
     MeetingPattern.delete_all
     CombinedSection.delete_all
     Equivalency.delete_all
+    Campus.delete_all
+    Term.delete_all
 
     {"m" => "Monday", "t" => "Tuesday", "w" => "Wednesday", "th" => "Thursday", "f" => "Friday", "sa" => "Saturday", "su" => "Sunday"}.each do |abbreviation, name|
       Day.create(abbreviation: abbreviation, name: name)
     end
-
 
     json_resources =  json_files.sort_by { |file| File.size(file) }.reverse.each_with_object([]) do |file, resources|
                         File.open(file) do |f|
