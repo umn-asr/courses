@@ -23,7 +23,7 @@ class CourseJsonImport
 
       course = Course.create(course_attr)
 
-      attributes = course_json["cle_attributes"].map { |a| CourseAttribute.find_or_create_by(attribute_id: a["attribute_id"], family: a["family"]) }
+      attributes = course_json["course_attributes"].map { |a| CourseAttribute.find_or_create_by(attribute_id: a["attribute_id"], family: a["family"]) }
       course.course_attributes = attributes
 
       course_json["sections"].map do |section_json|
