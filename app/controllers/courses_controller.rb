@@ -6,9 +6,7 @@ class CoursesController < ApplicationController
     term = Term.fetch(params[:term_id])
 
     query_string_search = params[:q]
-    courses_to_display = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results
-
-    courses_to_retrieve = courses_to_display.collect(&:course)
+    courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
 
     @courses = CoursesPresenter.fetch(campus, term, courses_to_retrieve)
 
