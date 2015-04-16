@@ -11,8 +11,8 @@ class Course < ::ActiveRecord::Base
 
   scope :for_campus_and_term, ->(campus, term) { joins(:subject).where(subjects: { campus_id: campus.id, term_id: term.id }) }
 
-  def self.cache_key_for_instance(course_id)
-    "#{type}_#{course_id.upcase}"
+  def self.cache_key_for_instance(course)
+    "#{type}_#{course.id}"
   end
 
   def self.type
@@ -24,6 +24,6 @@ class Course < ::ActiveRecord::Base
   end
 
   def cache_key
-    self.class.cache_key_for_instance(course_id)
+    self.class.cache_key_for_instance(self)
   end
 end
