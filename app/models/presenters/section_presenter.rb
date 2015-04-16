@@ -1,6 +1,6 @@
 class SectionPresenter
   extend Forwardable
-  def_delegators :section, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes
+  def_delegators :section, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes, :type
 
   attr_accessor :section, :instruction_mode, :grading_basis, :instructors, :meeting_patterns, :combined_sections
 

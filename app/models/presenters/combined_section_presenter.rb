@@ -1,6 +1,6 @@
 class CombinedSectionPresenter
   extend Forwardable
-  def_delegators :combined_section, :catalog_number, :subject_id, :section_number
+  def_delegators :combined_section, :catalog_number, :subject_id, :section_number, :type
   attr_accessor :combined_section
 
   def cache_key
