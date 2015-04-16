@@ -11,6 +11,6 @@ class MeetingPatternPresenter
   end
 
   def cache_key
-    meeting_pattern.id
+    "#{meeting_pattern.type}_#{meeting_pattern.id}"
   end
 end

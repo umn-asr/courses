@@ -4,7 +4,7 @@ class CombinedSectionPresenter
   attr_accessor :combined_section
 
   def cache_key
-    combined_section.id
+    "#{combined_section.type}_#{combined_section.id}"
   end
 
   def initialize(ar_combined_section)

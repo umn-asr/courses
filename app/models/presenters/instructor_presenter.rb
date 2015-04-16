@@ -10,7 +10,7 @@ class InstructorPresenter
   end
 
   def cache_key
-    instructor.id
+    "#{instructor.type}_#{instructor.id}"
   end
 
   def name

@@ -14,6 +14,6 @@ class SectionPresenter
   end
 
   def cache_key
-    section.id
+    "#{section.type}_#{section.id}"
   end
 end
