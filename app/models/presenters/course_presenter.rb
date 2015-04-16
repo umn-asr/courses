@@ -12,7 +12,7 @@ class CoursePresenter
   end
 
   def cache_key
-    Course.cache_key_for_instance(course)
+    course.cache_key
   end
 
   def self.fetch(course)
