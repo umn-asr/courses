@@ -12,38 +12,12 @@ class CoursePresenter
   end
 
   def cache_key
-    course.id
+    Course.cache_key_for_instance(course)
   end
 
-  def queryable
-    x = OpenStruct.new
-    x.cache_key = cache_key
-    x.subject_id = subject_id
-    x.catalog_number = course.catalog_number
-    x.course_attribute_family = course_attribute_family
-    x.course_attribute_id  = course_attribute_id
-    x.instruction_mode_id  = instruction_mode_id
-    x.locations  = locations
-    x
-  end
-
-  def course_attribute_family
-    @course_attribute_families ||= (course_attributes.collect { |a| a.family }).to_set
-  end
-
-  def course_attribute_id
-    @course_attribute_ids ||= (course_attributes.collect { |a| a.attribute_id }).to_set
-  end
-
-  def subject_id
-    @subject_id ||= subject.subject_id
-  end
-
-  def instruction_mode_id
-    @instruction_modes ||= (sections.collect { |s| s.instruction_mode.instruction_mode_id}).to_set
-  end
-
-  def locations
-    @locations ||= (sections.collect { |s| s.location}).to_set
+  def self.fetch(course)
+    Rails.cache.fetch(course.cache_key) do
+      self.new(Course.find(course.id))
+    end
   end
 end
