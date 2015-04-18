@@ -5,16 +5,4 @@ class Instructor < ::ActiveRecord::Base
   def type
     "instructor"
   end
-
-  def name
-    instructor_contact.name
-  end
-
-  def email
-    instructor_contact.email
-  end
-
-  def role
-    instructor_role.abbreviation
-  end
 end

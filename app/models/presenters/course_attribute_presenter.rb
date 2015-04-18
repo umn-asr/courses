@@ -4,7 +4,7 @@ class CourseAttributePresenter
   attr_accessor :course_attribute
 
   def cache_key
-    course_attribute.id
+    "#{course_attribute.type}_#{course_attribute.id}"
   end
 
   def initialize(ar_attribute)

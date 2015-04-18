@@ -1,16 +1,12 @@
 class CoursesPresenter
-  attr_accessor :campus, :term, :unfiltered_courses, :courses
+  attr_accessor :campus, :term, :courses
 
-  def self.fetch(campus_id, term_id)
-    unless Rails.cache.exist?("#{campus_id}_#{term_id}")
-      p = self.new
+  def self.fetch(campus, term, courses)
+    presented_courses = self.new
+    presented_courses.campus = campus
+    presented_courses.term = term
 
-      p.campus = Campus.where(abbreviation: campus_id.upcase).first
-      p.term = Term.where(strm: term_id).first
-
-      p.unfiltered_courses = Course.for_campus_and_term(p.campus, p.term).map { |x| CoursePresenter.new(x) }
-      Rails.cache.write("#{campus_id}_#{term_id}", p)
-    end
-    Rails.cache.fetch("#{campus_id}_#{term_id}")
+    presented_courses.courses = courses.map { |course| CoursePresenter.fetch(course) }
+    presented_courses
   end
 end
