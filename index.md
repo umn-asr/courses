@@ -5,9 +5,7 @@ title: "courses.umn.edu"
 
 # courses.umn.edu
 
-A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.
-
-Note this is still under active development. The links below will work, but our demo site only contains data for the Fall, 2014 term. More terms are coming later.
+A JSON/XML service for getting University of Minnesota course and class data by campus and term. Works for all campuses. Searchable. Up to date.
 
 ## Getting Courses
 
