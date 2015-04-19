@@ -3,7 +3,7 @@ title: courses.umn.edu
 email: asrwebteam@umn.edu
 description: > # this means to ignore newlines until "baseurl:"
   Documentation of the courses.umn.edu data service
-baseurl: "courses" # the subpath of your site, e.g. /blog/
+baseurl: "/courses" # the subpath of your site, e.g. /blog/
 url: "http://umn-asr.github.io/"
 github_username:  umn-asr
 
