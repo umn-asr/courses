@@ -11,8 +11,6 @@ github_username:  umn-asr
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-paginate: 5
-excerpt_separator: <!--break-->
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md", "vendor", "Gemfile", "Gemfile.lock"]
 
 kramdown:
