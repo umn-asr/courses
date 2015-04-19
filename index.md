@@ -23,8 +23,18 @@ or, if you want XML:
 
 Some examples:
 
-- http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json
-- http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
+- [http://courses.umn.edu/campuses/umncr/terms/1163/courses.json](http://courses.umn.edu/campuses/umncr/terms/1163/courses.json)
+- [http://courses.umn.edu/campuses/umnro/terms/1163/courses.xml](http://courses.umn.edu/campuses/umnro/terms/1163/courses.xml)
+
+## What Campuses Are Available
+
+- [http://courses.umn.edu/campuses.json](http://courses.umn.edu/campuses.json)
+- [http://courses.umn.edu/campuses.xml](http://courses.umn.edu/campuses.xml)
+
+## What Terms Are Available
+
+- [http://courses.umn.edu/terms.json](http://courses.umn.edu/terms.json)
+- [http://courses.umn.edu/terms.xml](http://courses.umn.edu/terms.xml)
 
 ## Searching
 
@@ -42,31 +52,27 @@ All of these searches can be combined, as we'll see in the examples.
 
 ### Subject
 
-Finding courses under one subject:
+#### Finding courses under one subject:
 
 `courses.json?q=subject_id=HIST`
 
 This will return all courses with the subject of HIST.
 
-----
-
-Finding courses under many subjects:
+#### Finding courses under many subjects:
 
 `courses.xml?q=subject_id=HIST|PHYS`
 
-Returns all courses with a subject of HIST or PHYS. You can have as many subjects as you want, just separate them with a |.
+Returns all courses with a subject of HIST or PHYS. You can have as many subjects as you want, just separate them with a \|.
 
 ### Catalog Number
 
-Find a course with a specific catalog number
+#### Find a course with a specific catalog number
 
 `courses.json?q=catalog_number=1101W`
 
 Returns all courses with a catalog number of '1101W'.
 
-----
-
-Find a course with a catalog number higher than a value:
+#### Find a course with a catalog number higher than a value:
 
 `courses.xml?q=catalog_number>1000`
 
@@ -74,9 +80,7 @@ Returns all courses with a catalog number higher than 1000.
 
 You can also do `>=` to return courses with a catalog number higher than or equal to 1000
 
-----
-
-Find a course with a catalog number less than a value:
+#### Find a course with a catalog number less than a value:
 
 `courses.xml?q=catalog_number<5000`
 
@@ -84,9 +88,7 @@ Returns all courses with a catalog number less than 1000.
 
 You can also do `<=` to return courses with a catalog number less than or equal to 1000
 
----
-
-Find courses with a catalog number in a range of values:
+#### Find courses with a catalog number in a range of values:
 
 `courses.xml?q=catalog_number>=1000,catalog_number<5000`
 
@@ -103,23 +105,23 @@ Different campuses have different ways of identifying courses that meet General 
 
 And if you're looking for a courses with a specific attribute, you can search with `course_attribute_id`
 
-Get courses that satisfy UMNTC's Writing Intensive
+#### Get courses that satisfy UMNTC's Writing Intensive
 
 `courses.json?q=course_attribute_id=WI`
 
-Get courses that satisfy UMNRO's Mathematical Thinking
+#### Get courses that satisfy UMNRO's Mathematical Thinking
 
 `courses.json?q=course_attribute_id=MATH%20THINK`
 
-Get courses that meet either UMNDL's Fine Arts or Humanities
+#### Get courses that meet either UMNDL's Fine Arts or Humanities
 
-`courses.xml?q=course_attribute_id=FINE%20ARTS|HUMANITIES
+`courses.xml?q=course_attribute_id=FINE%20ARTS|HUMANITIES`
 
-Get courses that have any attribute
+#### Get courses that have any attribute
 
 `courses.xml?q=course_attribute_id=all`
 
-Or that have no attirbute
+#### Or that have no attribute
 
 `courses.xml?q=course_attribute_id=none`
 
@@ -134,13 +136,11 @@ You can search using any of these Instruction Mode abbreviations:
 - CO: Completely Online
 - PR: Primarily Online
 
-Get courses that are Partially Online
+#### Get courses that are Partially Online
 
 `courses.json?q=instruction_mode_id=PA`
 
-----
-
-Get courses that are Partially Online or Primarily Online
+#### Get courses that are Partially Online or Primarily Online
 
 `courses.xml?q=instruction_mode_id=PA|PR`
 
