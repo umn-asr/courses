@@ -1,0 +1,8 @@
+_site
+.sass-cache
+.bundle
+vendor
+.capistrano
+tmp
+log
+db
