@@ -9,10 +9,10 @@ github_username:  umn-asr
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
+highlighter: pygments
 permalink: pretty
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md", "vendor", "Gemfile", "Gemfile.lock"]
 
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
+  syntax_highlighter: pygments
