@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe CachePool do
 
   let(:index)       { Redis.new }
-  let(:pool_size)   { rand(3..9) }
+  let(:pool_size)   { 7 }
 
-  subject { described_class.new(pool_size) }
+  subject { described_class.instance }
 
   describe "current" do
     it "returns the same cache when called multiple times" do
@@ -23,7 +23,7 @@ RSpec.describe CachePool do
       end
     end
 
-    context "when the current_cache_db is set is redis" do
+    context "when the current_cache_db is set in redis" do
       let(:cache_number) { rand(1..pool_size) }
 
       before do

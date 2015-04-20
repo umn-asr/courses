@@ -1,7 +1,9 @@
 class CachePool
-  def initialize(pool_size, redis_configuration = {})
-    self.pool_size            = pool_size
-    self.redis_configuration  = redis_configuration
+  include Singleton
+
+  def initialize
+    self.pool_size            = 7
+    self.redis_configuration  = {}
     build_pool
   end
 
