@@ -6,8 +6,8 @@ class Campus < ::ActiveRecord::Base
   validates_presence_of :abbreviation
   validates_uniqueness_of :abbreviation
 
-  def self.fetch(campus_id)
-    Rails.cache.fetch(cache_key_for_instance(campus_id)) do
+  def self.fetch(campus_id, cache = Rails.cache)
+    cache.fetch(cache_key_for_instance(campus_id)) do
       Campus.where(abbreviation: campus_id.upcase).first
     end
   end

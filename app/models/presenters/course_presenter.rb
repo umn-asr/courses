@@ -15,8 +15,8 @@ class CoursePresenter
     course.cache_key
   end
 
-  def self.fetch(course)
-    Rails.cache.fetch(course.cache_key) do
+  def self.fetch(course, cache = Rails.cache)
+    cache.fetch(course.cache_key) do
       self.new(Course.find(course.id))
     end
   end
