@@ -1,1 +1,0 @@
-CACHE_POOL = CachePool.new(7)
