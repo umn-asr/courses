@@ -4,7 +4,6 @@ namespace :json_import do
     args.with_defaults(:directory => 'tmp', :file_pattern => "classes_for_*.json")
     json_files = Rake::FileList[File.join(args[:directory], args[:file_pattern])]
 
-    # ActiveRecord::Base.subclasses.each(&:delete_all)
     Course.delete_all
     Subject.delete_all
     CourseAttribute.delete_all
