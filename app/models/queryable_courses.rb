@@ -12,7 +12,7 @@ class QueryableCourses
       end
 
       cache.write(cache_key(campus, term), queryable_cache_keys)
-      fetch(campus, term)
+      fetch(campus, term, cache)
     end
   end
 
