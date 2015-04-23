@@ -28,7 +28,7 @@ class CachePool
 
   def build_pool
     1.upto(pool_size).each do |i|
-      pool << ActiveSupport::Cache.lookup_store(:redis_store, redis_configuration.merge(db: i))
+      pool << ActiveSupport::Cache.lookup_store(:redis_store, redis_configuration.merge(db: i, expires_in: 48.hours))
     end
   end
 

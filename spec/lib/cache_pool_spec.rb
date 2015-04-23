@@ -12,6 +12,10 @@ RSpec.describe CachePool do
       expect(subject.current).to eq(subject.current)
     end
 
+    it "has an expiration of 48 hours" do
+      expect(subject.current.options[:expires_in]).to eq(48.hours)
+    end
+
     context "when current_cache_db is not set in redis" do
       before do
         index.del('current_cache_db')
