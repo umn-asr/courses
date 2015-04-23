@@ -59,6 +59,7 @@ GEM
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-stats (1.1.1)
+    chronic (0.10.2)
     colorize (0.7.5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -174,6 +175,8 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -196,3 +199,4 @@ DEPENDENCIES
   ruby-oci8 (= 2.1.7)
   spring
   sqlite3
+  whenever

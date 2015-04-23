@@ -12,6 +12,7 @@ gem 'oj'
 gem 'query_string_search'
 gem 'rack-cache'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'whenever', :require => false
 gem 'redis-rails'
 
 group :development, :test do
