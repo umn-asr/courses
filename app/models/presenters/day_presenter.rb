@@ -4,7 +4,7 @@ class DayPresenter
   attr_accessor :day
 
   def cache_key
-    day.id
+    "#{day.type}_#{day.id}"
   end
 
   def initialize(ar_day)

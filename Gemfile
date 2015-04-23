@@ -13,6 +13,7 @@ gem 'query_string_search'
 gem 'rack-cache'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'whenever', :require => false
+gem 'redis-rails'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

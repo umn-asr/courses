@@ -1,4 +1,6 @@
 class InstructorPresenter
+  extend Forwardable
+  def_delegators :instructor, :type
   attr_accessor :instructor_role, :instructor_contact, :instructor
 
   def initialize(ar_instructor)
@@ -8,7 +10,7 @@ class InstructorPresenter
   end
 
   def cache_key
-    instructor.id
+    "#{instructor.type}_#{instructor.id}"
   end
 
   def name
