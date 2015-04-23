@@ -1,5 +1,4 @@
 object @sections
-cache @sections
 
 attributes :type, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes
 
