@@ -1,5 +1,4 @@
 object @meeting_pattern
-cache @meeting_pattern
 
 attributes :type, :start_time, :end_time, :start_date, :end_date
 
