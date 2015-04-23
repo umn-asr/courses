@@ -31,7 +31,7 @@ class CacheWarmer
 
   def cache_full_courses
     campuses_and_terms.each do |campus, term|
-      Course.for_campus_and_term(campus, term).map { |course| CoursePresenter.fetch(course, cache) }
+      Course.for_campus_and_term(campus, term).each { |course| CoursePresenter.fetch(course, cache) }
     end
   end
 
