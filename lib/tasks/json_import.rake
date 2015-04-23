@@ -4,6 +4,8 @@ namespace :json_import do
     CacheWarmer.warm(CachePool.instance.next)
     CachePool.instance.next!
     `touch #{Rails.root}/tmp/restart.txt`
+    sleep 1
+    RackCacheManager.reset
   end
 
   desc "imports class json files from the supplied directory "
