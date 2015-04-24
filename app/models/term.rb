@@ -6,8 +6,8 @@ class Term < ::ActiveRecord::Base
   validates_presence_of :strm
   validates_uniqueness_of :strm
 
-  def self.fetch(term_id)
-    Rails.cache.fetch(cache_key_for_instance(term_id)) do
+  def self.fetch(term_id, cache = Rails.cache)
+    cache.fetch(cache_key_for_instance(term_id)) do
       Term.where(strm: term_id.upcase).first
     end
   end

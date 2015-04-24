@@ -1,7 +1,7 @@
 class QueryableCourses
-  def self.fetch(campus, term)
-    if Rails.cache.exist?(cache_key(campus, term))
-      Rails.cache.read(cache_key(campus,term)).map do |key|
+  def self.fetch(campus, term, cache = Rails.cache)
+    if cache.exist?(cache_key(campus, term))
+      cache.read(cache_key(campus,term)).map do |key|
         QueryableCourse.read(key)
       end
     else
@@ -11,8 +11,8 @@ class QueryableCourses
         queryable_cache_keys << QueryableCourse.build(course).cache_key
       end
 
-      Rails.cache.write(cache_key(campus, term), queryable_cache_keys)
-      fetch(campus, term)
+      cache.write(cache_key(campus, term), queryable_cache_keys)
+      fetch(campus, term, cache)
     end
   end
 

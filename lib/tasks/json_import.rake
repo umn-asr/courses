@@ -1,10 +1,18 @@
 namespace :json_import do
+  desc "imports json files and updates the cache"
+  task :update_all, [:directory, :file_pattern] => :directory_import do |t, args|
+    CacheWarmer.warm(CachePool.instance.next)
+    CachePool.instance.next!
+    `touch #{Rails.root}/tmp/restart.txt`
+    sleep 1
+    RackCacheManager.reset
+  end
+
   desc "imports class json files from the supplied directory "
   task :directory_import, [:directory, :file_pattern] => :environment do |t, args|
     args.with_defaults(:directory => 'tmp', :file_pattern => "classes_for_*.json")
     json_files = Rake::FileList[File.join(args[:directory], args[:file_pattern])]
 
-    # ActiveRecord::Base.subclasses.each(&:delete_all)
     Course.delete_all
     Subject.delete_all
     CourseAttribute.delete_all
