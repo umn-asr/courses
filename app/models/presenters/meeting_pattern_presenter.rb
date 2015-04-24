@@ -1,6 +1,6 @@
 class MeetingPatternPresenter
   extend Forwardable
-  def_delegators :meeting_pattern, :type, :start_time, :end_time, :start_date, :end_date
+  def_delegators :meeting_pattern, :type, :start_time, :end_time
 
   attr_accessor :location, :meeting_pattern, :days
 
@@ -13,4 +13,18 @@ class MeetingPatternPresenter
   def cache_key
     "#{meeting_pattern.type}_#{meeting_pattern.id}"
   end
+
+  def start_date
+    date_format(meeting_pattern.start_date)
+  end
+
+  def end_date
+    date_format(meeting_pattern.end_date)
+  end
+
+  private
+  def date_format(date)
+    date.strftime('%Y-%m-%d')
+  end
+
 end
