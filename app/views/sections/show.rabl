@@ -1,7 +1,7 @@
 object @sections
 cache @sections
 
-attributes :type, :id, :class_number, :number, :component, :location, :credits_maximum, :credits_minimum, :notes
+attributes :type, :id, :class_number, :number, :component, :location, :credits_minimum, :credits_maximum, :notes
 
 child :instruction_mode => :instruction_mode do
   extends "instruction_modes/show"
