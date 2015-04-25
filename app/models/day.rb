@@ -4,4 +4,12 @@ class Day < ::ActiveRecord::Base
   def type
     "day"
   end
+
+  def to_h
+    {
+      type: type,
+      name: name,
+      abbreviation: abbreviation
+    }
+  end
 end

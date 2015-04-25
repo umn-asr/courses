@@ -31,4 +31,12 @@ class Term < ::ActiveRecord::Base
   def term_id
     strm
   end
+
+  def to_h
+    {
+      type: type,
+      term_id: term_id,
+      strm: strm
+    }
+  end
 end

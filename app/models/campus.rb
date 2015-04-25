@@ -31,4 +31,12 @@ class Campus < ::ActiveRecord::Base
   def campus_id
     abbreviation
   end
+
+  def to_h
+    {
+      type: type,
+      abbreviation: abbreviation,
+      campus_id: campus_id
+    }
+  end
 end

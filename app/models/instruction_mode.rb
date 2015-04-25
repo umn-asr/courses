@@ -7,4 +7,13 @@ class InstructionMode < ::ActiveRecord::Base
   def type
     "instruction_mode"
   end
+
+  def to_h
+    {
+      type: type,
+      instruction_mode_id: instruction_mode_id,
+      id: id,
+      description: description
+    }
+  end
 end
