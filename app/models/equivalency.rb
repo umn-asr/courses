@@ -7,4 +7,11 @@ class Equivalency < ActiveRecord::Base
   def type
     "equivalency"
   end
+
+  def to_h
+    {
+      type: type,
+      equivalency_id: equivalency_id
+    }
+  end
 end

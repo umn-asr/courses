@@ -7,12 +7,6 @@ class CoursesController < ApplicationController
 
     query_string_search = params[:q]
     courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
-
-    @courses = CoursesPresenter.fetch(campus, term, courses_to_retrieve)
-
-    respond_to do |format|
-      format.xml
-      format.json
-    end
+    render params[:format].to_sym => CoursesPresenter.fetch(campus, term, courses_to_retrieve)
   end
 end

@@ -7,7 +7,6 @@ group :production, :staging do
   gem 'activerecord-oracle_enhanced-adapter', :git => 'https://github.com/rsim/oracle-enhanced.git', :branch => 'rails42'
 end
 
-gem 'rabl'
 gem 'oj'
 gem 'query_string_search'
 gem 'rack-cache'

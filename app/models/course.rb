@@ -11,12 +11,18 @@ class Course < ::ActiveRecord::Base
 
   scope :for_campus_and_term, ->(campus, term) { joins(:subject).where(subjects: { campus_id: campus.id, term_id: term.id }) }
 
-  def self.cache_key_for_instance(course)
-    "#{type}_#{course.id}"
+  def self.cache_key_for_instance(id)
+    "#{type}_#{id}"
   end
 
   def self.type
     "course"
+  end
+
+  def self.fetch(id, cache = Rails.cache)
+    cache.fetch(cache_key_for_instance(id)) do
+      Course.find(id).to_h
+    end
   end
 
   def type
@@ -25,5 +31,19 @@ class Course < ::ActiveRecord::Base
 
   def cache_key
     self.class.cache_key_for_instance(self)
+  end
+
+  def to_h
+    {
+      type: type,
+      course_id: course_id,
+      id: id,
+      catalog_number: catalog_number,
+      description: description,
+      title: title,
+      subject: subject.to_h,
+      course_attributes: course_attributes.map { |ca| ca.to_h },
+      sections: sections.map { |s| s.to_h }
+    }
   end
 end

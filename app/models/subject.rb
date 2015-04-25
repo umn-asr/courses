@@ -9,4 +9,13 @@ class Subject < ::ActiveRecord::Base
   def type
     "subject"
   end
+
+  def to_h
+    {
+      type: type,
+      subject_id: subject_id,
+      id: id,
+      description: description
+    }
+  end
 end
