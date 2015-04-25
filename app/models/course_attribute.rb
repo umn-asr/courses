@@ -7,4 +7,13 @@ class CourseAttribute < ::ActiveRecord::Base
   def type
     "attribute"
   end
+
+  def to_h
+    {
+      type: type,
+      attribute_id: attribute_id,
+      id: id,
+      family: family
+    }
+  end
 end

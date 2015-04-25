@@ -7,7 +7,7 @@ class QueryableCourse
 
   def self.build(full_course, cache = Rails.cache)
     x = self.new
-    x.course = OpenStruct.new(cache_key: full_course.cache_key, id: full_course.id)
+    x.course = OpenStruct.new(id: full_course.id)
     x.subject_id = full_course.subject.subject_id
     x.catalog_number = full_course.catalog_number
     x.course_attribute_family = (full_course.course_attributes.collect { |a| a.family }).to_set
@@ -19,6 +19,6 @@ class QueryableCourse
   end
 
   def cache_key
-    "#{course.cache_key}_queryable"
+    "#{course.id}_queryable"
   end
 end

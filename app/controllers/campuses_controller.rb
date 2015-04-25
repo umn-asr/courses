@@ -1,7 +1,5 @@
 class CampusesController < ApplicationController
   def index
-    @campuses = Campus.all
-
-    render
+    render :json => Campus.all.map { |x| x.to_h}
   end
 end
