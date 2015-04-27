@@ -7,4 +7,13 @@ class GradingBasis < ::ActiveRecord::Base
   def type
     "grading_basis"
   end
+
+  def to_h
+    {
+      type: type,
+      grading_basis_id: grading_basis_id,
+      id: id,
+      description: description
+    }
+  end
 end

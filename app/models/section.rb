@@ -11,4 +11,23 @@ class Section < ::ActiveRecord::Base
   def type
     "section"
   end
+
+  def to_h
+    {
+      type: type,
+      id: id,
+      class_number: class_number,
+      number: number,
+      component: component,
+      location: location,
+      credits_minimum: credits_minimum,
+      credits_maximum: credits_maximum,
+      notes: notes,
+      instruction_mode: instruction_mode.to_h,
+      grading_basis: grading_basis.to_h,
+      instructors: instructors.map { |i| i.to_h },
+      meeting_patterns: meeting_patterns.map { |mp| mp.to_h },
+      combined_sections: combined_sections.map { |cs| cs.to_h },
+    }
+  end
 end

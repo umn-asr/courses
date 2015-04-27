@@ -49,13 +49,11 @@ RSpec.describe CacheWarmer do
       subject.warm
     end
 
-    it "caches the full version of the all the courses for each campus and term" do
-      campuses.product(terms).each do |campus, term|
-        courses = generate_courses
-        allow(Course).to receive(:for_campus_and_term).with(campus, term).and_return(courses)
-        courses.each do |course|
-          expect(CoursePresenter).to receive(:fetch).with(course, cache)
-        end
+    it "caches the full version of the all the courses" do
+      courses = generate_courses
+      allow(Course).to receive(:all).and_return(courses)
+      courses.each do |course|
+        expect(Course).to receive(:fetch).with(course.id, cache)
       end
 
       subject.warm

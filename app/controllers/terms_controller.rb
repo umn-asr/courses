@@ -1,7 +1,5 @@
 class TermsController < ApplicationController
   def index
-    @terms = Term.all
-
-    render
+    render :json => Term.all.map { |x| x.to_h}
   end
 end
