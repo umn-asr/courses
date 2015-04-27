@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
 
     query_string_search = params[:q]
     courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
-    render params[:format].to_sym => CoursesPresenter.fetch(campus, term, courses_to_retrieve)
+    content = CoursesPresenter.fetch(campus, term, courses_to_retrieve)
+    render params[:format].to_sym => Serializer.serialize(content, params[:format])
   end
 end
