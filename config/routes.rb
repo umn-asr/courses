@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/", to: redirect("http://umn-asr.github.io/courses/")
+
   resources :terms, only: [:index]
   resources :campuses, only: [:index]
 
