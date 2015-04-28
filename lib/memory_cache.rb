@@ -3,7 +3,7 @@ class MemoryCache
 
   # create a private instance of MemoryStore
   def initialize
-    @memory_store = ActiveSupport::Cache::MemoryStore.new
+    @memory_store = ActiveSupport::Cache::MemoryStore.new(size: 1.gigabyte)
   end
 
   # this will allow our MemoryCache to be called just like Rails.cache
