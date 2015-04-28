@@ -6,4 +6,21 @@ class MeetingPattern < ::ActiveRecord::Base
   def type
     "meeting_pattern"
   end
+
+  def to_h
+    {
+      type: type,
+      start_time: start_time,
+      end_time: end_time,
+      start_date: date_format(start_date),
+      end_date: date_format(end_date),
+      location: location.to_h,
+      days: days.map { |d| d.to_h }
+    }
+  end
+
+  private
+  def date_format(date)
+    date ? date.strftime('%Y-%m-%d') : nil
+  end
 end

@@ -39,5 +39,8 @@ module CourseGuide
           :max_age => 0
       end
     end
+
+    config.caching = ActiveSupport::OrderedOptions.new
+    config.caching.use = true
   end
 end
