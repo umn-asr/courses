@@ -43,6 +43,8 @@ namespace :json_import do
     json_resources.each do |json|
       TermJsonImport.new(json).run
       CampusJsonImport.new(json).run
+      CourseAttributeJsonImport.new(json).run
+      EquivalencyJsonImport.new(json).run
     end
 
     number_of_parallel_processes = 3

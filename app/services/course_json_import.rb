@@ -17,13 +17,13 @@ class CourseJsonImport
 
       equivalency_json = course_json["equivalency"]
       if equivalency_json
-        equivalency = Equivalency.find_or_create_by(equivalency_json.slice("equivalency_id"))
+        equivalency = Equivalency.find_by(equivalency_json.slice("equivalency_id"))
         course_attr[:equivalency_id] = equivalency.id
       end
 
       course = Course.create(course_attr)
 
-      attributes = course_json["course_attributes"].map { |a| CourseAttribute.find_or_create_by(attribute_id: a["attribute_id"], family: a["family"]) }
+      attributes = course_json["course_attributes"].map { |a| CourseAttribute.find_by(attribute_id: a["attribute_id"], family: a["family"]) }
       course.course_attributes = attributes
 
       course_json["sections"].map do |section_json|
