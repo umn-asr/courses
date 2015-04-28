@@ -42,4 +42,6 @@ end
 f = File.open('test/fixtures/courses_example.json')
 j = JSON.parse(f.read)
 f.close
+CourseAttributeJsonImport.new(j).run
+EquivalencyJsonImport.new(j).run
 CourseJsonImport.new(j).run
