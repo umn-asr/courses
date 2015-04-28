@@ -1,5 +1,7 @@
 class CampusesController < ApplicationController
   def index
-    render :json => Campus.all.map { |x| x.to_h}
+    format = params.fetch(:format, 'json')
+    content = {campuses: Campus.all.map { |x| x.to_h}}
+    render format.to_sym => Serializer.serialize(content, format)
   end
 end
