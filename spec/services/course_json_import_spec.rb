@@ -8,17 +8,7 @@ RSpec.describe CourseJsonImport, :type => :request do
 
   describe "run" do
     before do
-      %w(UMNTC UMNDL UMNMO UMNCR UMNRO).each do |abbreviation|
-        Campus.create({abbreviation: abbreviation})
-      end
-
-      %w(1149 1153 1155 1159 1163).each do |strm|
-        Term.create({strm: strm})
-      end
-
-      {"m" => "Monday", "t" => "Tuesday", "w" => "Wednesday", "th" => "Thursday", "f" => "Friday", "sa" => "Saturday", "su" => "Sunday"}.each do |abbreviation, name|
-        Day.create(abbreviation: abbreviation, name: name)
-      end
+      setup_cross_term_data
     end
 
     it "persits the json" do
@@ -34,6 +24,23 @@ RSpec.describe CourseJsonImport, :type => :request do
 
       expect(sort_json!(response_json)).to eq(sort_json!(course_json))
     end
+  end
+
+  def setup_cross_term_data
+    %w(UMNTC UMNDL UMNMO UMNCR UMNRO).each do |abbreviation|
+      Campus.create({abbreviation: abbreviation})
+    end
+
+    %w(1149 1153 1155 1159 1163).each do |strm|
+      Term.create({strm: strm})
+    end
+
+    {"m" => "Monday", "t" => "Tuesday", "w" => "Wednesday", "th" => "Thursday", "f" => "Friday", "sa" => "Saturday", "su" => "Sunday"}.each do |abbreviation, name|
+      Day.create(abbreviation: abbreviation, name: name)
+    end
+
+    CourseAttributeJsonImport.new(course_json).run
+    EquivalencyJsonImport.new(course_json).run
   end
 
   def sort_json!(class_json)
