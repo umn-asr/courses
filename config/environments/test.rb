@@ -16,12 +16,8 @@ Rails.application.configure do
   config.serve_static_files   = true
   config.static_cache_control = 'public, max-age=3600'
 
-  config.action_dispatch.rack_cache = false
-  config.cache_store = :null_store
-
-  # Show full error reports and disable caching.
+  # Show full error reports
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
@@ -44,4 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   routes.default_url_options[:host]="http://localhost"
   routes.default_url_options[:port]="3000"
+  config.caching.use = false
 end
