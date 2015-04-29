@@ -1,5 +1,6 @@
 class CampusesController < ApplicationController
   def index
+    expires_in(48.hours, :public => true)
     content = {campuses: Campus.all.map { |x| x.to_h}}
 
     respond_to do |format|
