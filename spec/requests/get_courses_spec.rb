@@ -17,4 +17,18 @@ RSpec.describe "get courses" do
       end
     end
   end
+
+  describe "with invalid campus" do
+    it "returns a 404" do
+      get "/campuses/uwmadison/terms/1149/courses.json"
+      expect(response.status).to eq(404)
+    end
+  end
+
+  describe "with invalid term" do
+    it "returns a 404" do
+      get "/campuses/UMNTC/terms/9999/courses.json"
+      expect(response.status).to eq(404)
+    end
+  end
 end
