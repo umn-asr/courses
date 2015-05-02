@@ -7,12 +7,6 @@ class CoursesController < ApplicationController
 
     query_string_search = params[:q]
     courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
-    content = CoursesPresenter.fetch(campus, term, courses_to_retrieve)
-
-    respond_to do |format|
-      format.xml { render xml: Serializer.serialize(content, 'xml') }
-      format.json { render json: Serializer.serialize(content, 'json') }
-      format.any  { render nothing: true, status: 404 }
-    end
+    render_json_or_xml(CoursesPresenter.fetch(campus, term, courses_to_retrieve).to_h)
   end
 end
