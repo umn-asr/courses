@@ -1,12 +1,6 @@
 class TermsController < ApplicationController
   def index
     expires_in(48.hours, :public => true)
-    content = {terms: Term.all.map { |x| x.to_h}}
-
-    respond_to do |format|
-      format.xml { render xml: Serializer.serialize(content, 'xml') }
-      format.json { render json: Serializer.serialize(content, 'json') }
-      format.any  { render nothing: true, status: 404 }
-    end
+    render_json_or_xml({terms: Term.all.map(&:to_h)})
   end
 end
