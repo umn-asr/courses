@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
 
-  def render_json_or_xml(content)
+  def render_content(content)
     respond_to do |format|
       format.xml { render xml: Serializer.serialize(content, 'xml') }
       format.json { render json: Serializer.serialize(content, 'json') }
