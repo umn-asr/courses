@@ -8,8 +8,7 @@ class CoursesController < ApplicationController
     if campus && term
       query_string_search = params[:q]
       courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
-      content = CoursesPresenter.fetch(campus, term, courses_to_retrieve)
-      render params[:format].to_sym => Serializer.serialize(content, params[:format])
+      render_content(CoursesPresenter.fetch(campus, term, courses_to_retrieve).to_h)
     else
       render nothing: true, status: 404
     end

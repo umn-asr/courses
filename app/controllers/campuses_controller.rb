@@ -1,5 +1,6 @@
 class CampusesController < ApplicationController
   def index
-    render :json => Campus.all.map { |x| x.to_h}
+    expires_in(48.hours, :public => true)
+    render_content({campuses: Campus.all.map(&:to_h)})
   end
 end

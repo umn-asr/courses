@@ -1,5 +1,6 @@
 class TermsController < ApplicationController
   def index
-    render :json => Term.all.map { |x| x.to_h}
+    expires_in(48.hours, :public => true)
+    render_content({terms: Term.all.map(&:to_h)})
   end
 end
