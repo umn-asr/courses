@@ -20,11 +20,17 @@ RSpec.describe CacheWarmer do
     let(:campuses)  { generate_campuses }
 
     before do
+      allow(cache).to             receive(:clear)
       allow(Campus).to            receive(:all).and_return(campuses)
       allow(Term).to              receive(:all).and_return(terms)
       allow(Campus).to            receive(:fetch)
       allow(Term).to              receive(:fetch)
       allow(QueryableCourses).to  receive(:fetch)
+    end
+
+    it "clears the cache" do
+      expect(cache).to receive(:clear)
+      subject.warm
     end
 
     it "caches all terms with its cache" do

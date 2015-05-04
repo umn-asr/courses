@@ -8,14 +8,23 @@ class CacheWarmer
   end
 
   def warm
+    clear_cache
+    populate_cache
+  end
+
+  private
+  attr_accessor :cache
+
+  def clear_cache
+    cache.clear
+  end
+
+  def populate_cache
     cache_terms
     cache_campuses
     cache_queryable_courses
     cache_full_courses
   end
-
-  private
-  attr_accessor :cache
 
   def cache_terms
     terms.each { |term| Term.fetch(term.strm, cache)}
