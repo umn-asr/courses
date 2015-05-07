@@ -7,20 +7,20 @@ group :production, :staging do
   gem 'activerecord-oracle_enhanced-adapter', :git => 'https://github.com/rsim/oracle-enhanced.git', :branch => 'rails42'
 end
 
-gem 'oj'
-gem 'query_string_search'
-gem 'rack-cache'
+gem 'oj', '~> 2.12.5'
+gem 'query_string_search', '~> 0.0.6'
+gem 'rack-cache', '~> 1.2'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'whenever', :require => false
-gem 'redis-rails'
+gem 'redis-rails', '~> 4.0.0'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 1.3.5'
 
   gem 'rspec', '~> 3.2'
   gem 'rspec-rails', '~> 3.2'
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.10'
 end
 
 group :development do
