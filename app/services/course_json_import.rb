@@ -28,10 +28,8 @@ class CourseJsonImport
 
       course_json["sections"].map do |section_json|
         section = course.sections.build(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
-        section.instruction_mode = InstructionMode.find_or_create_by(section_json["instruction_mode"].slice("instruction_mode_id","description"))
-        section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
-
-        section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
+        section.instruction_mode = parse_resource(InstructionMode, section_json["instruction_mode"], ["instruction_mode_id","description"])
+        section.grading_basis = parse_resource(GradingBasis, section_json["grading_basis"], ["grading_basis_id","description"])
         section.save
 
         section_json["instructors"].each do |instructor_json|
@@ -65,4 +63,10 @@ class CourseJsonImport
 
   private
   attr_accessor :json
+
+  def parse_resource(resource_class, json_node, attribute_keys)
+    if json_node
+      resource_class.find_or_create_by(json_node.slice(*attribute_keys))
+    end
+  end
 end
