@@ -15,9 +15,8 @@ class CourseJsonImport
       subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description").merge({campus_id: campus.id, term_id: term.id}))
       course_attr[:subject_id] = subject.id
 
-      equivalency_json = course_json["equivalency"]
-      if equivalency_json
-        equivalency = Equivalency.find_by(equivalency_json.slice("equivalency_id"))
+      equivalency = parse_resource(Equivalency, course_json["equivalency"], ["equivalency_id"])
+      if equivalency
         course_attr[:equivalency_id] = equivalency.id
       end
 
@@ -34,17 +33,14 @@ class CourseJsonImport
 
         section_json["instructors"].each do |instructor_json|
           role = InstructorRole.find_or_create_by(abbreviation: instructor_json["role"])
-          contact = InstructorContact.find_or_create_by(instructor_json.slice("name","email"))
+          contact = parse_resource(InstructorContact, instructor_json, ["name","email"])
           section.instructors.create(instructor_role: role, instructor_contact: contact)
         end
 
         section_json["meeting_patterns"].each do |pattern_json|
           mp = section.meeting_patterns.create(pattern_json.slice("start_time","end_time","start_date","end_date"))
 
-          location_json = pattern_json["location"]
-          if location_json
-            mp.location = Location.find_or_create_by(location_json.slice("location_id","description"))
-          end
+          mp.location = parse_resource(Location, pattern_json["location"], ["location_id","description"])
 
           pattern_json["days"].each do |day|
             mp.days << Day.find_by_abbreviation(day["abbreviation"])
