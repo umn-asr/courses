@@ -63,7 +63,7 @@ class CourseJsonImport
   attr_accessor :json
 
   def parse_resource(resource_class, json_node, attribute_mapping)
-    if json_node
+    if json_node && json_node.present?
       attributes = attribute_mapping.each_with_object({}) do |(json_key, attr_name), hash|
                       hash[attr_name] = json_node[json_key]
                     end
