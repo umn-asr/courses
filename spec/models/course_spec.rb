@@ -40,7 +40,7 @@ RSpec.describe Course do
       expect(Course.for_campus_and_term(other_campus, term)).to be_empty
     end
 
-    it "returns courses in order of subject description", :focus do
+    it "returns courses in order of subject description" do
       aab_subject = Subject.create(subject_id: "#{rand(100)}", description: "aab", campus_id: campus.id, term_id: term.id)
       aab_course = aab_subject.courses.create(course_id: rand(1000..9999).to_s)
       aaa_subject = Subject.create(subject_id: "#{rand(100)}", description: "aaa", campus_id: campus.id, term_id: term.id)
@@ -50,7 +50,7 @@ RSpec.describe Course do
       expect(Course.for_campus_and_term(campus, term).last).to eq(aab_course)
     end
 
-    it "within a subject, courses are returned by catalog number", :focus do
+    it "within a subject, courses are returned by catalog number" do
       aaa_subject = Subject.create(subject_id: "#{rand(100)}", description: "aaa", campus_id: campus.id, term_id: term.id)
       course_last = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: '1000W')
       course_first = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: '1000')
