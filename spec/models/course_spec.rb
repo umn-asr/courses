@@ -27,9 +27,11 @@ RSpec.describe Course do
       expect(Course.for_campus_and_term(campus, term)).to eq(courses)
       expect(Course.for_campus_and_term(campus, term)).to_not include(other_course)
     end
+
     it "returns an empty collection when there are no matches" do
       expect(Course.for_campus_and_term(other_campus, other_term)).to be_empty
     end
+
     it "does not return the course when the campus matches but the term does not" do
       expect(Course.for_campus_and_term(campus, other_term)).to be_empty
     end
