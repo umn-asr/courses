@@ -7,7 +7,7 @@ class QueryableCourse
     self.catalog_number = full_course.catalog_number
     self.course_attribute_family = (full_course.course_attributes.collect { |a| a.family }).to_set
     self.course_attribute_id = (full_course.course_attributes.collect { |a| a.attribute_id }).to_set
-    self.instruction_mode_id = (full_course.sections.collect { |s| s.instruction_mode.instruction_mode_id}).to_set
+    self.instruction_mode_id = (full_course.sections.collect { |s| s.instruction_mode }.compact.collect { |im| im.instruction_mode_id}).to_set
     self.locations = (full_course.sections.collect { |s| s.location}).to_set
   end
 end

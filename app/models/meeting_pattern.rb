@@ -16,7 +16,7 @@ class MeetingPattern < ::ActiveRecord::Base
       end_date: date_format(end_date),
       location: location.to_h,
       days: days.map { |d| d.to_h }
-    }
+    }.delete_if { |_, value| value == {} }
   end
 
   private

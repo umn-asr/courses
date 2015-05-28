@@ -9,13 +9,10 @@ RSpec.describe CourseJsonImport, :type => :request do
   describe "run" do
     before do
       setup_cross_term_data
+      ensure_no_courses
     end
 
     it "persits the json" do
-      # sanity check - make sure we are starting from scratch
-      get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
-      expect(JSON.parse(response.body)["courses"]).to eq([])
-
       subject.run
       get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
       response_json = JSON.parse(response.body)
@@ -24,6 +21,43 @@ RSpec.describe CourseJsonImport, :type => :request do
 
       expect(sort_json!(response_json)).to eq(sort_json!(course_json))
     end
+
+    context "when a section is missing a grading basis" do
+      let(:json_without_grading_basis) { JSON.parse(File.read('test/fixtures/no_grading_basis_for_section_102.json')) }
+      subject { described_class.new(json_without_grading_basis)}
+
+      it "persits the json" do
+        subject.run
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+        format_for_comparison!(response_json)
+        format_for_comparison!(json_without_grading_basis)
+
+        expect(sort_json!(response_json)).to eq(sort_json!(json_without_grading_basis))
+      end
+    end
+
+    context "when a section is missing an instruction mode" do
+      let(:json_without_instruction_mode) { JSON.parse(File.read('test/fixtures/no_instruction_mode_for_section_104.json')) }
+      subject { described_class.new(json_without_instruction_mode)}
+
+      it "persits the json" do
+        subject.run
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+        format_for_comparison!(response_json)
+        format_for_comparison!(json_without_instruction_mode)
+
+        expect(sort_json!(response_json)).to eq(sort_json!(json_without_instruction_mode))
+      end
+
+    end
+  end
+
+  def ensure_no_courses
+    # sanity check - make sure we are starting from scratch
+    get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+    expect(JSON.parse(response.body)["courses"]).to eq([])
   end
 
   def setup_cross_term_data

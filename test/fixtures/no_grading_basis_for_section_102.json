@@ -1,0 +1,573 @@
+{
+  "campus": {
+    "type": "campus",
+    "campus_id": "UMNTC",
+    "abbreviation": "UMNTC"
+  },
+  "term": {
+    "type": "term",
+    "term_id": "1149",
+    "strm": "1149"
+  },
+  "courses": [
+    {
+      "type": "course",
+      "course_id": "002066",
+      "catalog_number": "1101W",
+      "description": "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
+      "title": "Intro College Phys I",
+      "subject": {
+        "type": "subject",
+        "subject_id": "PHYS",
+        "description": "Physics"
+      },
+      "course_attributes": [
+        {
+          "type": "attribute",
+          "attribute_id": "WI",
+          "family": "CLE"
+        },
+        {
+          "type": "attribute",
+          "attribute_id": "PHYS",
+          "family": "CLE"
+        }
+      ],
+      "sections": [
+        {
+          "type": "section",
+          "class_number": "10786",
+          "number": "100",
+          "component": "LEC",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Vincent Noireaux",
+              "email": "email@umn.edu",
+              "role": "PI"
+            },
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "13:25",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PHYS00150",
+                "description": "Phys 150"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "monday",
+                  "abbreviation": "m"
+                },
+                {
+                  "type": "day",
+                  "name": "wednesday",
+                  "abbreviation": "w"
+                },
+                {
+                  "type": "day",
+                  "name": "friday",
+                  "abbreviation": "f"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10787",
+          "number": "102",
+          "component": "DIS",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Jarrett Brown",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "13:25",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "FORDH00170",
+                "description": "Ford Hall 170"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "thursday",
+                  "abbreviation": "th"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10788",
+          "number": "103",
+          "component": "LAB",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Vincent Noireaux",
+              "email": "email@umn.edu",
+              "role": "PI"
+            },
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Jarrett Brown",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "16:40",
+              "end_time": "18:35",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PHYS000130",
+                "description": "Tate Laboratory 130"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "monday",
+                  "abbreviation": "m"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10789",
+          "number": "104",
+          "component": "DIS",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Hannah Rogers",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "13:25",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "STSS000117",
+                "description": "Science Tchg Student Svcs 117"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "thursday",
+                  "abbreviation": "th"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10790",
+          "number": "105",
+          "component": "LAB",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Vincent Noireaux",
+              "email": "email@umn.edu",
+              "role": "PI"
+            },
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Hannah Rogers",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "10:10",
+              "end_time": "12:05",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PHYS000130",
+                "description": "Tate Laboratory 130"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "tuesday",
+                  "abbreviation": "t"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10791",
+          "number": "106",
+          "component": "DIS",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Kent Bodurtha",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "13:25",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PEIKH00335",
+                "description": "Peik Hall 335"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "thursday",
+                  "abbreviation": "th"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10792",
+          "number": "107",
+          "component": "LAB",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Vincent Noireaux",
+              "email": "email@umn.edu",
+              "role": "PI"
+            },
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Kent Bodurtha",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "11:15",
+              "end_time": "13:10",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PHYS000130",
+                "description": "Tate Laboratory 130"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "thursday",
+                  "abbreviation": "th"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10793",
+          "number": "108",
+          "component": "DIS",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Michael Kreshchuk",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "13:25",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "BUH0000120",
+                "description": "Burton Hall 120"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "thursday",
+                  "abbreviation": "th"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        },
+        {
+          "type": "section",
+          "class_number": "10794",
+          "number": "109",
+          "component": "LAB",
+          "location": "TCEASTBANK",
+          "credits_minimum": "4",
+          "credits_maximum": "4",
+          "notes": "3-hr common final exam",
+          "instruction_mode": {
+            "type": "instruction_mode",
+            "instruction_mode_id": "P",
+            "description": "In Person Term Based"
+          },
+          "grading_basis": {
+            "type": "grading_basis",
+            "grading_basis_id": "OPT",
+            "description": "Student Option"
+          },
+          "instructors": [
+            {
+              "type": "instructor",
+              "name": "Vincent Noireaux",
+              "email": "email@umn.edu",
+              "role": "PI"
+            },
+            {
+              "type": "instructor",
+              "name": "Jennifer Kroschel",
+              "email": "email@umn.edu",
+              "role": "PRXY"
+            },
+            {
+              "type": "instructor",
+              "name": "Michael Kreshchuk",
+              "email": "email@umn.edu",
+              "role": "TA"
+            }
+          ],
+          "meeting_patterns": [
+            {
+              "type": "meeting_pattern",
+              "start_time": "12:20",
+              "end_time": "14:15",
+              "start_date": "2014-09-02",
+              "end_date": "2014-12-10",
+              "location": {
+                "type": "location",
+                "location_id": "PHYS000130",
+                "description": "Tate Laboratory 130"
+              },
+              "days": [
+                {
+                  "type": "day",
+                  "name": "tuesday",
+                  "abbreviation": "t"
+                }
+              ]
+            }
+          ],
+          "combined_sections": []
+        }
+      ]
+    }
+  ]
+}

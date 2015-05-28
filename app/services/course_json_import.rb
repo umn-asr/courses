@@ -4,20 +4,19 @@ class CourseJsonImport
   end
 
   def run
+    campus = Campus.where(abbreviation: json["campus"]["abbreviation"]).first
+    term = Term.where(strm: json["term"]["strm"]).first
+
     json["courses"].each do |course_json|
       course_attr = Hash.new
       course_attr = course_json.slice("title", "description", "course_id", "catalog_number")
 
-      campus = Campus.where(abbreviation: json["campus"]["abbreviation"]).first
-
-      term = Term.where(strm: json["term"]["strm"]).first
-
-      subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description").merge({campus_id: campus.id, term_id: term.id}))
+      subject = parse_resource(Subject, course_json["subject"], {"subject_id" => "subject_id", "description" => "description"})
+      subject.update(campus_id: campus.id, term_id: term.id)
       course_attr[:subject_id] = subject.id
 
-      equivalency_json = course_json["equivalency"]
-      if equivalency_json
-        equivalency = Equivalency.find_by(equivalency_json.slice("equivalency_id"))
+      equivalency = parse_resource(Equivalency, course_json["equivalency"], {"equivalency_id" => "equivalency_id"})
+      if equivalency
         course_attr[:equivalency_id] = equivalency.id
       end
 
@@ -28,25 +27,22 @@ class CourseJsonImport
 
       course_json["sections"].map do |section_json|
         section = course.sections.build(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
-        section.instruction_mode = InstructionMode.find_or_create_by(section_json["instruction_mode"].slice("instruction_mode_id","description"))
-        section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
-
-        section.grading_basis = GradingBasis.find_or_create_by(section_json["grading_basis"].slice("grading_basis_id","description"))
+        section.instruction_mode = parse_resource(InstructionMode, section_json["instruction_mode"], {"instruction_mode_id" => "instruction_mode_id","description" => "description"})
+        section.grading_basis = parse_resource(GradingBasis, section_json["grading_basis"], {"grading_basis_id" => "grading_basis_id", "description" => "description"})
         section.save
 
         section_json["instructors"].each do |instructor_json|
-          role = InstructorRole.find_or_create_by(abbreviation: instructor_json["role"])
-          contact = InstructorContact.find_or_create_by(instructor_json.slice("name","email"))
+          role = parse_resource(InstructorRole, instructor_json, {"role" => "abbreviation"})
+          contact = parse_resource(InstructorContact, instructor_json, {"name" => "name","email" => "email"})
           section.instructors.create(instructor_role: role, instructor_contact: contact)
         end
 
         section_json["meeting_patterns"].each do |pattern_json|
-          mp = section.meeting_patterns.create(pattern_json.slice("start_time","end_time","start_date","end_date"))
+          mp = parse_resource(MeetingPattern, pattern_json, {"start_time" => "start_time","end_time" => "end_time","start_date" => "start_date","end_date" => "end_date"})
+          mp.section_id = section.id
+          mp.save
 
-          location_json = pattern_json["location"]
-          if location_json
-            mp.location = Location.find_or_create_by(location_json.slice("location_id","description"))
-          end
+          mp.location = parse_resource(Location, pattern_json["location"], {"location_id" => "location_id","description" => "description"})
 
           pattern_json["days"].each do |day|
             mp.days << Day.find_by_abbreviation(day["abbreviation"])
@@ -65,4 +61,13 @@ class CourseJsonImport
 
   private
   attr_accessor :json
+
+  def parse_resource(resource_class, json_node, attribute_mapping)
+    if json_node.present?
+      attributes = attribute_mapping.each_with_object({}) do |(json_key, attr_name), hash|
+                      hash[attr_name] = json_node[json_key]
+                    end
+      resource_class.find_or_create_by(attributes)
+    end
+  end
 end

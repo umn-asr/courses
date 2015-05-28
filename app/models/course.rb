@@ -45,6 +45,6 @@ class Course < ::ActiveRecord::Base
       equivalency: equivalency.to_h,
       course_attributes: course_attributes.map { |ca| ca.to_h },
       sections: sections.map { |s| s.to_h }
-    }.delete_if { |_, value| value.blank? }
+    }.delete_if { |_, value| value == {} }
   end
 end
