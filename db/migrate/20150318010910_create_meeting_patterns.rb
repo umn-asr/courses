@@ -4,8 +4,8 @@ class CreateMeetingPatterns < ActiveRecord::Migration
       t.belongs_to :section
       t.string :start_time
       t.string :end_time
-      t.date :start_date
-      t.date :end_date
+      t.datetime :start_date
+      t.datetime :end_date
     end
   end
 end
