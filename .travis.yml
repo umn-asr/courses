@@ -4,3 +4,5 @@ rvm:
 bundler_args: --without production staging
 services:
   - redis-server
+before_install:
+- export TZ=America/Chicago
