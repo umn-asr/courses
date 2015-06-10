@@ -17,6 +17,12 @@ course:
       title:
         type: string
         description: "The course's title"
+      repeatable:
+        type: string
+      repeat_limit:
+        type: string
+      units_repeat_limit:
+        type: string
       subject:
         type: resource
       course_attributes:

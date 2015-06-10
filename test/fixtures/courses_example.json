@@ -16,6 +16,9 @@
       "catalog_number": "1101W",
       "description": "Fundamental principles of physics in the context of everyday world. Use of kinematics/dynamics principles and quantitative/qualitative problem solving techniques to understand natural phenomena. Lecture, recitation, lab.",
       "title": "Intro College Phys I",
+      "repeatable": "N",
+      "repeat_limit": "1",
+      "units_repeat_limit": "4",
       "subject": {
         "type": "subject",
         "subject_id": "PHYS",
@@ -580,6 +583,9 @@
       "catalog_number": "3120",
       "description": "Political, cultural, historical linkages between Africans, African-Americans, African-Caribbean. Black socio-political movements/radical intellectual trends in late 19th/20th centuries. Colonialism/racism. Protest organizations, radical movements in United States/Europe.",
       "title": "Soc Mvts in African Diaspora",
+      "repeatable": "N",
+      "repeat_limit": "1",
+      "units_repeat_limit": "3",
       "subject": {
         "type": "subject",
         "subject_id": "AFRO",
