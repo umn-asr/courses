@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601153229) do
+ActiveRecord::Schema.define(version: 20150610180627) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150601153229) do
     t.string  "repeatable"
     t.string  "units_repeat_limit"
     t.string  "repeat_limit"
+    t.string  "offer_frequency"
   end
 
   add_index "courses", ["equivalency_id"], name: "index_courses_on_equivalency_id"

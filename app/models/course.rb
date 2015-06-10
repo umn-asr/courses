@@ -44,6 +44,7 @@ class Course < ::ActiveRecord::Base
       repeatable: repeatable,
       repeat_limit: repeat_limit,
       units_repeat_limit: units_repeat_limit,
+      offer_frequency: offer_frequency,
       subject: subject.to_h,
       equivalency: equivalency.to_h,
       course_attributes: course_attributes.map { |ca| ca.to_h },

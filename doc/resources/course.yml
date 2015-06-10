@@ -23,6 +23,8 @@ course:
         type: string
       units_repeat_limit:
         type: string
+      offer_frequency:
+        type: string
       subject:
         type: resource
       course_attributes:
