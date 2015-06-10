@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 20150601153229) do
   add_index "course_attributes_courses", ["course_id"], name: "index_course_attributes_courses_on_course_id"
 
   create_table "courses", force: :cascade do |t|
-    t.integer "campus_id"
-    t.integer "term_id"
     t.string  "course_id"
     t.string  "title"
     t.string  "description"
@@ -50,10 +48,8 @@ ActiveRecord::Schema.define(version: 20150601153229) do
     t.integer "equivalency_id"
   end
 
-  add_index "courses", ["campus_id"], name: "index_courses_on_campus_id"
   add_index "courses", ["equivalency_id"], name: "index_courses_on_equivalency_id"
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
-  add_index "courses", ["term_id"], name: "index_courses_on_term_id"
 
   create_table "days", force: :cascade do |t|
     t.string "name"
