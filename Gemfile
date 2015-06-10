@@ -8,7 +8,7 @@ group :production, :staging do
 end
 
 gem 'oj', '~> 2.12.5'
-gem 'query_string_search', '~> 0.0.6'
+gem 'query_string_search', '~> 0.0.7'
 gem 'rack-cache', '~> 1.2'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'whenever', :require => false
