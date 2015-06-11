@@ -19,6 +19,7 @@
       "repeatable": "N",
       "repeat_limit": "1",
       "units_repeat_limit": "4",
+      "offer_frequency": "Every Fall, Spring and Summer",
       "subject": {
         "type": "subject",
         "subject_id": "PHYS",
@@ -586,6 +587,7 @@
       "repeatable": "N",
       "repeat_limit": "1",
       "units_repeat_limit": "3",
+      "offer_frequency": "Every Fall",
       "subject": {
         "type": "subject",
         "subject_id": "AFRO",

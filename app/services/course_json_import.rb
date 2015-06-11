@@ -9,7 +9,7 @@ class CourseJsonImport
 
     json["courses"].each do |course_json|
       course_attr = Hash.new
-      course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit")
+      course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit", "offer_frequency")
 
       subject = parse_resource(Subject, course_json["subject"], {"subject_id" => "subject_id", "description" => "description"})
       subject.update(campus_id: campus.id, term_id: term.id)
