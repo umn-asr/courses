@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 20150601153229) do
     t.string  "catalog_number"
     t.integer "subject_id"
     t.integer "equivalency_id"
+    t.string  "repeatable"
+    t.string  "units_repeat_limit"
+    t.string  "repeat_limit"
   end
 
   add_index "courses", ["equivalency_id"], name: "index_courses_on_equivalency_id"
