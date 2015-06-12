@@ -22,6 +22,11 @@
       "offer_frequency": "Every Fall, Spring and Summer",
       "credits_minimum": "4",
       "credits_maximum": "4",
+      "grading_basis": {
+        "type": "grading_basis",
+        "grading_basis_id": "OPT",
+        "description": "Student Option"
+      },
       "subject": {
         "type": "subject",
         "subject_id": "PHYS",
@@ -51,11 +56,6 @@
             "type": "instruction_mode",
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
-          },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
           },
           "instructors": [
             {
@@ -165,11 +165,6 @@
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
           },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
-          },
           "instructors": [
             {
               "type": "instructor",
@@ -225,11 +220,6 @@
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
           },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
-          },
           "instructors": [
             {
               "type": "instructor",
@@ -278,11 +268,6 @@
             "type": "instruction_mode",
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
-          },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
           },
           "instructors": [
             {
@@ -339,11 +324,6 @@
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
           },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
-          },
           "instructors": [
             {
               "type": "instructor",
@@ -392,11 +372,6 @@
             "type": "instruction_mode",
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
-          },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
           },
           "instructors": [
             {
@@ -453,11 +428,6 @@
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
           },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
-          },
           "instructors": [
             {
               "type": "instructor",
@@ -506,11 +476,6 @@
             "type": "instruction_mode",
             "instruction_mode_id": "P",
             "description": "In Person Term Based"
-          },
-          "grading_basis": {
-            "type": "grading_basis",
-            "grading_basis_id": "OPT",
-            "description": "Student Option"
           },
           "instructors": [
             {
