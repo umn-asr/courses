@@ -19,8 +19,6 @@ section:
         description: "the resource type"
       instruction_mode:
         type: resource
-      grading_basis:
-        type: resource
       instructors:
         type: collection
       meeting_patterns:

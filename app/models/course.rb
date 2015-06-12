@@ -1,6 +1,7 @@
 class Course < ::ActiveRecord::Base
   belongs_to :subject
   belongs_to :equivalency
+  belongs_to :grading_basis
   has_and_belongs_to_many :course_attributes
   has_many :sections
 
@@ -47,6 +48,7 @@ class Course < ::ActiveRecord::Base
       offer_frequency: offer_frequency,
       credits_minimum: credits_minimum,
       credits_maximum: credits_maximum,
+      grading_basis: grading_basis.to_h,
       subject: subject.to_h,
       equivalency: equivalency.to_h,
       course_attributes: course_attributes.map { |ca| ca.to_h },

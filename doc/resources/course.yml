@@ -29,6 +29,8 @@ course:
         type: string
       credits_maximum:
         type: string
+      grading_basis:
+        type: resource
       subject:
         type: resource
       course_attributes:
