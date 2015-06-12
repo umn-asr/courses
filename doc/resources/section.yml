@@ -17,12 +17,6 @@ section:
       location:
         type: string
         description: "the resource type"
-      credits_minimum:
-        type: string
-        description: "the resource type"
-      credits_maximum:
-        type: string
-        description: "the resource type"
       instruction_mode:
         type: resource
       grading_basis:

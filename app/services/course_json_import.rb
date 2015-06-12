@@ -9,7 +9,7 @@ class CourseJsonImport
 
     json["courses"].each do |course_json|
       course_attr = Hash.new
-      course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit", "offer_frequency")
+      course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit", "offer_frequency", "credits_minimum", "credits_maximum")
 
       subject = parse_resource(Subject, course_json["subject"], {"subject_id" => "subject_id", "description" => "description"})
       subject.update(campus_id: campus.id, term_id: term.id)
@@ -26,7 +26,7 @@ class CourseJsonImport
       course.course_attributes = attributes
 
       course_json["sections"].map do |section_json|
-        section = course.sections.build(section_json.slice("class_number", "number", "component", "credits_minimum", "credits_maximum", "location", "notes"))
+        section = course.sections.build(section_json.slice("class_number", "number", "component", "location", "notes"))
         section.instruction_mode = parse_resource(InstructionMode, section_json["instruction_mode"], {"instruction_mode_id" => "instruction_mode_id","description" => "description"})
         section.grading_basis = parse_resource(GradingBasis, section_json["grading_basis"], {"grading_basis_id" => "grading_basis_id", "description" => "description"})
         section.save
