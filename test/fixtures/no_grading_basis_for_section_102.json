@@ -20,6 +20,8 @@
       "repeat_limit": "1",
       "units_repeat_limit": "4",
       "offer_frequency": "Every Fall, Spring and Summer",
+      "credits_minimum": "4",
+      "credits_maximum": "4",
       "subject": {
         "type": "subject",
         "subject_id": "PHYS",
@@ -44,8 +46,6 @@
           "number": "100",
           "component": "LEC",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -110,8 +110,6 @@
           "number": "102",
           "component": "DIS",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -161,8 +159,6 @@
           "number": "103",
           "component": "LAB",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -223,8 +219,6 @@
           "number": "104",
           "component": "DIS",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -279,8 +273,6 @@
           "number": "105",
           "component": "LAB",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -341,8 +333,6 @@
           "number": "106",
           "component": "DIS",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -397,8 +387,6 @@
           "number": "107",
           "component": "LAB",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -459,8 +447,6 @@
           "number": "108",
           "component": "DIS",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -515,8 +501,6 @@
           "number": "109",
           "component": "LAB",
           "location": "TCEASTBANK",
-          "credits_minimum": "4",
-          "credits_maximum": "4",
           "notes": "3-hr common final exam",
           "instruction_mode": {
             "type": "instruction_mode",

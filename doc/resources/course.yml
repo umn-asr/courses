@@ -25,6 +25,10 @@ course:
         type: string
       offer_frequency:
         type: string
+      credits_minimum:
+        type: string
+      credits_maximum:
+        type: string
       subject:
         type: resource
       course_attributes:

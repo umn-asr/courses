@@ -20,8 +20,6 @@ class Section < ::ActiveRecord::Base
       number: number,
       component: component,
       location: location,
-      credits_minimum: credits_minimum,
-      credits_maximum: credits_maximum,
       notes: notes,
       instruction_mode: instruction_mode.to_h,
       grading_basis: grading_basis.to_h,
