@@ -11,8 +11,7 @@ class CourseJsonImport
       course_attr = Hash.new
       course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit", "offer_frequency", "credits_minimum", "credits_maximum")
 
-      subject = parse_resource(Subject, course_json["subject"], {"subject_id" => "subject_id", "description" => "description"})
-      subject.update(campus_id: campus.id, term_id: term.id)
+      subject = Subject.find_or_create_by(course_json["subject"].slice("subject_id", "description").merge("term_id" => term.id, "campus_id" => campus.id))
       course_attr[:subject_id] = subject.id
 
       equivalency = parse_resource(Equivalency, course_json["equivalency"], {"equivalency_id" => "equivalency_id"})
