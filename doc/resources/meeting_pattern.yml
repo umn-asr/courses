@@ -7,17 +7,15 @@ meeting_pattern:
         description: "the resource type"
       start_time:
         type: string
-        description: "the resource type"
       end_time:
         type: string
-        description: "the resource type"
       start_date:
         type: string
-        description: "the resource type"
       end_date:
         type: string
-        description: "the resource type"
       location:
         type: resource
+        documentation: location.yml
       days:
         type: collection
+        documentation: day.yml

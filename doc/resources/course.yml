@@ -31,12 +31,16 @@ course:
         type: string
       grading_basis:
         type: resource
+        documentation: grading_basis.yml
       subject:
         type: resource
+        documentation: subject.yml
       course_attributes:
         type: collection
+        documentation: attribute.yml
       sections:
         type: collection
+        documentation: section.yml
     optional:
       equivalency:
         type: resource

@@ -7,4 +7,3 @@ equivalency:
         description: "the resource type"
       equivalency_id:
         type: string
-        description: "the resource type"

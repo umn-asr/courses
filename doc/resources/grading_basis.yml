@@ -7,7 +7,5 @@ grading_basis:
         description: "the resource type"
       grading_basis_id:
         type: string
-        description: "the resource type"
       description:
         type: string
-        description: "the resource type"
