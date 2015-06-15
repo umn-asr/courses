@@ -7,25 +7,24 @@ section:
         description: "the resource type"
       class_number:
         type: string
-        description: "the resource type"
       number:
         type: string
-        description: "the resource type"
       component:
         type: string
-        description: "the resource type"
       location:
         type: string
-        description: "the resource type"
       instruction_mode:
         type: resource
+        documentation: instruction_mode.yml
       instructors:
         type: collection
+        documentation: instructor.yml
       meeting_patterns:
         type: collection
+        documentation: meeting_pattern.yml
       combined_sections:
         type: collection
+        documentation: combined_section.yml
     optional:
       notes:
         type: string
-        description: "the resource type"

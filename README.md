@@ -21,6 +21,10 @@ Some examples:
 - http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json
 - http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
 
+## Documentation
+
+We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/master/doc/resources). For the `courses.json|xml` endpoint, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+
 ## Searching
 
 Search for courses by using the query string. You can search by:

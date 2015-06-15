@@ -7,7 +7,5 @@ instruction_mode:
         description: "the resource type"
       instruction_mode_id:
         type: string
-        description: "the resource type"
       description:
         type: string
-        description: "the resource type"
