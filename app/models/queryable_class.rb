@@ -1,0 +1,2 @@
+class QueryableClass < QueryableCourse
+end

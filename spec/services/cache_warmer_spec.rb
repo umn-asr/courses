@@ -26,6 +26,7 @@ RSpec.describe CacheWarmer do
       allow(Campus).to            receive(:fetch)
       allow(Term).to              receive(:fetch)
       allow(QueryableCourses).to  receive(:fetch)
+      allow(QueryableClasses).to  receive(:fetch)
     end
 
     it "clears the cache" do
@@ -47,9 +48,10 @@ RSpec.describe CacheWarmer do
       subject.warm
     end
 
-    it "caches the queryable version of all courses for each campus and term" do
+    it "caches the queryable version of all courses and classes for each campus and term" do
       campuses.product(terms).each do |campus, term|
         expect(QueryableCourses).to receive(:fetch).with(campus, term, cache)
+        expect(QueryableClasses).to receive(:fetch).with(campus, term, cache)
       end
 
       subject.warm

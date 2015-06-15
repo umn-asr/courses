@@ -21,9 +21,31 @@ Some examples:
 - http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json
 - http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
 
+## Courses vs Classes
+
+This service can provide you data for Courses or Classes. Classes are things you can actually enroll for, wheras a Course is something that may or may not be offered that term.
+
+If you're not sure, you probably want to look at Classes.
+
+To view Classes data, use 
+
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.json`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.xml`
+
+To view Course data, use 
+
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
+
+All of the documentation below applies equally to Courses and Classes.
+
 ## Documentation
 
-We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/master/doc/resources). For the `courses.json|xml` endpoint, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/master/doc/resources). 
+
+For Courses, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+
+For Classes, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
 
 ## Searching
 
