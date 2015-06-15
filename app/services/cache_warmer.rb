@@ -35,7 +35,10 @@ class CacheWarmer
   end
 
   def cache_queryable_courses
-    campuses_and_terms.each { |campus, term| QueryableCourses.fetch(campus, term, cache) }
+    campuses_and_terms.each do |campus, term|
+      QueryableCourses.fetch(campus, term, cache)
+      QueryableClasses.fetch(campus, term, cache)
+    end
   end
 
   def cache_full_courses
