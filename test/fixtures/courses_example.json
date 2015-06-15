@@ -623,6 +623,47 @@
           ]
         }
       ]
+    },
+    {
+      "type": "course",
+      "course_id": "803218",
+      "id": 559386,
+      "catalog_number": "2311",
+      "description": "Introduction to core biological concepts, from biomolecules to complex systems. How principles from biochemistry, cellular/molecular biology, genetics/diversity, and evolution contribute to understanding of complex systems. Problem solving, applications to health sciences. Lab.\n\nprereq: [Grade of at least C- in [[MATH 1161 or equiv], [CHEM 1231 or equiv]]] or placement test",
+      "title": "Integrative Biology",
+      "repeatable": "N",
+      "repeat_limit": "1",
+      "units_repeat_limit": "5",
+      "offer_frequency": "Every Spring",
+      "credits_minimum": "5",
+      "credits_maximum": "5",
+      "grading_basis": {
+          "type": "grading_basis",
+          "grading_basis_id": "AFV",
+          "id": 10563,
+          "description": "A-F or Audit"
+      },
+      "subject": {
+          "type": "subject",
+          "subject_id": "BIOL",
+          "id": 38532,
+          "description": "Biology"
+      },
+      "course_attributes": [
+        {
+              "type": "attribute",
+              "attribute_id": "BIOL",
+              "id": 11689,
+              "family": "CLE"
+        },
+        {
+              "type": "attribute",
+              "attribute_id": "TS",
+              "id": 11682,
+              "family": "CLE"
+        }
+      ],
+      "sections": []
     }
   ]
 }
