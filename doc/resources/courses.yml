@@ -1,0 +1,10 @@
+---
+campus:
+  type: resource
+  documentation: campus.yml
+term:
+  type: resource
+  documentation: term.yml
+courses:
+  type: collection
+  documentation: course.yml
