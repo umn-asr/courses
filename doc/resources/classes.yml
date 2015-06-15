@@ -7,5 +7,5 @@ term:
   documentation: term.yml
 courses:
   type: collection
-  description: All Courses, whether or not they have sections will be returned
+  description: Only courses with sections will be returned.
   documentation: course.yml
