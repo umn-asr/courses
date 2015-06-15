@@ -1,4 +1,4 @@
-class QueryableClasses
+class QueryableClasses < QueryableCourses
   def self.fetch(campus, term, rails_cache = Rails.cache)
     FastCache.fetch(cache_key(campus, term)) do
       rails_cache.fetch(cache_key(campus, term)) do
