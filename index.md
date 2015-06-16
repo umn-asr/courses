@@ -34,6 +34,32 @@ Some examples:
 - [http://courses.umn.edu/terms.json](http://courses.umn.edu/terms.json)
 - [http://courses.umn.edu/terms.xml](http://courses.umn.edu/terms.xml)
 
+## Courses vs Classes
+
+This service can provide you data for Courses or Classes. Courses define what will be taught, while Classes are things you can actually enroll for.
+
+If you're not sure which you want, you probably want to look at Classes.
+
+To view Classes data, use 
+
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.json`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.xml`
+
+To view Course data, use 
+
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
+`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
+
+In the documentation we use the term 'course', but everything applies equally to Courses and Classes.
+
+## Documentation
+
+We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/master/doc/resources). 
+
+For Courses, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+
+For Classes, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+
 ## Searching
 
 Search for courses by using the query string. You can search by:
@@ -164,4 +190,3 @@ Will return any courses that are:
 - Taught In Person
 - With a catalog number between 2000 and 2999
 - Have the subject HIST
-
