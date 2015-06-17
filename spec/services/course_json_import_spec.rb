@@ -23,43 +23,41 @@ RSpec.describe CourseJsonImport, :type => :request do
     end
 
     describe "when a course is missing required data" do
-      it "does not import a course that is missing course_id" do
-        course_id_removed = course_json["courses"].first["course_id"]
-        course_json["courses"].first["course_id"] = nil
-        subject = described_class.new(course_json)
+      before do
+        @course_id_not_imported = course_json["courses"].first["course_id"]
+      end
+
+      def import_and_get_imported_course_ids(json)
+        subject = described_class.new(json)
         subject.run
 
         get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
         response_json = JSON.parse(response.body)
 
-        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
-        expect(returned_courses).not_to include(course_id_removed)
+        response_json["courses"].collect { |c| c["course_id"] }
+      end
+
+      it "does not import a course that is missing course_id" do
+        course_json["courses"].first["course_id"] = nil
+
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
+
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
       end
 
       it "does not import a course that is missing its title" do
-        course_id_removed = course_json["courses"].first["course_id"]
         course_json["courses"].first["title"] = nil
-        subject = described_class.new(course_json)
-        subject.run
 
-        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
-        response_json = JSON.parse(response.body)
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
 
-        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
-        expect(returned_courses).not_to include(course_id_removed)
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
       end
 
       it "does not import a course that is missing its subject" do
-        course_id_removed = course_json["courses"].first["course_id"]
         course_json["courses"].first.delete("subject")
-        subject = described_class.new(course_json)
-        subject.run
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
 
-        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
-        response_json = JSON.parse(response.body)
-
-        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
-        expect(returned_courses).not_to include(course_id_removed)
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
       end
     end
 
