@@ -22,6 +22,47 @@ RSpec.describe CourseJsonImport, :type => :request do
       expect(sort_json!(response_json)).to eq(sort_json!(course_json))
     end
 
+    describe "when a course is missing required data" do
+      it "does not import a course that is missing course_id" do
+        course_id_removed = course_json["courses"].first["course_id"]
+        course_json["courses"].first["course_id"] = nil
+        subject = described_class.new(course_json)
+        subject.run
+
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+
+        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
+        expect(returned_courses).not_to include(course_id_removed)
+      end
+
+      it "does not import a course that is missing its title" do
+        course_id_removed = course_json["courses"].first["course_id"]
+        course_json["courses"].first["title"] = nil
+        subject = described_class.new(course_json)
+        subject.run
+
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+
+        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
+        expect(returned_courses).not_to include(course_id_removed)
+      end
+
+      it "does not import a course that is missing its subject" do
+        course_id_removed = course_json["courses"].first["course_id"]
+        course_json["courses"].first.delete("subject")
+        subject = described_class.new(course_json)
+        subject.run
+
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+
+        returned_courses = response_json["courses"].collect { |c| c["course_id"] }
+        expect(returned_courses).not_to include(course_id_removed)
+      end
+    end
+
     context "when a section is missing a grading basis" do
       let(:json_without_grading_basis) { JSON.parse(File.read('test/fixtures/no_grading_basis_for_section_102.json')) }
       subject { described_class.new(json_without_grading_basis)}

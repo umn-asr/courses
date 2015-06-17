@@ -3,11 +3,21 @@ class CourseJsonImport
     self.json = json
   end
 
+  def course_json_invalid?(course_json)
+    course_json["course_id"].blank? ||
+      course_json["title"].blank? ||
+      course_json["subject"].blank?
+  end
+
   def run
     campus = Campus.where(abbreviation: json["campus"]["abbreviation"]).first
     term = Term.where(strm: json["term"]["strm"]).first
 
     json["courses"].each do |course_json|
+      if course_json_invalid?(course_json)
+        next
+      end
+
       course_attr = Hash.new
       course_attr = course_json.slice("title", "description", "course_id", "catalog_number", "repeatable", "repeat_limit", "units_repeat_limit", "offer_frequency", "credits_minimum", "credits_maximum")
 
