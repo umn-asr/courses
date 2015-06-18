@@ -22,6 +22,45 @@ RSpec.describe CourseJsonImport, :type => :request do
       expect(sort_json!(response_json)).to eq(sort_json!(course_json))
     end
 
+    describe "when a course is missing required data" do
+      before do
+        @course_id_not_imported = course_json["courses"].first["course_id"]
+      end
+
+      def import_and_get_imported_course_ids(json)
+        subject = described_class.new(json)
+        subject.run
+
+        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        response_json = JSON.parse(response.body)
+
+        response_json["courses"].collect { |c| c["course_id"] }
+      end
+
+      it "does not import a course that is missing course_id" do
+        course_json["courses"].first["course_id"] = nil
+
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
+
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
+      end
+
+      it "does not import a course that is missing its title" do
+        course_json["courses"].first["title"] = nil
+
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
+
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
+      end
+
+      it "does not import a course that is missing its subject" do
+        course_json["courses"].first.delete("subject")
+        imported_course_ids = import_and_get_imported_course_ids(course_json)
+
+        expect(imported_course_ids).not_to include(@course_id_not_imported)
+      end
+    end
+
     context "when a section is missing a grading basis" do
       let(:json_without_grading_basis) { JSON.parse(File.read('test/fixtures/no_grading_basis_for_section_102.json')) }
       subject { described_class.new(json_without_grading_basis)}
