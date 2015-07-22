@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.3'
 
 group :production, :staging do
   gem 'ruby-oci8', '2.1.7'
