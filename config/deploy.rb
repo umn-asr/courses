@@ -28,3 +28,5 @@ after "deploy:updated", :link_shared_tmp_folder do
     execute "ln -nfs /swadm/tmp #{release_path}/tmp/json_tmp"
   end
 end
+
+set :passenger_restart_with_touch,  true
