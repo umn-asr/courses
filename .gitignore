@@ -18,3 +18,4 @@
 /vendor/bundle
 .capistrano
 *rdb
+/bin
