@@ -1,0 +1,4 @@
+check process redis-server with pidfile /swadm/var/run/redis/6379.pid
+  start program = "/swadm/src/bin/redis-server /swadm/etc/redis/6379.conf"
+  stop program = "/swadm/src/bin/redis-cli shutdown"
+  alert asr-web-errors@umn.edu { nonexist, timeout }
