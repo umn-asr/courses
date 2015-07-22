@@ -29,4 +29,11 @@ after "deploy:updated", :link_shared_tmp_folder do
   end
 end
 
+after "deploy:published", :configure_monit do
+  on roles(:all) do
+    execute "cp #{release_path}/config/monit/* /swadm/etc/monit.d/"
+    execute "monit reload"
+  end
+end
+
 set :passenger_restart_with_touch,  true
