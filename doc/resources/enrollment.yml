@@ -1,0 +1,19 @@
+---
+enrollment:
+  attributes:
+    required:
+      type:
+        type: string
+      enrollment_capacity:
+        type: string
+      waitlist_capacity:
+        type: string
+      minimum_enrollment:
+        type: string
+      enrollment_total:
+        type: string
+      waitlist_total:
+        type: string
+      reserve_capacities:
+        type: collection
+        documenation: reserve_capacity.yml
