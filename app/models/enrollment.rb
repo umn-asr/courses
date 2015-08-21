@@ -1,5 +1,5 @@
 class Enrollment
-  attr_accessor :enrollment_capacity, :waitlist_capacity, :minimum_enrollment, :enrollment_total, :waitlist_total
+  attr_accessor :enrollment_capacity, :waitlist_capacity, :minimum_enrollment, :enrollment_total, :waitlist_total, :status
 
   def self.fetch(section)
     enrollment_data = EnrollmentService.fetch(section.class_number, section.course.term.strm)
