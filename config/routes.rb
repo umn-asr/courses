@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :campuses, only: [] do
     resources :terms, only: [] do
+      resources :subjects, only: [:index]
       resources :courses, only: [:index]
       resources :classes, only: [:index]
     end
