@@ -12,10 +12,24 @@ class Enrollment
     self.minimum_enrollment  = attrs["minEnrollment"]
     self.enrollment_total    = attrs["enrollmentTotal"]
     self.waitlist_total      = attrs["waitTotal"]
+    self.status              = attrs["enrollStatus"]
   end
 
   def type
     "enrollment"
+  end
+
+  def status=(x)
+    case x
+    when "O"
+      @status = "open"
+    when "W"
+      @status = "waitlist"
+    when "C"
+      @status = "closed"
+    else
+      @status = ""
+    end
   end
 
   def to_h
@@ -26,6 +40,7 @@ class Enrollment
       minimum_enrollment: minimum_enrollment,
       enrollment_total: enrollment_total,
       waitlist_total: waitlist_total,
+      status: status,
       reserve_capacities: []
     }
   end
