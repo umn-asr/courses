@@ -2,16 +2,16 @@ class Enrollment
   attr_accessor :enrollment_capacity, :waitlist_capacity, :minimum_enrollment, :enrollment_total, :waitlist_total
 
   def self.fetch(section)
-    enrollment_data = EnrollmentService.fetch(section.class_number)
-    new(Hash(enrollment_data)[:enrollmentCapacity])
+    enrollment_data = EnrollmentService.fetch(section.class_number, section.course.term.strm)
+    new(Hash(enrollment_data))
   end
 
   def initialize(attrs = {})
-    self.enrollment_capacity = attrs[:enrollCapacity]
-    self.waitlist_capacity   = attrs[:waitCapacity]
-    self.minimum_enrollment  = attrs[:minEnrollment]
-    self.enrollment_total    = attrs[:enrollmentTotal]
-    self.waitlist_total      = attrs[:waitTotal]
+    self.enrollment_capacity = attrs["enrollCapacity"]
+    self.waitlist_capacity   = attrs["waitCapacity"]
+    self.minimum_enrollment  = attrs["minEnrollment"]
+    self.enrollment_total    = attrs["enrollmentTotal"]
+    self.waitlist_total      = attrs["waitTotal"]
   end
 
   def type

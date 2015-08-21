@@ -1,19 +1,15 @@
+require 'json'
+
 class EnrollmentService
-  def self.fetch(class_number)
-    [
-      {
-        type: "class",
-        class_id: "#{class_number}",
-        enrollmentCapacity: {
-          "enrollmentSection": [true,false].sample,
-          "enrollCapacity": rand(20),
-          "waitCapacity": rand(20),
-          "minEnrollment": rand(20),
-          "enrollmentTotal": rand(20),
-          "waitTotal": rand(20),
-          "reserveCapacities": []
-        }
-      }
-    ].detect { |x| x[:class_id] == class_number.to_s}
+  include HTTParty
+
+  headers 'Content-Type' => 'application/json'
+  base_uri 'esup-integration.oit.umn.edu/classSearchService/v1'
+
+  def self.fetch(class_number, term_id)
+    response = get("/enrollment/#{term_id}", query: {"classNumbers" => class_number}).body
+    result = JSON.parse(response)
+    c = result.detect { |x| x["classNumber"].to_s == class_number.to_s }
+    Hash(c)
   end
 end

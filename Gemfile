@@ -13,6 +13,7 @@ gem 'rack-cache', '~> 1.2'
 gem 'rack-cors', '~> 0.4.0', :require => 'rack/cors'
 gem 'whenever', '~> 0.9.4', :require => false
 gem 'redis-rails', '~> 4.0.0'
+gem 'httparty'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
