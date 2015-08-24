@@ -12,7 +12,7 @@ class InstructionMode < ::ActiveRecord::Base
     {
       type: type,
       instruction_mode_id: instruction_mode_id,
-      id: id,
+      id: id.to_s,
       description: description
     }
   end

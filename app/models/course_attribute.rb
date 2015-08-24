@@ -12,7 +12,7 @@ class CourseAttribute < ::ActiveRecord::Base
     {
       type: type,
       attribute_id: attribute_id,
-      id: id,
+      id: id.to_s,
       family: family
     }
   end

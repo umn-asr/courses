@@ -9,7 +9,7 @@ class Location < ::ActiveRecord::Base
     {
       type: type,
       location_id: location_id,
-      id: id,
+      id: id.to_s,
       description: description
     }
   end

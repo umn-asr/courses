@@ -38,7 +38,7 @@ class Course < ::ActiveRecord::Base
     {
       type: type,
       course_id: course_id,
-      id: id,
+      id: id.to_s,
       catalog_number: catalog_number,
       description: description,
       title: title,

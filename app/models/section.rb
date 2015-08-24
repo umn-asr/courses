@@ -14,7 +14,7 @@ class Section < ::ActiveRecord::Base
   def to_h
     {
       type: type,
-      id: id,
+      id: id.to_s,
       class_number: class_number,
       number: number,
       component: component,
