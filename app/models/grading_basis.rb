@@ -12,7 +12,7 @@ class GradingBasis < ::ActiveRecord::Base
     {
       type: type,
       grading_basis_id: grading_basis_id,
-      id: id,
+      id: id.to_s,
       description: description
     }
   end

@@ -14,7 +14,7 @@ class Subject < ::ActiveRecord::Base
     {
       type: type,
       subject_id: subject_id,
-      id: id,
+      id: id.to_s,
       description: description
     }
   end
