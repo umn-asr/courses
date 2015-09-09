@@ -10,7 +10,6 @@ end
 gem 'oj', '~> 2.12.10'
 gem 'query_string_search', '~> 0.0.7'
 gem 'rack-cache', '~> 1.2'
-gem 'rack-cors', '~> 0.4.0', :require => 'rack/cors'
 gem 'whenever', '~> 0.9.4', :require => false
 gem 'redis-rails', '~> 4.0.0'
 

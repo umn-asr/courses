@@ -29,17 +29,6 @@ module CourseGuide
 
     config.autoload_paths += %W(#{Rails.root}/app/models/presenters #{Rails.root}/app/services #{Rails.root}/lib)
 
-    config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
-      allow do
-        origins '*'
-
-        resource '*',
-          :headers => :any,
-          :methods => [:get],
-          :max_age => 0
-      end
-    end
-
     config.caching = ActiveSupport::OrderedOptions.new
     config.caching.use = true
   end
