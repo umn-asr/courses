@@ -52,6 +52,7 @@
           "component": "LEC",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "250",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -111,6 +112,7 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -160,6 +162,7 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -215,6 +218,7 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -264,6 +268,7 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -319,6 +324,7 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -368,6 +374,7 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -423,6 +430,7 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -472,6 +480,7 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",
@@ -568,6 +577,7 @@
           "component": "LEC",
           "location": "TCWESTBANK",
           "notes": "",
+          "enrollment_cap": "25",
           "instruction_mode": {
             "type": "instruction_mode",
             "instruction_mode_id": "P",

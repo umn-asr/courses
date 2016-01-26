@@ -36,7 +36,7 @@ class CourseJsonImport
       course.grading_basis = parse_resource(GradingBasis, course_json["grading_basis"], {"grading_basis_id" => "grading_basis_id", "description" => "description"})
 
       course_json["sections"].map do |section_json|
-        section = course.sections.build(section_json.slice("class_number", "number", "component", "location", "notes"))
+        section = course.sections.build(section_json.slice("class_number", "number", "component", "location", "notes", "enrollment_cap"))
         section.instruction_mode = parse_resource(InstructionMode, section_json["instruction_mode"], {"instruction_mode_id" => "instruction_mode_id","description" => "description"})
         section.save
 
