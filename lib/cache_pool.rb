@@ -2,7 +2,7 @@ class CachePool
   include Singleton
 
   def initialize
-    self.pool_size            = 7
+    self.pool_size            = 4
     self.redis_configuration  = {}
     build_pool
   end
