@@ -1,6 +1,8 @@
 class CachePool
   include Singleton
 
+  attr_reader :pool_size
+
   def initialize
     self.pool_size            = 4
     self.redis_configuration  = {}
@@ -20,7 +22,8 @@ class CachePool
   end
 
   private
-  attr_accessor :pool_size, :redis_configuration
+  attr_writer   :pool_size
+  attr_accessor :redis_configuration
 
   def pool
     @pool ||= []

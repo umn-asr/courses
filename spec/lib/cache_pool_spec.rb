@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CachePool do
 
   let(:index)       { Redis.new }
-  let(:pool_size)   { 7 }
+  let(:pool_size)   { described_class.instance.pool_size }
 
   subject { described_class.instance }
 
