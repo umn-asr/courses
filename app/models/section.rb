@@ -20,6 +20,7 @@ class Section < ::ActiveRecord::Base
       component: component,
       location: location,
       notes: notes,
+      enrollment_cap: enrollment_cap,
       instruction_mode: instruction_mode.to_h,
       instructors: instructors.map { |i| i.to_h },
       meeting_patterns: meeting_patterns.map { |mp| mp.to_h },

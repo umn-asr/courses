@@ -61,21 +61,6 @@ RSpec.describe CourseJsonImport, :type => :request do
       end
     end
 
-    context "when a section is missing a grading basis" do
-      let(:json_without_grading_basis) { JSON.parse(File.read('test/fixtures/no_grading_basis_for_section_102.json')) }
-      subject { described_class.new(json_without_grading_basis)}
-
-      it "persits the json" do
-        subject.run
-        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
-        response_json = JSON.parse(response.body)
-        format_for_comparison!(response_json)
-        format_for_comparison!(json_without_grading_basis)
-
-        expect(sort_json!(response_json)).to eq(sort_json!(json_without_grading_basis))
-      end
-    end
-
     context "when a section is missing an instruction mode" do
       let(:json_without_instruction_mode) { JSON.parse(File.read('test/fixtures/no_instruction_mode_for_section_104.json')) }
       subject { described_class.new(json_without_instruction_mode)}
