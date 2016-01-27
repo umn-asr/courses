@@ -73,7 +73,7 @@ RSpec.describe CachePool::CachePool do
 
     describe "next" do
       it "returns the same cache when called multiple times" do
-        expect(subject.current).to eq(subject.current)
+        expect(subject.next).to eq(subject.next)
       end
 
       it "is the cache store for the current db + 1" do
