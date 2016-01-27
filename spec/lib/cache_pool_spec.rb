@@ -86,6 +86,10 @@ RSpec.describe CachePool::CachePool do
           index.set('current_cache_db', pool_size)
         end
 
+        after do
+          index.del('current_cache_db')
+        end
+
         it "is the cache store for redis db 1" do
           expect(subject.next.options[:db]).to eq(1)
         end
