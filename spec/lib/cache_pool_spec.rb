@@ -9,7 +9,7 @@ RSpec.describe CachePool::CachePool do
     before do
       Rails.configuration.cache_pool.pool_size           = random_pool_size
       Rails.configuration.cache_pool.redis_configuration = random_redis_configuration
-      Singleton.__init__(CachePool::CachePool)
+      Singleton.__init__(CachePool::CachePool)  # undocumented method to reload our CachePool Singleton see http://stackoverflow.com/questions/1909181/how-to-test-a-singleton-class
     end
 
     it "gets pool size from Rails configuration" do
@@ -31,7 +31,7 @@ RSpec.describe CachePool::CachePool do
     before do
       Rails.configuration.cache_pool.pool_size           = pool_size
       Rails.configuration.cache_pool.redis_configuration = redis_configuration
-      Singleton.__init__(CachePool::CachePool)
+      Singleton.__init__(CachePool::CachePool) # undocumented method to reload our CachePool Singleton see http://stackoverflow.com/questions/1909181/how-to-test-a-singleton-class
     end
 
     describe "current" do
