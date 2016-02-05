@@ -1,3 +1,8 @@
+PATH
+  remote: lib/cache_pool
+  specs:
+    cache_pool (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -168,6 +173,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-oracle_enhanced-adapter (~> 1.6.0)
+  cache_pool!
   capistrano (= 3.4.0)
   capistrano-bundler (~> 1.1)
   capistrano-passenger (~> 0.1.1)
