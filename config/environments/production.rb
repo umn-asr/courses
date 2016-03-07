@@ -48,7 +48,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-   config.cache_store = CachePool.instance.current
+   config.cache_store = CachePool::CachePool.instance.current
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'

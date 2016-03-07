@@ -5,8 +5,8 @@ module CachePool
     include Singleton
 
     def initialize
-      self.pool_size            = Rails.configuration.cache_pool.pool_size
-      self.redis_configuration  = Rails.configuration.cache_pool.redis_configuration
+      self.pool_size            = Rails.configuration.cache_pool.pool_size || 4
+      self.redis_configuration  = Rails.configuration.cache_pool.redis_configuration || {}
       build_pool
     end
 
