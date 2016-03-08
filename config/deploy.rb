@@ -22,6 +22,17 @@ set :ssh_options, {
   auth_methods: %w(publickey)
 }
 
+namespace :deploy do
+  desc 'Symlink Repository'
+  task :symlink_repo do
+    on roles(:app) do
+      execute :ln, "-nsf #{deploy_to}/repo #{release_path}/.git"
+    end
+  end
+end
+
+after :updating, :symlink_repo
+
 after "deploy:updated", :link_shared_tmp_folder do
   # link in the shared tmp folder
   on roles(:app) do
