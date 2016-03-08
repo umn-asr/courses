@@ -29,22 +29,25 @@ namespace :deploy do
       execute :ln, "-nsf #{deploy_to}/repo #{release_path}/.git"
     end
   end
-end
 
-after :updating, :symlink_repo
-
-after "deploy:updated", :link_shared_tmp_folder do
-  # link in the shared tmp folder
-  on roles(:app) do
-    execute "ln -nfs /swadm/tmp #{release_path}/tmp/json_tmp"
+  desc 'link in the shared tmp folder'
+  task :link_shared_tmp_folder do
+    on roles(:app) do
+      execute "ln -nfs /swadm/tmp #{release_path}/tmp/json_tmp"
+    end
   end
+
+  task :configure_monit do
+    on roles(:all) do
+      execute "cp #{release_path}/config/monit/* /swadm/etc/monit.d/"
+      execute "monit reload"
+    end
+  end
+
+  after :updating, :symlink_repo
+  after :updating, :link_shared_tmp_folder
+  after :publishing, :configure_monit
 end
 
-after "deploy:published", :configure_monit do
-  on roles(:all) do
-    execute "cp #{release_path}/config/monit/* /swadm/etc/monit.d/"
-    execute "monit reload"
-  end
-end
 
 set :passenger_restart_with_touch,  true
