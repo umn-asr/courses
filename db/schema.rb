@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126190112) do
+ActiveRecord::Schema.define(version: 20160309205704) do
 
   create_table "campuses", force: :cascade do |t|
     t.string "abbreviation"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160126190112) do
     t.integer "instructor_contact_id"
     t.integer "section_id"
     t.integer "instructor_role_id"
+    t.string  "print"
   end
 
   add_index "instructors", ["instructor_contact_id"], name: "index_instructors_on_instructor_contact_id"
@@ -127,6 +128,8 @@ ActiveRecord::Schema.define(version: 20160126190112) do
     t.text    "notes"
     t.integer "instruction_mode_id"
     t.string  "enrollment_cap"
+    t.string  "status"
+    t.string  "print"
   end
 
   add_index "sections", ["course_id"], name: "index_sections_on_course_id"
