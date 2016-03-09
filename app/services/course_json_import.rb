@@ -36,14 +36,14 @@ class CourseJsonImport
       course.grading_basis = parse_resource(GradingBasis, course_json["grading_basis"], {"grading_basis_id" => "grading_basis_id", "description" => "description"})
 
       course_json["sections"].map do |section_json|
-        section = course.sections.build(section_json.slice("class_number", "number", "component", "location", "notes", "enrollment_cap"))
+        section = course.sections.build(section_json.slice("class_number", "number", "component", "location", "notes", "status", "print", "enrollment_cap"))
         section.instruction_mode = parse_resource(InstructionMode, section_json["instruction_mode"], {"instruction_mode_id" => "instruction_mode_id","description" => "description"})
         section.save
 
         section_json["instructors"].each do |instructor_json|
           role = parse_resource(InstructorRole, instructor_json, {"role" => "abbreviation"})
           contact = parse_resource(InstructorContact, instructor_json, {"name" => "name","email" => "email"})
-          section.instructors.create(instructor_role: role, instructor_contact: contact)
+          section.instructors.create(instructor_role: role, instructor_contact: contact, print: instructor_json["print"])
         end
 
         section_json["meeting_patterns"].each do |pattern_json|

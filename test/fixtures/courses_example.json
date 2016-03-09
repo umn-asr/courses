@@ -52,6 +52,8 @@
           "component": "LEC",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "250",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -63,13 +65,15 @@
               "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "Y"
             },
             {
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             }
           ],
           "meeting_patterns": [
@@ -112,6 +116,8 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -123,13 +129,15 @@
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "N"
             }
           ],
           "meeting_patterns": [
@@ -162,6 +170,8 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -173,19 +183,22 @@
               "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jarrett Brown",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "Y"
             }
           ],
           "meeting_patterns": [
@@ -218,6 +231,8 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -229,13 +244,15 @@
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "N"
             }
           ],
           "meeting_patterns": [
@@ -268,6 +285,8 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -279,19 +298,22 @@
               "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Hannah Rogers",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "Y"
             }
           ],
           "meeting_patterns": [
@@ -324,6 +346,8 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -335,13 +359,15 @@
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "N"
             }
           ],
           "meeting_patterns": [
@@ -374,6 +400,8 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -385,19 +413,22 @@
               "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Kent Bodurtha",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "Y"
             }
           ],
           "meeting_patterns": [
@@ -430,6 +461,8 @@
           "component": "DIS",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "21",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -441,13 +474,15 @@
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "N"
             }
           ],
           "meeting_patterns": [
@@ -480,6 +515,8 @@
           "component": "LAB",
           "location": "TCEASTBANK",
           "notes": "3-hr common final exam",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "18",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -491,19 +528,22 @@
               "type": "instructor",
               "name": "Vincent Noireaux",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Jennifer Kroschel",
               "email": "email@umn.edu",
-              "role": "PRXY"
+              "role": "PRXY",
+              "print": "N"
             },
             {
               "type": "instructor",
               "name": "Michael Kreshchuk",
               "email": "email@umn.edu",
-              "role": "TA"
+              "role": "TA",
+              "print": "Y"
             }
           ],
           "meeting_patterns": [
@@ -577,6 +617,8 @@
           "component": "LEC",
           "location": "TCWESTBANK",
           "notes": "",
+          "status": "A",
+          "print": "Y",
           "enrollment_cap": "25",
           "instruction_mode": {
             "type": "instruction_mode",
@@ -588,7 +630,8 @@
               "type": "instructor",
               "name": "Yuichiro Onishi",
               "email": "email@umn.edu",
-              "role": "PI"
+              "role": "PI",
+              "print": "Y"
             }
           ],
           "meeting_patterns": [

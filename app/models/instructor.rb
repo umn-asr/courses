@@ -11,7 +11,8 @@ class Instructor < ::ActiveRecord::Base
       type: type,
       name: instructor_contact.name,
       email: instructor_contact.email,
-      role: instructor_role.abbreviation
+      role: instructor_role.abbreviation,
+      print: print
     }
   end
 end
