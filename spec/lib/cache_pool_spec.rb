@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe CachePool::CachePool do
+  before :context do
+    begin
+      Process.spawn("redis-server -v", out: "/dev/null")
+    rescue
+      raise RuntimeError, "You don't appear to have Redis installed on this machine. These tests require a Redis server to be running."
+    else
+      Process.spawn("redis-server", out: "/dev/null")
+    end
+  end
+
+  after :context do
+    Process.spawn("redis-cli shutdown")
+  end
 
   describe "configuration" do
     let(:random_pool_size) { rand(100..999) }
