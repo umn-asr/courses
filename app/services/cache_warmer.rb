@@ -1,10 +1,12 @@
 class CacheWarmer
-  def self.warm(cache)
-    new(cache).warm
+  def self.warm(cache, terms, campuses)
+    new(cache, terms, campuses).warm
   end
 
-  def initialize(cache)
+  def initialize(cache, terms, campuses)
     self.cache = cache
+    self.terms = terms
+    self.campuses = campuses
   end
 
   def warm
@@ -13,7 +15,7 @@ class CacheWarmer
   end
 
   private
-  attr_accessor :cache
+  attr_accessor :cache, :terms, :campuses
 
   def clear_cache
     cache.clear
@@ -49,13 +51,5 @@ class CacheWarmer
 
   def campuses_and_terms
     campuses.product(terms)
-  end
-
-  def terms
-    Term.all
-  end
-
-  def campuses
-    Campus.all
   end
 end
