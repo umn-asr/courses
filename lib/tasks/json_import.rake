@@ -1,7 +1,7 @@
 namespace :json_import do
   desc "imports json files and updates the cache"
   task :update_all, [:directory, :file_pattern] => :directory_import do |t, args|
-    CacheWarmer.warm(CachePool::CachePool.instance.next)
+    CacheWarmer.warm(CachePool::CachePool.instance.next, Term.all.to_a, Campus.all.to_a)
     CachePool::CachePool.instance.next!
     `touch #{Rails.root}/tmp/restart.txt`
     sleep 1
