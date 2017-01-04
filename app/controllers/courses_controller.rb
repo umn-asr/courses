@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
       courses_to_retrieve = QueryStringSearch.new(QueryableCourses.fetch(campus, term), query_string_search).results.collect(&:course)
       render_content(CoursesPresenter.fetch(campus, term, courses_to_retrieve).to_h)
     else
-      render nothing: true, status: 404
+      head :not_found
     end
   end
 end

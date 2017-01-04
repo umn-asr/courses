@@ -14,12 +14,10 @@ RSpec.describe CourseJsonImport, :type => :request do
 
     it "persits the json" do
       subject.run
-      get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+      get "/campuses/UMNTC/terms/1149/courses", as: :json
       response_json = JSON.parse(response.body)
-      format_for_comparison!(response_json)
-      format_for_comparison!(course_json)
 
-      expect(sort_json!(response_json)).to eq(sort_json!(course_json))
+      expect(normalize_json!(response_json)).to eq(normalize_json!(course_json))
     end
 
     describe "when a course is missing required data" do
@@ -31,7 +29,7 @@ RSpec.describe CourseJsonImport, :type => :request do
         subject = described_class.new(json)
         subject.run
 
-        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        get "/campuses/UMNTC/terms/1149/courses", as: :json
         response_json = JSON.parse(response.body)
 
         response_json["courses"].collect { |c| c["course_id"] }
@@ -67,12 +65,10 @@ RSpec.describe CourseJsonImport, :type => :request do
 
       it "persits the json" do
         subject.run
-        get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+        get "/campuses/UMNTC/terms/1149/courses", as: :json
         response_json = JSON.parse(response.body)
-        format_for_comparison!(response_json)
-        format_for_comparison!(json_without_instruction_mode)
 
-        expect(sort_json!(response_json)).to eq(sort_json!(json_without_instruction_mode))
+        expect(normalize_json!(response_json)).to eq(normalize_json!(json_without_instruction_mode))
       end
 
     end
@@ -80,7 +76,7 @@ RSpec.describe CourseJsonImport, :type => :request do
 
   def ensure_no_courses
     # sanity check - make sure we are starting from scratch
-    get "/campuses/UMNTC/terms/1149/courses", { :format => :json }
+    get "/campuses/UMNTC/terms/1149/courses", as: :json
     expect(JSON.parse(response.body)["courses"]).to eq([])
   end
 
@@ -118,10 +114,13 @@ RSpec.describe CourseJsonImport, :type => :request do
   end
 
   def format_for_comparison!(json)
+    #
     if json.class == Hash
       json.delete_if { |key, value| key == "id" }
-      json.values.each do |value|
-        value = value.downcase! if value.class == String
+      json.each do |key, value|
+        if value.class == String
+          json[key] = value.dup.downcase
+        end
         format_for_comparison!(value)
       end
     elsif json.class == Array
@@ -130,4 +129,9 @@ RSpec.describe CourseJsonImport, :type => :request do
     json
   end
 
+  def normalize_json!(json)
+    format_for_comparison!(json)
+    sort_json!(json)
+    json
+  end
 end
