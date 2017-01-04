@@ -1,4 +1,4 @@
 set :rails_env,  "production"
 
-server 'asr-course-production.oit.umn.edu',
+server 'asr-courses-prd-web-02.oit.umn.edu',
   roles: %w{web app db prod}
