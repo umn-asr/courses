@@ -3,7 +3,14 @@ require 'rails_helper'
 RSpec.describe RackCacheManager do
   include Rails.application.routes.url_helpers
 
-  subject { described_class.new }
+  before :all do
+    generate_terms
+    generate_campuses
+  end
+  let(:terms)     { Term.all.to_a }
+  let(:campuses)  { Campus.all.to_a }
+
+  subject { described_class.new(terms, campuses) }
 
   describe ".reset" do
     it "builds a new RackCacheManager, then calls clear and warm" do
@@ -11,7 +18,7 @@ RSpec.describe RackCacheManager do
       expect(RackCacheManager).to receive(:new).and_return(instance)
       expect(instance).to receive(:clear)
       expect(instance).to receive(:warm)
-      RackCacheManager.reset
+      RackCacheManager.reset(terms, campuses)
     end
   end
 
@@ -69,5 +76,17 @@ RSpec.describe RackCacheManager do
       end
     end
   end
+end
 
+def generate_terms
+  this_year = Time.now.strftime('%y').to_i
+  years = (this_year..99).take(rand(3..6))
+  years.flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }.map { |strm| Term.new(strm: strm)}
+  nil
+end
+
+def generate_campuses
+  campus_abbreviations = ["UMNCR", "UMNDL", "UMNMO", "UMNRO", "UMNTC"].take(rand(2..5))
+  campus_abbreviations.map { |campus_abbreviation| Campus.new(abbreviation: campus_abbreviation)}
+  nil
 end
