@@ -9,7 +9,7 @@ set :user, 'swadm'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
-set :linked_dirs, %w(bin log tmp/cache vendor/bundle)
+set :linked_dirs, %w(log tmp/cache)
 set :linked_files, %w{config/database.yml config/initializers/environment_variables.rb}
 
 set :whenever_environment, ->{ "#{fetch(:rails_env)}" }
