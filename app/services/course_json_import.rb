@@ -47,16 +47,12 @@ class CourseJsonImport
         end
 
         section_json["meeting_patterns"].each do |pattern_json|
-          mp = parse_resource(MeetingPattern, pattern_json, {"start_time" => "start_time","end_time" => "end_time","start_date" => "start_date","end_date" => "end_date"})
-          mp.section_id = section.id
-          mp.save
-
-          mp.location = parse_resource(Location, pattern_json["location"], {"location_id" => "location_id","description" => "description"})
+          location = parse_resource(Location, pattern_json["location"], {"location_id" => "location_id","description" => "description"})
+          mp = section.meeting_patterns.create(start_time: pattern_json['start_time'], end_time: pattern_json['end_time'], start_date: pattern_json['start_date'], end_date: pattern_json['end_date'], location: location)
 
           pattern_json["days"].each do |day|
             mp.days << Day.find_by_abbreviation(day["abbreviation"])
           end
-          mp.save
         end
 
         section_json["combined_sections"].each do |cs_json|
