@@ -5,7 +5,7 @@ class Section < ::ActiveRecord::Base
   has_many :meeting_patterns, -> { order "start_date" }
   has_many :combined_sections
 
-  validates_presence_of :class_number, :number, :component, :course_id
+  validates_presence_of :class_number, :number, :component, :course_id, :instruction_mode_id
 
   def type
     "section"
