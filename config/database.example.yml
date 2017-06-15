@@ -1,0 +1,30 @@
+exadata_defaults: &exadata_defaults
+  adapter: oracle_enhanced
+
+development:
+  <<: *exadata_defaults
+  username: <%= lookup('lastpass', 'asr_dev_user/development', field='username') %>
+  host: <%= lookup('lastpass', 'asr_dev_user/development', field='Hostname') %>
+  database: <%= lookup('lastpass', 'asr_dev_user/development', field='Database') %>
+  password: <%= lookup('lastpass', 'asr_dev_user/development', field='password') %>
+
+test:
+  <<: *exadata_defaults
+  username: <%= lookup('lastpass', 'asr_dev_user/test', field='username') %>
+  host: <%= lookup('lastpass', 'asr_dev_user/test', field='Hostname') %>
+  database: <%= lookup('lastpass', 'asr_dev_user/test', field='Database') %>
+  password: <%= lookup('lastpass', 'asr_dev_user/test', field='password') %>
+
+staging:
+  <<: *global_defaults
+  username: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_staging', field='username') %>
+  password: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_staging', field='password') %>
+  host: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_staging', field='Hostname') %>
+  database: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_staging', field='Database') %>
+  
+production:
+  <<: *global_defaults
+  username: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_production', field='username') %>
+  password: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_production', field='password') %>
+  host: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_production', field='Hostname') %>
+  database: <%= lookup('lastpass', 'Shared-Applications/courses/oracle_production', field='Database') %>
