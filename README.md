@@ -4,6 +4,14 @@ A JSON/XML service for getting University of Minnesota course and class data. Wo
 
 Note this is still under active development. The links below will work, but our demo site only contains data for the Fall, 2014 term. More terms are coming later.
 
+## Development
+
+1. Clone the repo: `git clone git@github.com:umn-asr/courses.git`
+
+2. `bundle install`
+
+3.  Use LastPassify to setup your `config/database.yml`: `bundle exec lastpassify`
+
 ## Getting Courses
 
 You probably want to retrieve courses using cURL/Wget/etc. The files can be quite large and browsers can get fussy about loading a 50 meg xml file.
