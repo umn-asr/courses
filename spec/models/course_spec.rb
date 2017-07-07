@@ -21,11 +21,14 @@ RSpec.describe Course do
       expect(Course.for_campus_and_term(campus, term)).to respond_to(:each)
     end
 
-    it "returns courses that match the supplied campus and term" do
+    it "does not return courses from another campus and term" do
       other_subject = Subject.create(subject_id: "TEST", description: "different campus term", campus_id: other_campus.id, term_id: other_term.id)
       other_course = other_subject.courses.create(course_id: rand(1000..9999).to_s)
-      expect(Course.for_campus_and_term(campus, term)).to eq(courses)
       expect(Course.for_campus_and_term(campus, term)).to_not include(other_course)
+    end
+
+    it "returns courses that match the supplied campus and term" do
+      expect(Course.for_campus_and_term(campus, term).sort_by(&:course_id)).to eq(subject.courses.sort_by(&:course_id))
     end
 
     it "returns an empty collection when there are no matches" do
