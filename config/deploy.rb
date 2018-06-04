@@ -40,7 +40,7 @@ namespace :deploy do
   task :configure_monit do
     on roles(:all) do
       execute "cp #{release_path}/config/monit/* /swadm/etc/monit.d/"
-      execute "monit reload"
+      execute "sudo monit reload"
     end
   end
 
