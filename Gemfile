@@ -13,6 +13,8 @@ gem 'rack-cache', '~> 1.2'
 gem 'whenever', '~> 0.9.4', :require => false
 gem 'redis-rails', '~> 5.0.0'
 gem 'cache_pool', path: 'lib/cache_pool'
+gem 'lograge'
+gem 'logstash-event'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
