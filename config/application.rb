@@ -16,5 +16,6 @@ module CourseGuide
     config.autoload_paths += %W(#{Rails.root}/app/models/presenters #{Rails.root}/app/services #{Rails.root}/lib)
     config.caching = ActiveSupport::OrderedOptions.new
     config.caching.use = true
+    config.log_level = :info
   end
 end
