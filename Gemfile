@@ -29,5 +29,6 @@ group :development do
   gem 'capistrano', '= 3.4.0'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler', '~> 1.1'
+  gem 'capistrano-logrotate', '0.4.0'
   gem 'capistrano-passenger', '~> 0.1.1'
 end

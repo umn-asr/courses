@@ -22,6 +22,11 @@ set :ssh_options, {
   auth_methods: %w(publickey)
 }
 
+set :role, :web
+set :logrotate_role, :web
+set :logrotate_conf_path, -> { File.join('/swadm/etc', 'logrotate.d', "#{fetch(:application)}_#{fetch(:stage)}") }
+set :logrotate_log_path, -> { File.join(shared_path, 'log') }
+
 namespace :deploy do
   desc 'Symlink Repository'
   task :symlink_repo do
@@ -47,6 +52,7 @@ namespace :deploy do
   after :updating, :symlink_repo
   after :updating, :link_shared_tmp_folder
   after :publishing, :configure_monit
+  after :published, 'logrotate:config'
 end
 
 
