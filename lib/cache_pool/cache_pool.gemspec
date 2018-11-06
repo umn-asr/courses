@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.email         = ["dlagerro@umn.edu"]
 
   spec.summary       = %q{Manages a pool of redis caches.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
