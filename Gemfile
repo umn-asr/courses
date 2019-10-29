@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0'
+gem 'sprockets', '~> 3.7.2'
 
 group :production, :staging do
   gem 'ruby-oci8', '2.2.2'
