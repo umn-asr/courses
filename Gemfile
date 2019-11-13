@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.2.3'
 gem 'sprockets', '~> 3.7.2'
 
 group :production, :staging do
-  gem 'ruby-oci8', '2.2.2'
-  gem 'activerecord-oracle_enhanced-adapter', '~> 1.7.0'
+  gem 'ruby-oci8'
+  gem 'activerecord-oracle_enhanced-adapter', '~> 5.2.0'
 end
 
 gem 'oj', '~> 2.12.10'
