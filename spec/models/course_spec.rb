@@ -8,8 +8,8 @@ RSpec.describe Course do
     let(:term)    { Term.create(strm: "2259") }
     let(:subject) { Subject.create(subject_id: "TEST", description: "for testing", campus_id: campus.id, term_id: term.id) }
     let(:courses) {
-                      3.times do
-                        subject.courses.create(course_id: rand(1000..9999).to_s)
+                      3.times do |x|
+                        subject.courses.create(course_id: x.to_s)
                       end
 
                       subject.courses
