@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+ruby File.read('.ruby-version', mode: 'rb').chomp
 
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 5.2.4.3'
 gem 'sprockets', '~> 3.7.2'
 
 group :production, :staging do
@@ -8,7 +9,7 @@ group :production, :staging do
   gem 'activerecord-oracle_enhanced-adapter', '~> 5.2.0'
 end
 
-gem 'oj', '~> 2.12.10'
+gem 'oj', '~> 2.18.5'
 gem 'query_string_search', '~> 0.0.7'
 gem 'rack-cache', '~> 1.2'
 gem 'whenever', '~> 0.9.4', :require => false
