@@ -1,4 +1,4 @@
-class AddCampusIdAndTermIdToSubjects < ActiveRecord::Migration
+class AddCampusIdAndTermIdToSubjects < ActiveRecord::Migration[5.2]
   def change
     add_reference :subjects, :campus, index: true
     add_foreign_key :subjects, :campuses

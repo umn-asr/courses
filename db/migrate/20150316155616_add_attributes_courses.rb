@@ -1,4 +1,4 @@
-class AddAttributesCourses < ActiveRecord::Migration
+class AddAttributesCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :course_attributes_courses, id: false do |t|
       t.belongs_to :course, index: true

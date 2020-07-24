@@ -1,4 +1,4 @@
-class CreateMeetingPatterns < ActiveRecord::Migration
+class CreateMeetingPatterns < ActiveRecord::Migration[5.2]
   def change
     create_table :meeting_patterns do |t|
       t.belongs_to :section

@@ -1,4 +1,4 @@
-class RemoveCampusIdAndTermIdFromCourses < ActiveRecord::Migration
+class RemoveCampusIdAndTermIdFromCourses < ActiveRecord::Migration[5.2]
   def change
     remove_reference :courses, :campus, index: true
     remove_foreign_key :courses, :campuses
