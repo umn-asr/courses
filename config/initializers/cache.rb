@@ -1,4 +1,4 @@
-if Rails.configuration.caching.use
+if Rails.configuration.x.caching.use
   Rails.configuration.action_dispatch.rack_cache        = true
   Rails.configuration.action_controller.perform_caching = true
   Rails.configuration.caching.default_expiry            = 48.hours

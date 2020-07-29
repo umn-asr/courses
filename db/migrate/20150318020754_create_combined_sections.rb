@@ -1,4 +1,4 @@
-class CreateCombinedSections < ActiveRecord::Migration
+class CreateCombinedSections < ActiveRecord::Migration[5.2]
   def change
     create_table :combined_sections do |t|
       t.belongs_to :section

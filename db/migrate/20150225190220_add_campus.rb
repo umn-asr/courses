@@ -1,4 +1,4 @@
-class AddCampus < ActiveRecord::Migration
+class AddCampus < ActiveRecord::Migration[5.2]
   def change
     create_table :campuses do |t|
       t.string :abbreviation, :unique => true

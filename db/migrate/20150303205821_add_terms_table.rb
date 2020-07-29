@@ -1,4 +1,4 @@
-class AddTermsTable < ActiveRecord::Migration
+class AddTermsTable < ActiveRecord::Migration[5.2]
   def change
     create_table :terms do |t|
       t.string :strm
