@@ -2,7 +2,7 @@
 
 A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.
 
-Note this is still under active development. The links below will work, but our demo site only contains data for the Fall, 2014 term. More terms are coming later.
+Note this is still under active development.
 
 ## Getting Courses
 
@@ -18,8 +18,8 @@ or, if you want XML:
 
 Some examples:
 
-- http://courses-staging.umn.edu/campuses/umncr/terms/1149/courses.json
-- http://courses-staging.umn.edu/campuses/umnro/terms/1153/courses.xml
+- https://courses.umn.edu/campuses/umncr/terms/1203/courses.json
+- https://courses.umn.edu/campuses/umncr/terms/1203/courses.json
 
 ## Courses vs Classes
 
