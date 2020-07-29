@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version', mode: 'rb').chomp
 
-gem 'rails', '~> 5.2.4.3'
+gem 'rails', '~> 6.0'
 gem 'sprockets', '~> 3.7.2'
 
 group :production, :staging do
   gem 'ruby-oci8'
-  gem 'activerecord-oracle_enhanced-adapter', '~> 5.2.0'
+  gem 'activerecord-oracle_enhanced-adapter', '~> 6.0'
 end
 
 gem 'oj', '~> 2.18.5'
@@ -25,7 +25,7 @@ group :development, :test do
 
   gem 'rspec', '~> 3.5'
   gem 'rspec-rails', '~> 3.5'
-  gem 'sqlite3', '~> 1.3.10'
+  gem 'sqlite3', '~> 1.4.0'
 end
 
 group :development do
