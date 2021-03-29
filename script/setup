@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# script/setup: Set up application for the first time after cloning, or set it
+#               back to the initial first unused state.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+./script/bootstrap
+
+echo "*************************************************"
+echo "While this app sets up, review the README.md file and update anything that's incorrect"
+echo "https://github.com/umn-asr/courses/blob/master/README.md"
+echo "*************************************************"
+
+echo "===> Getting passwords from LastPass if available"
+[ -f ./bin/lastpassify ] && [ -f ./config/database.example.yml ] && ./bin/lastpassify
+[ -f ./bin/lastpassify ] && [ -f ./config/secrets.example.yml ] && ./bin/lastpassify config/secrets.example.yml config/secrets.yml
+
+echo "===> Setting up DB..."
+bin/rails db:environment:set RAILS_ENV=development
+bin/rake db:schema:load
+bin/rake db:migrate
+
+if [ -z "$RAILS_ENV" ] && [ -z "$RACK_ENV" ]; then
+  # Only things for a development environment will run inside here
+  # Do things that need to be done to the application to set up for the first
+  # time. Or things needed to be run to to reset the application back to first
+  # use experience. These things are scoped to the application's domain.
+  true
+fi
+
+echo "==> App is now ready to go!"

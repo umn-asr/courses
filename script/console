@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# script/console: Use this script to launch a local Rails console during development.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+bin/rails c

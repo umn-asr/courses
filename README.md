@@ -4,6 +4,48 @@ A JSON/XML service for getting University of Minnesota course and class data. Wo
 
 Note this is still under active development.
 
+## Table of Contents
+
+* [Development](#development)
+  + [Setup](#setup)
+  + [Run tests](#run-tests)
+  + [Deployment](#deployment)
+  + [Open a Rails console](#open-a-rails-console)
+* [URLs](#urls)
+* [Getting Courses](#getting-courses)
+* [Courses vs Classes](#courses-vs-classes)
+* [Documentation](#documentation)
+* [Searching](#searching)
+  + [Subject](#subject)
+  + [Catalog Number](#catalog-number)
+  + [Liberal Education / General Education](#liberal-education---general-education)
+  + [Instruction Mode](#instruction-mode)
+  + [Location](#location)
+  + [Combining Searches](#combining-searches)
+
+## Development
+
+### Setup
+
+1. Clone this repo
+1. Run `./script/setup`
+
+### Run tests
+
+Run `./script/test`
+
+### Deployment
+
+Run `./script/deploy [ENV]`
+
+### Open a Rails console
+
+Run `./script/console`
+
+## URLs
+
+- Homepage: https://asr-custom.umn.edu/courses/
+
 ## Getting Courses
 
 You probably want to retrieve courses using cURL/Wget/etc. The files can be quite large and browsers can get fussy about loading a 50 meg xml file.
