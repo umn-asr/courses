@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 
 echo "*************************************************"
 echo "While this app sets up, review the README.md file and update anything that's incorrect"
-echo "https://github.com/umn-asr/courses/blob/master/README.md"
+echo "https://github.com/umn-asr/courses/blob/main/README.md"
 echo "*************************************************"
 
 echo "===> Getting passwords from LastPass if available"
