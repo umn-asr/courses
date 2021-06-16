@@ -83,11 +83,11 @@ All of the documentation below applies equally to Courses and Classes.
 
 ## Documentation
 
-We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/master/doc/resources). 
+We have documentation about the data you'll find in [doc/resources](https://github.com/umn-asr/courses/tree/main/doc/resources).
 
-For Courses, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+For Courses, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/main/doc/resources/courses.yml).
 
-For Classes, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/master/doc/resources/courses.yml).
+For Classes, you'll probably want to start with [courses.yml](https://github.com/umn-asr/courses/blob/main/doc/resources/courses.yml).
 
 ## Searching
 
