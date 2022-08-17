@@ -13,26 +13,26 @@ You probably want to retrieve courses using cURL/Wget/etc. The files can be quit
 
 You must include a Campus and Term. The format is:
 
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
 
 or, if you want XML:
 
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
 
 Some examples:
 
-- [http://courses.umn.edu/campuses/umncr/terms/1163/courses.json](http://courses.umn.edu/campuses/umncr/terms/1163/courses.json)
-- [http://courses.umn.edu/campuses/umnro/terms/1163/courses.xml](http://courses.umn.edu/campuses/umnro/terms/1163/courses.xml)
+- [https://courses.umn.edu/campuses/umncr/terms/1163/courses.json](https://courses.umn.edu/campuses/umncr/terms/1163/courses.json)
+- [https://courses.umn.edu/campuses/umnro/terms/1163/courses.xml](https://courses.umn.edu/campuses/umnro/terms/1163/courses.xml)
 
 ## What Campuses Are Available
 
-- [http://courses.umn.edu/campuses.json](http://courses.umn.edu/campuses.json)
-- [http://courses.umn.edu/campuses.xml](http://courses.umn.edu/campuses.xml)
+- [https://courses.umn.edu/campuses.json](https://courses.umn.edu/campuses.json)
+- [https://courses.umn.edu/campuses.xml](https://courses.umn.edu/campuses.xml)
 
 ## What Terms Are Available
 
-- [http://courses.umn.edu/terms.json](http://courses.umn.edu/terms.json)
-- [http://courses.umn.edu/terms.xml](http://courses.umn.edu/terms.xml)
+- [https://courses.umn.edu/terms.json](https://courses.umn.edu/terms.json)
+- [https://courses.umn.edu/terms.xml](https://courses.umn.edu/terms.xml)
 
 ## Courses vs Classes
 
@@ -42,13 +42,13 @@ If you're not sure which you want, you probably want to look at Classes.
 
 To view Classes data, use 
 
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.json`
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.xml`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.json`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/classes.xml`
 
 To view Course data, use 
 
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
-`http://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.json`
+`https://courses.umn.edu/campuses/[campus abbreviation]/terms/[strm]/courses.xml`
 
 In the documentation we use the term 'course', but everything applies equally to Courses and Classes.
 
