@@ -2,8 +2,6 @@
 
 A JSON/XML service for getting University of Minnesota course and class data. Works for all campuses. Searchable. Up to date.
 
-Note this is still under active development.
-
 ## Table of Contents
 
 * [Development](#development)
