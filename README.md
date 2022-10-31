@@ -32,6 +32,10 @@ A JSON/XML service for getting University of Minnesota course and class data. Wo
 
 Run `./script/test`
 
+### Server
+
+Run `./script/server` to start up a local Rails server
+
 ### Deployment
 
 Run `./script/deploy [ENV]`
