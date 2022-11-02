@@ -8,5 +8,8 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+echo "===> Running bundle-audit"
+bundle exec bundle-audit check --update
+
 echo "===> Deploying to $1"
 bundle exec cap "$1" deploy
