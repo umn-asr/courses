@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby File.read('.ruby-version', mode: 'rb').chomp
 
-gem 'rails', '~> 6.0.3.5'
+gem 'rails', '~> 6.0.6'
 gem 'sprockets', '~> 3.7.2'
 
 group :production, :staging do
