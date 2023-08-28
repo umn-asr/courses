@@ -20,6 +20,7 @@ A JSON/XML service for getting University of Minnesota course and class data. Wo
   + [Instruction Mode](#instruction-mode)
   + [Location](#location)
   + [Combining Searches](#combining-searches)
+* [Owners](#owners)
 
 ## Development
 
@@ -231,3 +232,8 @@ Will return any courses that are:
 - Taught In Person
 - With a catalog number between 2000 and 2999
 - Have the subject HIST
+
+## Owners
+
+Who is responsible for the web application after initial development?
+ * [See this spreadsheet](https://docs.google.com/spreadsheets/d/1JOCG2MZnzsQ_ja8B-pEBqARSXyvoR0TwDb_APO3cdL4/edit?usp=sharing).
