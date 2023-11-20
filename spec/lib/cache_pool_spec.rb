@@ -1,20 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CachePool::CachePool do
-  before :context do
-    begin
-      Process.spawn("redis-server -v", out: "/dev/null")
-    rescue
-      raise RuntimeError, "You don't appear to have Redis installed on this machine. These tests require a Redis server to be running."
-    else
-      Process.spawn("redis-server", out: "/dev/null")
-    end
-  end
-
-  after :context do
-    Process.spawn("redis-cli shutdown")
-  end
-
   describe "configuration" do
     let(:random_pool_size) { rand(100..999) }
     let(:random_redis_configuration) { {url: "redis://some_#{rand(999)}_url" } }
@@ -35,15 +21,15 @@ RSpec.describe CachePool::CachePool do
   end
 
   describe "behavior" do
-    let(:index)               { Redis.new }
+    let(:redis_container_configuration) { { url: "redis://redis:6379" } }
     let(:pool_size)           { rand(3..9) }
-    let(:redis_configuration) { Hash.new }
+    let(:index)               { Redis.new(redis_container_configuration) }
 
     subject { described_class.instance }
 
     before do
       Rails.configuration.cache_pool.pool_size           = pool_size
-      Rails.configuration.cache_pool.redis_configuration = redis_configuration
+      Rails.configuration.cache_pool.redis_configuration = redis_container_configuration
       Singleton.__init__(CachePool::CachePool) # undocumented method to reload our CachePool Singleton see http://stackoverflow.com/questions/1909181/how-to-test-a-singleton-class
     end
 
