@@ -16,9 +16,9 @@ module Serializer
     serialization_class(format).serialize(content)
   end
 
-  private
-
   def self.serialization_class(format)
     (format == "json") ? JsonSerializer : XmlSerializer
   end
+
+  private_class_method :serialization_class
 end
