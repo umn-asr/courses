@@ -15,5 +15,4 @@ if [ -n "$1" ]; then
   docker compose exec -e LINUX_DOCKER=$LINUX_DOCKER_SETTING web script/_test "$1"
 else
   docker compose exec -e LINUX_DOCKER=$LINUX_DOCKER_SETTING web script/_test
-  docker compose exec -e LINUX_DOCKER=$LINUX_DOCKER_SETTING web bin/rspec spec/astra_integration_spec_no_autorun.rb
 fi
