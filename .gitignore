@@ -18,3 +18,5 @@
 /vendor/bundle
 .capistrano
 *rdb
+docker-compose.yml
+.byebug_history

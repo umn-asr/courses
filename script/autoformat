@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# script/autoformat: Autoformats all Ruby code or the single provided file
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+
+if [ -n "$1" ]; then
+  docker compose exec -T web standardrb "$1"
+else
+  docker compose exec -T -d web standardrb
+fi

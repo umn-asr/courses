@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/_web_container_setup
+# Configures the web server container. To be used both for local docker development and CI container setup.
+
+if [ -f "Gemfile" ]; then
+echo "==> Installing gem dependencies…"
+bundle check >/dev/null 2>&1  || {
+  http_proxy=http://kraken02.oit.umn.edu:3128 HTTP_PROXY=http://kraken02.oit.umn.edu:3128 MAKE="make --jobs 8" bundle install --quiet
+}
+fi
+
+if [ -f "yarn.lock" ]; then
+echo "==> Installing yarn packages…"
+yarn --development
+fi

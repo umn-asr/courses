@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# script/lastpassify create DB credentials using the lastpass Docker container
+
+set -e
+
+docker run \
+  -it --rm \
+  -e LASTPASS_USERNAME=$(whoami) \
+  -v "$(pwd):/workdir" \
+  asrcustomsolutions/lastpass:latest \
+  lastpassify

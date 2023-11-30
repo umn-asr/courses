@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# script/shutdown: Tells docker compose to stop all running containers.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+docker compose stop
