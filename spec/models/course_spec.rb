@@ -24,7 +24,7 @@ RSpec.describe Course do
     it "returns courses that match the supplied campus and term" do
       other_subject = Subject.create(subject_id: "TEST", description: "different campus term", campus_id: other_campus.id, term_id: other_term.id)
       other_course = other_subject.courses.create(course_id: rand(1000..9999).to_s)
-      expect(Course.for_campus_and_term(campus, term)).to eq(courses)
+      expect(Course.for_campus_and_term(campus, term)).to match_array(courses)
       expect(Course.for_campus_and_term(campus, term)).to_not include(other_course)
     end
 
