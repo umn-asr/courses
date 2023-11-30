@@ -8,5 +8,6 @@ class TermJsonImport
   end
 
   private
+
   attr_accessor :json
 end

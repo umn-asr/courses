@@ -5,7 +5,7 @@ RSpec.describe Equivalency do
 
   describe "#type" do
     it "is 'equivalency'" do
-      expect(subject_instance.type).to eq('equivalency')
+      expect(subject_instance.type).to eq("equivalency")
     end
   end
 
@@ -23,13 +23,13 @@ RSpec.describe Equivalency do
 
     it "is not valid if the equivalency_id is not unique" do
       other = described_class.create(equivalency_id: equivalency_id)
-      subject_instance.equivalency_id  = equivalency_id
+      subject_instance.equivalency_id = equivalency_id
       expect(subject_instance.valid?).to be_falsy
     end
 
     it "is valid when the equivalency_id is unique" do
       other = described_class.create(equivalency_id: equivalency_id)
-      subject_instance.equivalency_id  = equivalency_id.next
+      subject_instance.equivalency_id = equivalency_id.next
       expect(subject_instance.valid?).to be_truthy
     end
   end

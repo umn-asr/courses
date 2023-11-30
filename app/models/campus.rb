@@ -1,5 +1,4 @@
 class Campus < ::ActiveRecord::Base
-
   has_many :subjects, dependent: :destroy
   has_many :courses, through: :subjects, dependent: :destroy
 

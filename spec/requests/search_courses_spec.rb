@@ -1,5 +1,5 @@
 require "rails_helper"
-require 'json'
+require "json"
 
 RSpec.describe "search courses" do
   before(:each) do
@@ -19,14 +19,14 @@ RSpec.describe "search courses" do
     end
 
     it "returns only courses that match either subject" do
-      #You have to encode | as %7C or else Rspec will error
+      # You have to encode | as %7C or else Rspec will error
       get "/campuses/UMNTC/terms/1149/courses.json?q=subject_id=AFRO%7CPHYS"
       courses = JSON.parse(response.body)["courses"]
 
       expect(courses).not_to be_empty
 
       courses.each do |course|
-        expect(course["subject"]["subject_id"]).to satisfy { |id| %w(AFRO PHYS).include?(id) }
+        expect(course["subject"]["subject_id"]).to satisfy { |id| %w[AFRO PHYS].include?(id) }
       end
     end
   end
@@ -111,7 +111,7 @@ RSpec.describe "search courses" do
       expect(courses).not_to be_empty
 
       courses.each do |course|
-        matching_attributes = course["course_attributes"].select { |a| %w(PHYS HIS).include?(a["attribute_id"]) }
+        matching_attributes = course["course_attributes"].select { |a| %w[PHYS HIS].include?(a["attribute_id"]) }
         expect(matching_attributes).not_to be_empty
       end
     end

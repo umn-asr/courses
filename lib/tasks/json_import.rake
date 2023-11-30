@@ -12,7 +12,7 @@ namespace :json_import do
 
   desc "imports class json files from the supplied directory "
   task :directory_import, [:directory, :file_pattern] => :environment do |t, args|
-    args.with_defaults(:directory => 'tmp', :file_pattern => "classes_for_*.json")
+    args.with_defaults(directory: "tmp", file_pattern: "classes_for_*.json")
     json_files = Rake::FileList[File.join(args[:directory], args[:file_pattern])]
 
     Course.delete_all
@@ -36,11 +36,11 @@ namespace :json_import do
       Day.create(abbreviation: abbreviation, name: name)
     end
 
-    json_resources =  json_files.sort_by { |file| File.size(file) }.reverse.each_with_object([]) do |file, resources|
-                        File.open(file) do |f|
-                          resources << JSON.parse(f.read)
-                        end
-                      end
+    json_resources = json_files.sort_by { |file| File.size(file) }.reverse.each_with_object([]) do |file, resources|
+      File.open(file) do |f|
+        resources << JSON.parse(f.read)
+      end
+    end
 
     json_resources.each do |json|
       TermJsonImport.new(json).run

@@ -6,10 +6,10 @@ RSpec.describe CacheWarmer do
     generate_campuses
   end
 
-  let(:cache)   { instance_double("ActiveSupport::Cache::Store") }
-  let(:terms)     { Term.all.to_a }
-  let(:campuses)  { Campus.all.to_a }
-  subject       { described_class.new(cache, terms, campuses) }
+  let(:cache) { instance_double("ActiveSupport::Cache::Store") }
+  let(:terms) { Term.all.to_a }
+  let(:campuses) { Campus.all.to_a }
+  subject { described_class.new(cache, terms, campuses) }
 
   describe ".warm" do
     it "instantiates a new CacheWarmer with the supplied cache and calls #warm on it" do
@@ -23,11 +23,11 @@ RSpec.describe CacheWarmer do
 
   describe "warm" do
     before do
-      allow(cache).to             receive(:clear)
-      allow(Campus).to            receive(:fetch)
-      allow(Term).to              receive(:fetch)
-      allow(QueryableCourses).to  receive(:fetch)
-      allow(QueryableClasses).to  receive(:fetch)
+      allow(cache).to receive(:clear)
+      allow(Campus).to receive(:fetch)
+      allow(Term).to receive(:fetch)
+      allow(QueryableCourses).to receive(:fetch)
+      allow(QueryableClasses).to receive(:fetch)
     end
 
     it "clears the cache" do
@@ -70,15 +70,15 @@ RSpec.describe CacheWarmer do
   end
 
   def generate_terms
-    this_year = Time.now.strftime('%y').to_i
+    this_year = Time.now.strftime("%y").to_i
     years = (this_year..99).take(rand(3..6))
-    years.flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }.map { |strm| Term.new(strm: strm)}
+    years.flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }.map { |strm| Term.new(strm: strm) }
     nil
   end
 
   def generate_campuses
     campus_abbreviations = ["UMNCR", "UMNDL", "UMNMO", "UMNRO", "UMNTC"].take(rand(2..5))
-    campus_abbreviations.map { |campus_abbreviation| Campus.new(abbreviation: campus_abbreviation)}
+    campus_abbreviations.map { |campus_abbreviation| Campus.new(abbreviation: campus_abbreviation) }
     nil
   end
 

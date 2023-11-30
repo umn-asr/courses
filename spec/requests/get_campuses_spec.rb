@@ -1,5 +1,5 @@
 require "rails_helper"
-require 'json'
+require "json"
 
 RSpec.describe "get campuses" do
   before(:each) do

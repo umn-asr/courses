@@ -5,18 +5,18 @@ RSpec.describe Subject do
 
   describe "type" do
     it "is 'subject'" do
-      expect(subject_instance.type).to eq ("subject")
+      expect(subject_instance.type).to eq("subject")
     end
   end
 
   describe "valid?" do
-    let(:valid_attributes) { {subject_id: "PHYS", description: "Physics", campus_id: rand(1..500), term_id: rand(1..500)}}
+    let(:valid_attributes) { {subject_id: "PHYS", description: "Physics", campus_id: rand(1..500), term_id: rand(1..500)} }
 
     it "is valid if the subject_id is unique for a campus and term" do
       base_subject = described_class.create(valid_attributes)
-      new_subject_id = described_class.new(valid_attributes.merge({ subject_id: "CSCI" }))
-      new_campus_id = described_class.new(valid_attributes.merge({ campus_id: rand(1000..2000)}))
-      new_term_id = described_class.new(valid_attributes.merge({ term_id: rand(1000..2000)}))
+      new_subject_id = described_class.new(valid_attributes.merge({subject_id: "CSCI"}))
+      new_campus_id = described_class.new(valid_attributes.merge({campus_id: rand(1000..2000)}))
+      new_term_id = described_class.new(valid_attributes.merge({term_id: rand(1000..2000)}))
       expect(base_subject.valid?).to be_truthy
       expect(new_subject_id.valid?).to be_truthy
       expect(new_campus_id.valid?).to be_truthy

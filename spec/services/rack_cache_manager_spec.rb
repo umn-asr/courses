@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe RackCacheManager do
   include Rails.application.routes.url_helpers
@@ -7,8 +7,8 @@ RSpec.describe RackCacheManager do
     generate_terms
     generate_campuses
   end
-  let(:terms)     { Term.all.to_a }
-  let(:campuses)  { Campus.all.to_a }
+  let(:terms) { Term.all.to_a }
+  let(:campuses) { Campus.all.to_a }
 
   subject { described_class.new(terms, campuses) }
 
@@ -46,12 +46,12 @@ RSpec.describe RackCacheManager do
   describe "warm" do
     context "a collection of urls is supplied" do
       let(:urls_to_cache) {
-                              [
-                                "https://my_server/my_route/1/to_cache.json",
-                                "https://my_server/my_route/1/to_cache.xml",
-                                "https://my_server/my_route/2/to_cache.json"
-                              ]
-                          }
+        [
+          "https://my_server/my_route/1/to_cache.json",
+          "https://my_server/my_route/1/to_cache.xml",
+          "https://my_server/my_route/2/to_cache.json"
+        ]
+      }
       it "requests the supplied urls" do
         urls_to_cache.each do |url|
           expect(subject).to receive(:`).with("curl #{url}")
@@ -62,13 +62,13 @@ RSpec.describe RackCacheManager do
 
     context "nothing is supplied" do
       it "requests courses.json and courses.xml for each campus/term combination" do
-        campus_abbreviations  = ["UMNCR", "UMNDL", "UMNMO", "UMNRO", "UMNTC"].take(rand(2..5))
-        strms                 = ((Time.now.year-2000)..99).take(3).flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }
+        campus_abbreviations = ["UMNCR", "UMNDL", "UMNMO", "UMNRO", "UMNTC"].take(rand(2..5))
+        strms = ((Time.now.year - 2000)..99).take(3).flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }
 
-        allow(Campus).to receive(:all).and_return(campus_abbreviations.map { |abbr| Campus.new(abbreviation: abbr) } )
+        allow(Campus).to receive(:all).and_return(campus_abbreviations.map { |abbr| Campus.new(abbreviation: abbr) })
         allow(Term).to receive(:all).and_return(strms.map { |strm| Term.new(strm: strm) })
 
-        campus_abbreviations.product(strms).each do |(abbr,strm)|
+        campus_abbreviations.product(strms).each do |(abbr, strm)|
           expect(subject).to receive(:`).with("curl #{campus_term_courses_url(abbr, strm, format: :xml)}")
           expect(subject).to receive(:`).with("curl #{campus_term_courses_url(abbr, strm, format: :json)}")
         end
@@ -79,14 +79,14 @@ RSpec.describe RackCacheManager do
 end
 
 def generate_terms
-  this_year = Time.now.strftime('%y').to_i
+  this_year = Time.now.strftime("%y").to_i
   years = (this_year..99).take(rand(3..6))
-  years.flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }.map { |strm| Term.new(strm: strm)}
+  years.flat_map { |year| ["1#{year}3", "1#{year}5", "1#{year}9"] }.map { |strm| Term.new(strm: strm) }
   nil
 end
 
 def generate_campuses
   campus_abbreviations = ["UMNCR", "UMNDL", "UMNMO", "UMNRO", "UMNTC"].take(rand(2..5))
-  campus_abbreviations.map { |campus_abbreviation| Campus.new(abbreviation: campus_abbreviation)}
+  campus_abbreviations.map { |campus_abbreviation| Campus.new(abbreviation: campus_abbreviation) }
   nil
 end

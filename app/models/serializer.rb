@@ -1,5 +1,5 @@
 module JsonSerializer
-  Oj.default_options = {:mode => :compat}
+  Oj.default_options = {mode: :compat}
   def self.serialize(content)
     Oj.dump(content)
   end
@@ -17,7 +17,8 @@ module Serializer
   end
 
   private
+
   def self.serialization_class(format)
-    format == 'json' ? JsonSerializer : XmlSerializer
+    (format == "json") ? JsonSerializer : XmlSerializer
   end
 end

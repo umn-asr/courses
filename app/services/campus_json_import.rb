@@ -8,6 +8,6 @@ class CampusJsonImport
   end
 
   private
-  attr_accessor :json
 
+  attr_accessor :json
 end

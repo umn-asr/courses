@@ -1,8 +1,8 @@
 require "rails_helper"
 require "json"
 
-RSpec.describe CourseJsonImport, :type => :request do
-  let (:course_json) { JSON.parse(File.read('test/fixtures/courses_example.json')) }
+RSpec.describe CourseJsonImport, type: :request do
+  let(:course_json) { JSON.parse(File.read("test/fixtures/courses_example.json")) }
 
   subject { described_class.new(course_json) }
 
@@ -60,8 +60,8 @@ RSpec.describe CourseJsonImport, :type => :request do
     end
 
     context "when a section is missing an instruction mode" do
-      let(:json_without_instruction_mode) { JSON.parse(File.read('test/fixtures/no_instruction_mode_for_section_104.json')) }
-      subject { described_class.new(json_without_instruction_mode)}
+      let(:json_without_instruction_mode) { JSON.parse(File.read("test/fixtures/no_instruction_mode_for_section_104.json")) }
+      subject { described_class.new(json_without_instruction_mode) }
 
       it "persits the json" do
         subject.run
@@ -70,7 +70,6 @@ RSpec.describe CourseJsonImport, :type => :request do
 
         expect(normalize_json!(response_json)).to eq(normalize_json!(json_without_instruction_mode))
       end
-
     end
   end
 
@@ -81,11 +80,11 @@ RSpec.describe CourseJsonImport, :type => :request do
   end
 
   def setup_cross_term_data
-    %w(UMNTC UMNDL UMNMO UMNCR UMNRO).each do |abbreviation|
+    %w[UMNTC UMNDL UMNMO UMNCR UMNRO].each do |abbreviation|
       Campus.create({abbreviation: abbreviation})
     end
 
-    %w(1149 1153 1155 1159 1163).each do |strm|
+    %w[1149 1153 1155 1159 1163].each do |strm|
       Term.create({strm: strm})
     end
 
@@ -108,13 +107,12 @@ RSpec.describe CourseJsonImport, :type => :request do
         section["meeting_patterns"].each do |pattern|
           pattern["days"].sort_by! { |day| day["name"] }
         end
-        section["combined_sections"].sort_by! { |combined_section| combined_section["catalog_number"]}
+        section["combined_sections"].sort_by! { |combined_section| combined_section["catalog_number"] }
       end
     end
   end
 
   def format_for_comparison!(json)
-    #
     if json.class == Hash
       json.delete_if { |key, value| key == "id" }
       json.each do |key, value|
@@ -124,7 +122,7 @@ RSpec.describe CourseJsonImport, :type => :request do
         format_for_comparison!(value)
       end
     elsif json.class == Array
-      json.each { |sub_item| format_for_comparison!(sub_item)}
+      json.each { |sub_item| format_for_comparison!(sub_item) }
     end
     json
   end

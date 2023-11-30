@@ -10,6 +10,7 @@ class EquivalencyJsonImport
   end
 
   private
+
   attr_accessor :json
 
   def equivalencies

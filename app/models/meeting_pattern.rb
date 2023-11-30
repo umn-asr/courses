@@ -20,7 +20,8 @@ class MeetingPattern < ::ActiveRecord::Base
   end
 
   private
+
   def date_format(date)
-    date ? date.strftime('%Y-%m-%d') : nil
+    date ? date.strftime("%Y-%m-%d") : nil
   end
 end

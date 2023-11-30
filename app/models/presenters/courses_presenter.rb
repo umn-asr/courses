@@ -1,6 +1,6 @@
 class CoursesPresenter
   def self.fetch(campus, term, courses, cache = Rails.cache)
-    self.new(campus, term, courses, cache)
+    new(campus, term, courses, cache)
   end
 
   def initialize(campus, term, courses, cache)

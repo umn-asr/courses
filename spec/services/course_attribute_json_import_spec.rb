@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe CourseAttributeJsonImport do
-  let (:course_json) { JSON.parse(File.read('test/fixtures/courses_example.json')) }
+  let(:course_json) { JSON.parse(File.read("test/fixtures/courses_example.json")) }
   subject { described_class.new(course_json) }
 
   describe "run" do
-    let(:course_attributes)     { course_json["courses"].map { |course| course["course_attributes"] }.flatten }
+    let(:course_attributes) { course_json["courses"].map { |course| course["course_attributes"] }.flatten }
 
     it "builds CourseAttributes for the supplied abbreviation" do
       CourseAttribute.delete_all

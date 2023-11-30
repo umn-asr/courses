@@ -10,6 +10,7 @@ class CourseAttributeJsonImport
   end
 
   private
+
   attr_accessor :json
 
   def course_attributes

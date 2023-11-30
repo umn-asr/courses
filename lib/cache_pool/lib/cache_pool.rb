@@ -1,12 +1,12 @@
-require 'cache_pool/railtie'
+require "cache_pool/railtie"
 
 module CachePool
   class CachePool
     include Singleton
 
     def initialize
-      self.pool_size            = Rails.configuration.cache_pool.pool_size || 4
-      self.redis_configuration  = Rails.configuration.cache_pool.redis_configuration || {}
+      self.pool_size = Rails.configuration.cache_pool.pool_size || 4
+      self.redis_configuration = Rails.configuration.cache_pool.redis_configuration || {}
       build_pool
     end
 
@@ -19,10 +19,11 @@ module CachePool
     end
 
     def next!
-      index.set('current_cache_db', next_db)
+      index.set("current_cache_db", next_db)
     end
 
     private
+
     attr_accessor :pool_size, :redis_configuration
 
     def pool
@@ -40,8 +41,8 @@ module CachePool
     end
 
     def current_db
-      if index.get('current_cache_db')
-        index.get('current_cache_db').to_i
+      if index.get("current_cache_db")
+        index.get("current_cache_db").to_i
       else
         1
       end

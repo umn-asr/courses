@@ -2,7 +2,7 @@ require "rails_helper"
 require "json"
 
 RSpec.describe CampusJsonImport do
-  let (:course_json) { JSON.parse(File.read('test/fixtures/courses_example.json')) }
+  let(:course_json) { JSON.parse(File.read("test/fixtures/courses_example.json")) }
   subject { described_class.new(course_json) }
 
   describe "run" do

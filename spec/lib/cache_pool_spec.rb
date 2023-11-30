@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CachePool::CachePool do
   describe "configuration" do
     let(:random_pool_size) { rand(100..999) }
-    let(:random_redis_configuration) { {url: "redis://some_#{rand(999)}_url" } }
+    let(:random_redis_configuration) { {url: "redis://some_#{rand(999)}_url"} }
 
     before do
-      Rails.configuration.cache_pool.pool_size           = random_pool_size
+      Rails.configuration.cache_pool.pool_size = random_pool_size
       Rails.configuration.cache_pool.redis_configuration = random_redis_configuration
       Singleton.__init__(CachePool::CachePool)  # undocumented method to reload our CachePool Singleton see http://stackoverflow.com/questions/1909181/how-to-test-a-singleton-class
     end
@@ -21,14 +21,14 @@ RSpec.describe CachePool::CachePool do
   end
 
   describe "behavior" do
-    let(:redis_container_configuration) { { url: "redis://redis:6379" } }
-    let(:pool_size)           { rand(3..9) }
-    let(:index)               { Redis.new(redis_container_configuration) }
+    let(:redis_container_configuration) { {url: "redis://redis:6379"} }
+    let(:pool_size) { rand(3..9) }
+    let(:index) { Redis.new(redis_container_configuration) }
 
     subject { described_class.instance }
 
     before do
-      Rails.configuration.cache_pool.pool_size           = pool_size
+      Rails.configuration.cache_pool.pool_size = pool_size
       Rails.configuration.cache_pool.redis_configuration = redis_container_configuration
       Singleton.__init__(CachePool::CachePool) # undocumented method to reload our CachePool Singleton see http://stackoverflow.com/questions/1909181/how-to-test-a-singleton-class
     end
@@ -44,7 +44,7 @@ RSpec.describe CachePool::CachePool do
 
       context "when current_cache_db is not set in redis" do
         before do
-          index.del('current_cache_db')
+          index.del("current_cache_db")
         end
 
         it "is the cache store for redis db 1" do
@@ -57,7 +57,7 @@ RSpec.describe CachePool::CachePool do
         let(:cache_number) { rand(1..pool_size) }
 
         before do
-          index.set('current_cache_db', cache_number)
+          index.set("current_cache_db", cache_number)
         end
 
         after do
@@ -82,11 +82,11 @@ RSpec.describe CachePool::CachePool do
 
       context "when the current db is equal to the pool size" do
         before do
-          index.set('current_cache_db', pool_size)
+          index.set("current_cache_db", pool_size)
         end
 
         after do
-          index.del('current_cache_db')
+          index.del("current_cache_db")
         end
 
         it "is the cache store for redis db 1" do

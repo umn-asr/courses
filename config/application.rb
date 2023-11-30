@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 require "active_record/railtie"
@@ -17,7 +17,7 @@ module CourseGuide
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.autoload_paths += %W(#{Rails.root}/app/models/presenters #{Rails.root}/app/services #{Rails.root}/lib)
+    config.autoload_paths += %W[#{Rails.root}/app/models/presenters #{Rails.root}/app/services #{Rails.root}/lib]
     config.caching = ActiveSupport::OrderedOptions.new
     config.x.caching.use = true
     config.log_level = :info

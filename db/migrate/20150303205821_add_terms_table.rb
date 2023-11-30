@@ -3,6 +3,6 @@ class AddTermsTable < ActiveRecord::Migration[5.2]
     create_table :terms do |t|
       t.string :strm
     end
-    add_index :terms, :strm, :unique => true
+    add_index :terms, :strm, unique: true
   end
 end

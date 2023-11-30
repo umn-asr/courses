@@ -10,7 +10,7 @@ RSpec.describe Section do
   end
 
   describe "valid?" do
-    let(:valid_attributes) { {course_id: rand(3), class_number: "#{rand(3)}", number: "#{rand(3)}", component: "LEC" } }
+    let(:valid_attributes) { {course_id: rand(3), class_number: "#{rand(3)}", number: "#{rand(3)}", component: "LEC"} }
 
     it "is valid with the correct attributes" do
       expect(described_class.new(valid_attributes).valid?).to be_truthy

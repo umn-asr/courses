@@ -1,8 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
-require 'spec_helper'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rspec/rails'
+ENV["RAILS_ENV"] ||= "test"
+require "spec_helper"
+require File.expand_path("../../config/environment", __FILE__)
+require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -36,7 +36,6 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true
-
 end
 
 def compare_element_to_documentation(element)
@@ -57,11 +56,9 @@ def compare_element_to_documentation(element)
     else
       raise ArgumentError, "Documentation for resource #{type} has no data. Has keys #{documentation.keys}"
     end
-  else
-    #noop. This case is hit when values for the resource attributes are passed in
   end
 end
 
 def get_documentation(type)
-  YAML.load(File.read("doc/resources/#{type}.yml"))
+  YAML.load_file("doc/resources/#{type}.yml")
 end

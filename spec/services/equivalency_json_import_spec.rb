@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe EquivalencyJsonImport do
-  let (:course_json) { JSON.parse(File.read('test/fixtures/courses_example.json')) }
+  let(:course_json) { JSON.parse(File.read("test/fixtures/courses_example.json")) }
   subject { described_class.new(course_json) }
 
   describe "run" do
-    let(:equivalencies)     { course_json["courses"].map { |course| course["equivalency"] }.flatten }
+    let(:equivalencies) { course_json["courses"].map { |course| course["equivalency"] }.flatten }
 
     it "builds Equivalencies for the supplied equivalency" do
       Equivalency.delete_all

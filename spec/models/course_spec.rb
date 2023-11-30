@@ -4,18 +4,18 @@ RSpec.describe Course do
   let(:course_instance) { described_class.new }
 
   describe ".for_campus_and_term" do
-    let(:campus)  { Campus.create(abbreviation: "UMNTEST") }
-    let(:term)    { Term.create(strm: "2259") }
+    let(:campus) { Campus.create(abbreviation: "UMNTEST") }
+    let(:term) { Term.create(strm: "2259") }
     let(:subject) { Subject.create(subject_id: "TEST", description: "for testing", campus_id: campus.id, term_id: term.id) }
     let(:courses) {
-                      3.times do |x|
-                        subject.courses.create(course_id: x.to_s)
-                      end
+      3.times do |x|
+        subject.courses.create(course_id: x.to_s)
+      end
 
-                      subject.courses
-                  }
+      subject.courses
+    }
     let(:other_campus) { Campus.create(abbreviation: "UMNOTHER") }
-    let(:other_term)   { Term.create(strm: "3359" ) }
+    let(:other_term) { Term.create(strm: "3359") }
 
     it "returns a collection" do
       expect(Course.for_campus_and_term(campus, term)).to respond_to(:each)
@@ -52,8 +52,8 @@ RSpec.describe Course do
 
     it "within a subject, courses are returned by catalog number" do
       aaa_subject = Subject.create(subject_id: "#{rand(100)}", description: "aaa", campus_id: campus.id, term_id: term.id)
-      course_last = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: '1000W')
-      course_first = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: '1000')
+      course_last = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: "1000W")
+      course_first = aaa_subject.courses.create(course_id: rand(1000..9999).to_s, catalog_number: "1000")
 
       expect(Course.for_campus_and_term(campus, term).first).to eq(course_first)
       expect(Course.for_campus_and_term(campus, term).last).to eq(course_last)

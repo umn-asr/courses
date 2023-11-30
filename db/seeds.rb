@@ -23,11 +23,11 @@ MeetingPattern.delete_all
 CombinedSection.delete_all
 Equivalency.delete_all
 
-%w(UMNTC UMNDL UMNMO UMNCR UMNRO).each do |abbreviation|
+%w[UMNTC UMNDL UMNMO UMNCR UMNRO].each do |abbreviation|
   Campus.create({abbreviation: abbreviation})
 end
 
-%w(1149 1155 1159 1163).each do |strm|
+%w[1149 1155 1159 1163].each do |strm|
   Term.create({strm: strm})
 end
 
@@ -35,11 +35,11 @@ end
   Day.create(abbreviation: abbreviation, name: name)
 end
 
-%w(1149 1155 1159 1163).each do |strm|
+%w[1149 1155 1159 1163].each do |strm|
   Term.create({strm: strm})
 end
 
-f = File.open('test/fixtures/courses_example.json')
+f = File.open("test/fixtures/courses_example.json")
 j = JSON.parse(f.read)
 f.close
 CourseAttributeJsonImport.new(j).run
