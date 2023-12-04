@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ "$DRONE" = "true" ]
+then
+  echo "🤖 Drone only"
+  echo "==> cleaning database"
+  RAILS_ENV=test bin/rake oracle:clean
+
+  echo "==> loading the schema"
+  RAILS_ENV=test bin/rake db:schema:load
+
+  echo "==> running the migrations"
+  RAILS_ENV=test bin/rails db:migrate
+else
+  echo "==> cleaning database"
+  RAILS_ENV=development bin/rake oracle:clean
+  RAILS_ENV=test bin/rake oracle:clean
+
+  echo "==> loading the schema"
+  RAILS_ENV=development bin/rake db:schema:load
+  RAILS_ENV=test bin/rake db:schema:load
+
+  echo "==> running the migrations"
+  RAILS_ENV=development bin/rails db:migrate
+  RAILS_ENV=test bin/rails db:migrate
+
+  echo "==> seeding database"
+  RAILS_ENV=development bin/rails db:seed
+fi

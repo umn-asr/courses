@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  database:
+    image: asr-docker-local.artifactory.umn.edu/oracle/database/enterprise:12.2.0.1-slim
+    logging:
+      options:
+        max-size: 50m
+    volumes:
+      - 'oracle:/ORCL' # persistent oracle database data.
+    ports:
+      - 127.0.0.1:1521:1521
+      - 127.0.0.1:5500:5500
+  web:
+    logging:
+      options:
+        max-size: 50m
+    build: '.'
+    depends_on:
+      - 'database'
+    environment:
+      NODE_PATH: "/usr/bin/"
+      SELENIUM_DRIVER_URL: "${SELENIUM_DRIVER_URL}"
+    ports:
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3001:3001
+    volumes:
+      - '.:/app'
+      - '~/.ssh:/home/root/.ssh'
+    entrypoint: ["script/_entrypoint.sh"]
+    command: 'bash -c ./script/_server'
+    command: >
+      bash -c 'until ./script/_database_check.sh;
+      do
+        :
+      done && echo "Database check complete" && ./script/_web_container_setup && ./script/_update && ./script/_server'
+  redis:
+    image: redis:6
+    logging:
+      options:
+        max-size: 50m
+    ports:
+      - 127.0.0.1:6379:6379
+volumes:
+  oracle: {}

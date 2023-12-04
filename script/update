@@ -1,13 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
-# script/update: Update application to run for its current checkout.
+# script/update: Tells Docker to run its update script
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-./script/bootstrap
+echo "==> Checking architecture"
+if [ `uname -m` = "arm64" ]; then
+  echo "====> arm64 architecture detected"
+  docker compose exec -T web script/_update_remote_database
+else
+  echo "====> x86 architecture detected"
+  docker compose exec -T web script/_update
+fi
 
-echo "==> Updating db..."
-# run all database migrations to ensure everything is up to date.
-bin/rake db:migrate

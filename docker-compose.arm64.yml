@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    logging:
+      options:
+        max-size: 50m
+    build: '.'
+    env_file:
+      - '.env'
+    ports:
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:3001:3001
+    volumes:
+      - '.:/app'
+      - '~/.ssh:/home/root/.ssh'
+    entrypoint: ["script/_entrypoint.sh"]
+    command: >
+      bash -c './script/_web_container_setup && ./script/_update_remote_database && ./script/_server'
+  redis:
+    image: redis:6
+    logging:
+      options:
+        max-size: 50m
+    ports:
+      - 127.0.0.1:6379:6379

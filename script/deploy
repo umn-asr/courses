@@ -1,15 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-# script/deploy: Deploy the application
-#   change the url opened at the end of the script to the URL of the application, if applicable
+# script/deploy: Tells Docker to run its deploy script
 
-
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-echo "===> Running bundle-audit"
-bundle exec bundle-audit check --update
-
-echo "===> Deploying to $1"
-bundle exec cap "$1" deploy
+if [ -n "$1" ]; then
+  docker compose exec web script/_deploy "$1"
+else
+  docker compose exec web script/_deploy
+fi

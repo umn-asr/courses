@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# script/docker: Use this script to launch a docker bash shell during develpment.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+docker compose exec -it web bash

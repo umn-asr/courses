@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# script/_deploy: Deploy to staging
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+eval `ssh-agent -s`
+if [ -f /home/root/.ssh/id_rsa ]; then
+    ssh-add /home/root/.ssh/id_rsa
+fi
+if [ -f /home/root/.ssh/id_ed25519 ]; then
+    ssh-add /home/root/.ssh/id_ed25519
+fi
+
+if [ -n "$1" ]; then
+  bin/cap "$1" deploy
+else
+  bin/cap staging deploy
+fi

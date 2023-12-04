@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-ruby File.read('.ruby-version', mode: 'rb').chomp
+source "https://artifactory.umn.edu/artifactory/api/gems/asr-rubygems"
+ruby "2.7.1"
 
 gem 'rails', '~> 6.0.6'
 gem 'sprockets', '~> 3.7.2'
@@ -17,15 +17,19 @@ gem 'redis-rails', '~> 5.0.0'
 gem 'cache_pool', path: 'lib/cache_pool'
 gem 'lograge'
 gem 'logstash-event'
+gem "mini_portile2", "~>2.8"
 
 group :development, :test do
   gem "bundler-audit"
+  gem "byebug"
+  gem "oracle_cleaner"
+  gem "reek"
+  gem "standard"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.3.6'
 
   gem 'rspec', '~> 3.5'
   gem 'rspec-rails', '~> 3.5'
-  gem 'sqlite3', '~> 1.4.0'
 end
 
 group :development do

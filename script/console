@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# script/console: Use this script to launch a local Rails console during development.
+# script/console: Use this script to launch a local Rails console during develpment.
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-bin/rails c
+docker compose exec web bin/rails c

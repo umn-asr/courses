@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# script/_database_setup: sets up database users in test & dev and grants
+# permissions.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Creating Database Users"
+
+sqlplus sys/Oradoc_db1@//database:1521/ORCLCDB.localdomain as sysdba << EOF > /dev/null 2>&1
+ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
+ALTER SYSTEM SET OPEN_CURSORS = 1000 SCOPE=BOTH;
+CREATE USER c##devel_application IDENTIFIED BY devel_application CONTAINER=ALL;
+GRANT CREATE SESSION TO c##devel_application CONTAINER=ALL;
+GRANT CREATE TABLE TO c##devel_application CONTAINER=ALL;
+GRANT CREATE SEQUENCE TO c##devel_application CONTAINER=ALL;
+GRANT CREATE VIEW TO c##devel_application CONTAINER=ALL;
+ALTER USER c##devel_application quota unlimited on system;
+CREATE USER c##test_application IDENTIFIED BY test_application CONTAINER=ALL;
+GRANT CREATE SESSION TO c##test_application CONTAINER=ALL;
+GRANT CREATE TABLE TO c##test_application CONTAINER=ALL;
+GRANT CREATE SEQUENCE TO c##test_application CONTAINER=ALL;
+GRANT CREATE VIEW TO c##test_application CONTAINER=ALL;
+ALTER USER c##test_application quota unlimited on system;
+exit;
+
+EOF

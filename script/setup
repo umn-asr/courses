@@ -1,34 +1,37 @@
-#!/bin/sh
+#!/bin/bash
 
-# script/setup: Set up application for the first time after cloning, or set it
-#               back to the initial first unused state.
+# script/setup: Tells Docker to setup the project by configuring YAML config files
+# & getting and building Docker images.
 
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-./script/bootstrap
+echo "==> Checking architecture"
+if [ `uname -m` = "arm64" ]; then
+  echo "====> arm64 architecture detected"
+  cp docker-compose.arm64.yml docker-compose.yml
 
-echo "*************************************************"
-echo "While this app sets up, review the README.md file and update anything that's incorrect"
-echo "https://github.com/umn-asr/courses/blob/main/README.md"
-echo "*************************************************"
+  echo "==> Pulling lastpass container"
+  docker pull asrcustomsolutions/lastpass:latest
 
-echo "===> Getting passwords from LastPass if available"
-[ -f ./bin/lastpassify ] && [ -f ./config/database.example.yml ] && ./bin/lastpassify
-[ -f ./bin/lastpassify ] && [ -f ./config/secrets.example.yml ] && ./bin/lastpassify config/secrets.example.yml config/secrets.yml
-
-echo "===> Setting up DB..."
-bin/rails db:environment:set RAILS_ENV=development
-bin/rake db:schema:load
-bin/rake db:migrate
-
-if [ -z "$RAILS_ENV" ] && [ -z "$RACK_ENV" ]; then
-  # Only things for a development environment will run inside here
-  # Do things that need to be done to the application to set up for the first
-  # time. Or things needed to be run to to reset the application back to first
-  # use experience. These things are scoped to the application's domain.
-  true
+  echo "==> Running lpassify"
+  script/_lastpassify
+else
+  echo "====> x86 architecture detected"
+  cp docker-compose.x86.yml docker-compose.yml
+  cp config/database.docker.yml config/database.yml
 fi
 
-echo "==> App is now ready to go!"
+echo "ENV[\"STUB_INTERNET_ID\"] = \"$USER\"" > ./config/initializers/local.rb
+
+echo "==> Getting/Building Docker images"
+docker compose build --no-cache
+docker compose pull
+
+echo "==> Creating a pre-commit hook"
+cp script/hooks/* .git/hooks
+
+docker compose run --rm web script/_setup $(whoami)
+
+echo "==> All done!"

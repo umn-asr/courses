@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+if [ "$SKIP_HOOKS" != "true" ]; then
+  docker compose exec -T web sh -c '/app/script/_lint.sh'
+fi
